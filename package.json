@@ -1,0 +1,32 @@
+{
+  "name": "linter-stylelint",
+  "version": "0.1.0",
+  "private": true,
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1000ch/linter-stylelint.git"
+  },
+  "engines": {
+    "atom": ">=1.0.0"
+  },
+  "keywords": [
+    "CSS",
+    "lint",
+    "stylelint"
+  ],
+  "author": {
+    "name": "1000ch",
+    "email": "shogo.sensui@gmail.com",
+    "url": "http://github.com/1000ch"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1000ch/linter-stylelint/issues"
+  },
+  "homepage": "https://github.com/1000ch/linter-stylelint#readme",
+  "dependencies": {
+    "postcss": "^4.1.16",
+    "stylelint": "^0.3.0"
+  }
+}
