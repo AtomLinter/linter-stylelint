@@ -3,6 +3,7 @@
 import { Range } from 'atom';
 import postcss   from 'postcss';
 import stylelint from 'stylelint';
+import linter    from 'atom-linter';
 
 export let config = {
   usePreset: {
@@ -48,6 +49,19 @@ export const provideLinter = () => {
 
             let start = message.node.source.start;
             let end   = message.node.source.end;
+
+            if (!start || !end) {
+              let object = linter.parse(message.text, 'line (?<line>[0-9]+)').shift();
+              start = {
+                line: object.range[0][0] + 1,
+                column: object.range[0][1] + 1
+              };
+              end = {
+                line: object.range[1][0] + 1,
+                column: object.range[1][1] + 1
+              };
+            }
+
             let range = new Range(
               [start.line - 1, start.column - 1],
               [end.line - 1, end.column - 1]
@@ -58,7 +72,7 @@ export const provideLinter = () => {
               text: message.text,
               filePath: path,
               range: range
-            }
+            };
           }));
 
         }).catch((error) => console.error(error));
