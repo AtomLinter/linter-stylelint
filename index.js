@@ -1,8 +1,8 @@
 'use babel';
 
-import { Range }     from 'atom';
-import postcss       from 'postcss';
-import stylelint     from 'stylelint';
+import { Range } from 'atom';
+import postcss   from 'postcss';
+import stylelint from 'stylelint';
 
 export let config = {
   usePreset: {
