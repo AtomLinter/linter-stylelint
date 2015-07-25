@@ -1,5 +1,3 @@
-:construction: under construction
-
 # linter-stylelint
 
 The plugin for [Atom Linter](https://github.com/AtomLinter/atom-linter) provides an interface to [stylelint](https://github.com/stylelint/stylelint).

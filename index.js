@@ -4,9 +4,6 @@ import { Range }     from 'atom';
 import postcss       from 'postcss';
 import stylelint     from 'stylelint';
 
-import configSuitcss    from 'stylelint-config-suitcss';
-import configCssRecipes from 'stylelint-config-cssrecipes';
-
 export let config = {
   usePreset: {
     title: 'Use preset',
@@ -28,7 +25,7 @@ const presetConfig = () => atom.config.get('linter-stylelint.presetConfig');
 
 export const provideLinter = () => {
 
-  let config = usePreset() ? configSuitcss : {};
+  let config = usePreset() ? require(presetConfig()) : {};
 
   return {
     grammarScopes: ['source.css'],
