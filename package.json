@@ -27,7 +27,7 @@
   "homepage": "https://github.com/1000ch/linter-stylelint#readme",
   "dependencies": {
     "postcss": "^4.1.16",
-    "stylelint": "^0.3.0",
+    "stylelint": "^0.4.1",
     "stylelint-config-cssrecipes": "^1.1.0",
     "stylelint-config-suitcss": "^0.3.0"
   },
