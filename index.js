@@ -1,9 +1,9 @@
 'use babel';
 
-import { Range } from 'atom';
-import postcss   from 'postcss';
+import { Range, Point } from 'atom';
+import postcss from 'postcss';
 import stylelint from 'stylelint';
-import linter    from 'atom-linter';
+import helper from 'atom-linter';
 
 export let config = {
   usePreset: {
@@ -47,31 +47,20 @@ export const provideLinter = () => {
 
           resolve(data.messages.map((message) => {
 
-            let start = message.node.source.start;
-            let end   = message.node.source.end;
+            let start  = message.node.source.start;
+            let end    = message.node.source.end;
+            let object = helper.parse(message.text, 'line (?<line>[0-9]+)').shift();
 
-            if (!start || !end) {
-              let object = linter.parse(message.text, 'line (?<line>[0-9]+)').shift();
-              start = {
-                line: object.range[0][0] + 1,
-                column: object.range[0][1] + 1
-              };
-              end = {
-                line: object.range[1][0] + 1,
-                column: object.range[1][1] + 1
-              };
-            }
-
-            let range = new Range(
-              [start.line - 1, start.column - 1],
-              [end.line - 1, end.column - 1]
-            );
+            let sl = start.line !== undefined   ? start.line - 1   : object.range[0][0];
+            let sc = start.column !== undefined ? start.column - 1 : object.range[0][1];
+            let el = end.line !== undefined     ? end.line - 1     : object.range[1][0];
+            let ec = end.column !== undefined   ? end.column - 1   : object.range[1][1];
 
             return {
               type: message.type,
               text: message.text,
               filePath: path,
-              range: range
+              range: new Range([sl, sc], [el, ec])
             };
           }));
 
