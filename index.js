@@ -47,8 +47,8 @@ export const provideLinter = () => {
 
           resolve(data.messages.map((message) => {
 
-            let start  = message.node.source.start;
-            let end    = message.node.source.end;
+            let start  = message.node.source.start || {};
+            let end    = message.node.source.end || {};
             let object = helper.parse(message.text, 'line (?<line>[0-9]+)').shift();
 
             let sl = start.line !== undefined   ? start.line - 1   : object.range[0][0];
