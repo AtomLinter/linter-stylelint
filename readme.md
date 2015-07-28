@@ -2,6 +2,8 @@
 
 The plugin for [Atom Linter](https://github.com/AtomLinter/atom-linter) provides an interface to [stylelint](https://github.com/stylelint/stylelint).
 
+![demo](https://raw.githubusercontent.com/1000ch/linter-stylelint/master/capture.png)
+
 ## Installation
 
 In order to use this plugin, [The Linter package must be installed](https://github.com/atom-community/linter#how-to--installation) before installing `linter-stylelint`.
