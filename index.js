@@ -1,5 +1,6 @@
 'use babel';
 
+import fs        from 'fs';
 import { Range } from 'atom';
 import postcss   from 'postcss';
 import stylelint from 'stylelint';
@@ -23,10 +24,11 @@ export let config = {
 
 const usePreset    = () => atom.config.get('linter-stylelint.usePreset');
 const presetConfig = () => atom.config.get('linter-stylelint.presetConfig');
+const configFiles  = ['.stylelintrc'];
 
 export const provideLinter = () => {
 
-  let config = usePreset() ? require(presetConfig()) : {};
+  let preset = require(presetConfig());
 
   return {
     grammarScopes: ['source.css'],
@@ -36,6 +38,16 @@ export const provideLinter = () => {
 
       let path = editor.getPath();
       let text = editor.getText();
+      let config = {};
+
+      if (usePreset()) {
+        config = presetConfig;
+      } else {
+        let configFile = helper.findFile(path, configFiles);
+        if (configFile) {
+          config = require(configFile);
+        }
+      }
 
       return new Promise((resolve, reject) => {
 
