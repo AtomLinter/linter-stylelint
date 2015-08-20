@@ -41,7 +41,7 @@ export const provideLinter = () => {
       let config = {};
 
       if (usePreset()) {
-        config = presetConfig;
+        config = preset;
       } else {
         let configFile = helper.findFile(path, configFiles);
         if (configFile) {
@@ -62,6 +62,10 @@ export const provideLinter = () => {
             let start  = message.node.source.start || {};
             let end    = message.node.source.end   || {};
             let range;
+
+            if (start.line !== end.line) {
+              end.line = start.line;
+            }
 
             if (!start.line || !end.line) {
               let object = helper.parse(message.text, 'line (?<line>[0-9]+)').shift();
