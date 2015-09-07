@@ -26,6 +26,10 @@ const usePreset    = () => atom.config.get('linter-stylelint.usePreset');
 const presetConfig = () => atom.config.get('linter-stylelint.presetConfig');
 const configFiles  = ['.stylelintrc'];
 
+export const activate = () => {
+  require("atom-package-deps").install("linter-stylelint");
+};
+
 export const provideLinter = () => {
 
   let preset = require(presetConfig());
