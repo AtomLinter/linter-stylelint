@@ -1,6 +1,6 @@
 {
   "name": "linter-stylelint",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "description": "Linter plugin for CSS, using stylelint.",
   "repository": {
