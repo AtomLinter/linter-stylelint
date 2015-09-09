@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/AtomLinter/linter-stylelint#readme",
   "dependencies": {
+    "atom-linter": "^3.2.1",
     "atom-package-deps": "^2.0.5",
     "postcss": "^4.1.16",
     "stylelint": "^1.0.1",
