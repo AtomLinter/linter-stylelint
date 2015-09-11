@@ -18,6 +18,7 @@ You can configure from following ways.
 - Select from presets on settings.
     - [stylelint-config-cssrecipes](https://github.com/stylelint/stylelint-config-cssrecipes)
     - [stylelint-config-suitcss](https://github.com/stylelint/stylelint-config-suitcss)
+    - [stylelint-config-wordpress](https://github.com/stylelint/stylelint-config-wordpress)
 
 ## License
 
