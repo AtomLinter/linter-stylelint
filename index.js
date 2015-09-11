@@ -18,7 +18,7 @@ export let config = {
     description: 'Select lint style if you select from presets',
     type: 'string',
     default: 'stylelint-config-suitcss',
-    enum: ['stylelint-config-suitcss', 'stylelint-config-cssrecipes']
+    enum: ['stylelint-config-suitcss', 'stylelint-config-cssrecipes', 'stylelint-config-wordpress']
   }
 };
 
