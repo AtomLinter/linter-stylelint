@@ -28,7 +28,7 @@
   "dependencies": {
     "atom-linter": "^3.2.1",
     "atom-package-deps": "^2.0.5",
-    "postcss": "^4.1.16",
+    "postcss": "^5.0.4",
     "stylelint": "^1.0.1",
     "stylelint-config-cssrecipes": "^1.1.0",
     "stylelint-config-suitcss": "^0.4.0"

@@ -61,22 +61,12 @@ export const provideLinter = () => {
           from: path
         }).then((data) => {
 
-          resolve(data.messages.map((message) => {
+          resolve(data.messages.map(message => {
 
-            let start  = message.node.source.start || {};
-            let end    = message.node.source.end   || {};
-            let range;
-
-            if (start.line !== end.line) {
-              end.line = start.line;
-            }
-
-            if (!start.line || !end.line) {
-              let object = helper.parse(message.text, 'line (?<line>[0-9]+)').shift();
-              range = new Range(object.range[0], object.range[1]);
-            } else {
-              range = new Range([start.line - 1, start.column - 1], [end.line - 1, end.column - 1]);
-            }
+            let range = new Range(
+              [message.line - 1, message.column - 1],
+              [message.line - 1, message.column + 1000]
+            );
 
             return {
               type: message.type,
@@ -86,7 +76,7 @@ export const provideLinter = () => {
             };
           }));
 
-        }).catch((error) => console.error(error));
+        }).catch(error => console.error(error));
       });
     }
   };
