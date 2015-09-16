@@ -49,7 +49,7 @@ export const provideLinter = () => {
       } else {
         let configFile = helper.findFile(path, configFiles);
         if (configFile) {
-          config = require(configFile);
+          config = JSON.parse(fs.readFileSync(configFile));
         }
       }
 
