@@ -35,6 +35,7 @@ export const provideLinter = () => {
   let preset = require(presetConfig());
 
   return {
+    name: 'stylelint',
     grammarScopes: ['source.css'],
     scope: 'file',
     lintOnFly: true,
