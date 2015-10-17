@@ -6,7 +6,7 @@ The plugin for [Atom Linter](https://github.com/AtomLinter/atom-linter) provides
 
 ## Installation
 
-```sh
+```bash
 $ apm install linter-stylelint
 ```
 
@@ -14,7 +14,7 @@ $ apm install linter-stylelint
 
 You can configure from following ways.
 
-- Put `.stylelintrc`. (There is no consensus on `.stylelintrc`. So this is a temporary solution)
+- Put `.stylelintrc`.
 - Select from presets on settings.
     - [stylelint-config-cssrecipes](https://github.com/stylelint/stylelint-config-cssrecipes)
     - [stylelint-config-suitcss](https://github.com/stylelint/stylelint-config-suitcss)
