@@ -20,6 +20,8 @@ You can configure from following ways.
     - [stylelint-config-suitcss](https://github.com/stylelint/stylelint-config-suitcss)
     - [stylelint-config-wordpress](https://github.com/stylelint/stylelint-config-wordpress)
 
+`.stylelintrc` is preferred always. If you checked `Use preset` on and put `.stylelintrc`, setting based on selected preset extends put `.stylelintrc`.
+
 ## License
 
 MIT: http://1000ch.mit-license.org/

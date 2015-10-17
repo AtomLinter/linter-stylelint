@@ -5,6 +5,7 @@ import { Range } from 'atom';
 import postcss   from 'postcss';
 import stylelint from 'stylelint';
 import helper    from 'atom-linter';
+import assign    from 'deep-assign';
 
 export let config = {
   usePreset: {
@@ -47,11 +48,15 @@ export const provideLinter = () => {
 
       if (usePreset()) {
         config = preset;
-      } else {
-        let configFile = helper.findFile(path, configFiles);
-        if (configFile) {
-          config = JSON.parse(fs.readFileSync(configFile));
-        }
+      }
+
+      // .stylelintrc is preferred if exists
+      let configFile = helper.findFile(path, configFiles);
+      if (configFile) {
+        try {
+          let stylelintrc = JSON.parse(fs.readFileSync(configFile));
+          config = assign(config, stylelintrc);
+        } catch (e) {}
       }
 
       return new Promise((resolve, reject) => {
