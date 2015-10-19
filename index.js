@@ -56,7 +56,12 @@ export const provideLinter = () => {
         try {
           let stylelintrc = JSON.parse(fs.readFileSync(configFile));
           config = assign(config, stylelintrc);
-        } catch (e) {}
+        } catch (e) {
+          atom.notifications.addWarning(`Invalid .stylelintrc`, {
+            detail: `Failed to parse .stylelintrc JSON`,
+            dismissable: true
+          });
+        }
       }
 
       return new Promise((resolve, reject) => {
