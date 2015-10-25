@@ -87,7 +87,16 @@ export const provideLinter = () => {
             };
           }));
 
-        }).catch(error => console.error(error));
+        }).catch(error => {
+          if (error.line && error.reason) {
+            atom.notifications.addWarning(`CSS Syntax Error`, {
+              detail: `${error.reason} on line ${error.line}`,
+              dismissable: true
+            });
+          }
+
+          console.error(error);
+        });
       });
     }
   };
