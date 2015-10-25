@@ -31,6 +31,19 @@ export const activate = () => {
   require("atom-package-deps").install("linter-stylelint");
 };
 
+const getConfig = (configFile) => {
+  let fileContents = fs.readFileSync(configFile);
+  let config;
+
+  try {
+    config = JSON.parse(fileContents);
+  } catch (e) {
+    config = require(configFile);
+  }
+
+  return config;
+};
+
 export const provideLinter = () => {
 
   let preset = require(presetConfig());
@@ -54,9 +67,10 @@ export const provideLinter = () => {
       let configFile = helper.findFile(path, configFiles);
       if (configFile) {
         try {
-          let stylelintrc = require(configFile);
+          let stylelintrc = getConfig(configFile);
           config = assign(config, stylelintrc);
         } catch (e) {
+          console.log(e);
           atom.notifications.addWarning(`Invalid .stylelintrc`, {
             detail: `Failed to parse .stylelintrc JSON`,
             dismissable: true
