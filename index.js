@@ -54,7 +54,7 @@ export const provideLinter = () => {
       let configFile = helper.findFile(path, configFiles);
       if (configFile) {
         try {
-          let stylelintrc = JSON.parse(fs.readFileSync(configFile));
+          let stylelintrc = require(configFile);
           config = assign(config, stylelintrc);
         } catch (e) {
           atom.notifications.addWarning(`Invalid .stylelintrc`, {
