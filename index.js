@@ -57,11 +57,7 @@ export const provideLinter = () => {
 
       let path = editor.getPath();
       let text = editor.getText();
-      let config = {};
-
-      if (usePreset()) {
-        config = preset;
-      }
+      let config = usePreset() ? preset : {};
 
       // .stylelintrc is preferred if exists
       let configFile = helper.findFile(path, configFiles);
@@ -70,11 +66,12 @@ export const provideLinter = () => {
           let stylelintrc = getConfig(configFile);
           config = assign(config, stylelintrc);
         } catch (e) {
-          console.log(e);
           atom.notifications.addWarning(`Invalid .stylelintrc`, {
             detail: `Failed to parse .stylelintrc JSON`,
             dismissable: true
           });
+
+          console.error(error);
         }
       }
 
