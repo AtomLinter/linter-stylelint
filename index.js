@@ -6,6 +6,7 @@ import postcss   from 'postcss';
 import stylelint from 'stylelint';
 import helper    from 'atom-linter';
 import assign    from 'deep-assign';
+import nodePath  from 'path';
 
 export let config = {
   usePreset: {
@@ -78,7 +79,10 @@ export const provideLinter = () => {
       return new Promise((resolve, reject) => {
 
         postcss([
-          stylelint(config)
+          stylelint({
+            config,
+            configBasedir: nodePath.dirname(configFile)
+          })
         ]).process(text, {
           from: path
         }).then((data) => {
