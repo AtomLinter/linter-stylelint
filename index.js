@@ -2,10 +2,10 @@
 
 import fs        from 'fs';
 import { Range } from 'atom';
-import postcss   from 'postcss';
 import stylelint from 'stylelint';
 import helper    from 'atom-linter';
 import assign    from 'deep-assign';
+import nodePath  from 'path';
 
 export let config = {
   usePreset: {
@@ -77,22 +77,25 @@ export const provideLinter = () => {
 
       return new Promise((resolve, reject) => {
 
-        postcss([
-          stylelint(config)
-        ]).process(text, {
-          from: path
+        stylelint.lint({
+          code: text,
+          config,
+          configBasedir: nodePath.dirname(configFile)
         }).then((data) => {
 
-          resolve(data.messages.map(message => {
+          const result = data.results[0];
+          if (!result) resolve([]);
+
+          resolve(result.warnings.map(warning => {
 
             let range = new Range(
-              [message.line - 1, message.column - 1],
-              [message.line - 1, message.column + 1000]
+              [warning.line - 1, warning.column - 1],
+              [warning.line - 1, warning.column + 1000]
             );
 
             return {
-              type: message.type,
-              text: message.text,
+              type: (warning.severity === 2) ? 'Error' : 'Warning',
+              text: warning.text,
               filePath: path,
               range: range
             };
