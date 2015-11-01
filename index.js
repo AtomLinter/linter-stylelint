@@ -1,11 +1,12 @@
 'use babel';
 
 import fs        from 'fs';
+import path      from 'path';
 import { Range } from 'atom';
 import stylelint from 'stylelint';
 import helper    from 'atom-linter';
 import assign    from 'deep-assign';
-import nodePath  from 'path';
+import strip     from 'strip-json-comments';
 
 export let config = {
   usePreset: {
@@ -32,11 +33,12 @@ export const activate = () => {
 };
 
 const getConfig = (configFile) => {
-  let fileContents = fs.readFileSync(configFile);
+
+  let contents = fs.readFileSync(configFile);
   let config;
 
   try {
-    config = JSON.parse(fileContents);
+    config = JSON.parse(strip(contents));
   } catch (e) {
     config = require(configFile);
   }
@@ -55,12 +57,12 @@ export const provideLinter = () => {
     lintOnFly: true,
     lint: (editor) => {
 
-      let path = editor.getPath();
+      let filePath = editor.getPath();
       let text = editor.getText();
       let config = usePreset() ? preset : {};
 
       // .stylelintrc is preferred if exists
-      let configFile = helper.findFile(path, configFiles);
+      let configFile = helper.findFile(filePath, configFiles);
       if (configFile) {
         try {
           let stylelintrc = getConfig(configFile);
@@ -80,11 +82,14 @@ export const provideLinter = () => {
         stylelint.lint({
           code: text,
           config,
-          configBasedir: nodePath.dirname(configFile)
-        }).then((data) => {
+          configBasedir: path.dirname(configFile)
+        }).then(data => {
 
-          const result = data.results[0];
-          if (!result) resolve([]);
+          const result = data.results.shift();
+
+          if (!result) {
+            resolve([]);
+          }
 
           resolve(result.warnings.map(warning => {
 
@@ -96,7 +101,7 @@ export const provideLinter = () => {
             return {
               type: (warning.severity === 2) ? 'Error' : 'Warning',
               text: warning.text,
-              filePath: path,
+              filePath: filePath,
               range: range
             };
           }));
