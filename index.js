@@ -34,7 +34,7 @@ export const activate = () => {
 
 const getConfig = (configFile) => {
 
-  let contents = fs.readFileSync(configFile);
+  let contents = fs.readFileSync(configFile, 'utf8');
   let config;
 
   try {
