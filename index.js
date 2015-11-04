@@ -52,13 +52,14 @@ export const provideLinter = () => {
 
   return {
     name: 'stylelint',
-    grammarScopes: ['source.css'],
+    grammarScopes: ['source.css', 'source.css.scss'],
     scope: 'file',
     lintOnFly: true,
     lint: (editor) => {
 
       let filePath = editor.getPath();
       let text = editor.getText();
+      let scopes = editor.getLastCursor().getScopeDescriptor().getScopesArray();
       let config = usePreset() ? preset : {};
 
       if (!text) {
@@ -83,11 +84,17 @@ export const provideLinter = () => {
 
       return new Promise((resolve, reject) => {
 
-        stylelint.lint({
+        let options = {
           code: text,
           config,
           configBasedir: path.dirname(configFile)
-        }).then(data => {
+        };
+
+        if (scopes.indexOf('source.css.scss') !== -1) {
+          options.syntax = 'scss';
+        }
+
+        stylelint.lint(options).then(data => {
 
           const result = data.results.shift();
 
