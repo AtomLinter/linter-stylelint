@@ -61,6 +61,10 @@ export const provideLinter = () => {
       let text = editor.getText();
       let config = usePreset() ? preset : {};
 
+      if (!text) {
+        return [];
+      }
+
       // .stylelintrc is preferred if exists
       let configFile = helper.findFile(filePath, configFiles);
       if (configFile) {
