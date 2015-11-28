@@ -2,7 +2,7 @@
 
 A plugin for [Atom Linter](https://github.com/AtomLinter/atom-linter) providing an interface to [stylelint](https://github.com/stylelint/stylelint).
 
-![demo](https://raw.githubusercontent.com/1000ch/linter-stylelint/master/capture.png)
+![demo](https://raw.githubusercontent.com/1000ch/linter-stylelint/master/demo.png)
 
 ## Installation
 
