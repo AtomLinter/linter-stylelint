@@ -1,12 +1,12 @@
 'use babel';
 
-import fs        from 'fs';
-import path      from 'path';
+import fs from 'fs';
+import path from 'path';
 import { Range } from 'atom';
 import stylelint from 'stylelint';
-import helper    from 'atom-linter';
-import assign    from 'deep-assign';
-import strip     from 'strip-json-comments';
+import * as helper from 'atom-linter';
+import assign from 'deep-assign';
+import strip from 'strip-json-comments';
 
 export let config = {
   usePreset: {
