@@ -67,7 +67,7 @@ export const provideLinter = () => {
       }
 
       // .stylelintrc is preferred if exists
-      let configFile = helper.findFile(filePath, configFiles);
+      let configFile = helper.find(filePath, configFiles);
       if (configFile) {
         try {
           let stylelintrc = getConfig(configFile);
