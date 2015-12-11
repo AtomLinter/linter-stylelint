@@ -30,7 +30,7 @@
     "atom-package-deps": "^3.0.6",
     "deep-assign": "^2.0.0",
     "strip-json-comments": "^2.0.0",
-    "stylelint": "^2.3.7",
+    "stylelint": "^3.0.1",
     "stylelint-config-cssrecipes": "^1.1.0",
     "stylelint-config-suitcss": "^1.0.0",
     "stylelint-config-wordpress": "^0.2.0"
