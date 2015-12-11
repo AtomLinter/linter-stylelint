@@ -33,7 +33,7 @@
     "stylelint": "^2.3.7",
     "stylelint-config-cssrecipes": "^1.1.0",
     "stylelint-config-suitcss": "^1.0.0",
-    "stylelint-config-wordpress": "^0.2.0"
+    "stylelint-config-wordpress": "^1.0.1"
   },
   "package-deps": [
     "linter"
