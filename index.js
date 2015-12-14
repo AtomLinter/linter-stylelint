@@ -8,7 +8,7 @@ import * as helper from 'atom-linter';
 import assign from 'deep-assign';
 import strip from 'strip-json-comments';
 
-export let config = {
+export const config = {
   usePreset: {
     title: 'Use preset',
     description: 'Use preset lint config',
@@ -24,55 +24,50 @@ export let config = {
   }
 };
 
-const usePreset    = () => atom.config.get('linter-stylelint.usePreset');
+const usePreset = () => atom.config.get('linter-stylelint.usePreset');
 const presetConfig = () => atom.config.get('linter-stylelint.presetConfig');
-const configFiles  = ['.stylelintrc'];
+const configFiles = ['.stylelintrc'];
 
 export const activate = () => {
-  require("atom-package-deps").install("linter-stylelint");
+  require('atom-package-deps').install('linter-stylelint');
 };
 
 const getConfig = (configFile) => {
-
-  let contents = fs.readFileSync(configFile, 'utf8');
-  let config;
+  const contents = fs.readFileSync(configFile, 'utf8');
+  let currentConfig;
 
   try {
-    config = JSON.parse(strip(contents));
+    currentConfig = JSON.parse(strip(contents));
   } catch (e) {
-    config = require(configFile);
+    currentConfig = require(configFile);
   }
 
-  return config;
+  return currentConfig;
 };
 
 export const provideLinter = () => {
-
-  let preset = require(presetConfig());
-
   return {
     name: 'stylelint',
     grammarScopes: ['source.css', 'source.css.scss'],
     scope: 'file',
     lintOnFly: true,
     lint: (editor) => {
-
-      let filePath = editor.getPath();
-      let text = editor.getText();
-      let scopes = editor.getLastCursor().getScopeDescriptor().getScopesArray();
-      let config = usePreset() ? preset : {};
+      const filePath = editor.getPath();
+      const text = editor.getText();
+      const scopes = editor.getLastCursor().getScopeDescriptor().getScopesArray();
+      let rules = usePreset() ? require(presetConfig()) : {};
 
       if (!text) {
         return [];
       }
 
       // .stylelintrc is preferred if exists
-      let configFile = helper.find(filePath, configFiles);
+      const configFile = helper.find(filePath, configFiles);
       if (configFile) {
         try {
-          let stylelintrc = getConfig(configFile);
-          config = assign(config, stylelintrc);
-        } catch (e) {
+          const stylelintrc = getConfig(configFile);
+          rules = assign(rules, stylelintrc);
+        } catch (error) {
           atom.notifications.addWarning(`Invalid .stylelintrc`, {
             detail: `Failed to parse .stylelintrc JSON`,
             dismissable: true
@@ -82,11 +77,10 @@ export const provideLinter = () => {
         }
       }
 
-      return new Promise((resolve, reject) => {
-
-        let options = {
+      return new Promise((resolve) => {
+        const options = {
           code: text,
-          config,
+          rules,
           configBasedir: path.dirname(configFile)
         };
 
@@ -95,7 +89,6 @@ export const provideLinter = () => {
         }
 
         stylelint.lint(options).then(data => {
-
           const result = data.results.shift();
 
           if (!result) {
@@ -103,8 +96,7 @@ export const provideLinter = () => {
           }
 
           resolve(result.warnings.map(warning => {
-
-            let range = new Range(
+            const range = new Range(
               [warning.line - 1, warning.column - 1],
               [warning.line - 1, warning.column + 1000]
             );
@@ -116,7 +108,6 @@ export const provideLinter = () => {
               range: range
             };
           }));
-
         }).catch(error => {
           if (error.line && error.reason) {
             atom.notifications.addWarning(`CSS Syntax Error`, {
