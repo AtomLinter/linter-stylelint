@@ -4,9 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { Range } from 'atom';
 import stylelint from 'stylelint';
-import * as helper from 'atom-linter';
 import assign from 'deep-assign';
-import strip from 'strip-json-comments';
 import cosmiconfig from 'cosmiconfig';
 
 export const config = {
@@ -51,19 +49,16 @@ export const provideLinter = () => {
       // setup base config which is based on selected preset if usePreset() is true
       let rules = usePreset() ? require(presetConfig()) : {};
 
-      // .stylelintrc is preferred if exists
-      const configPath = helper.find(filePath, configFiles);
-
       return new Promise((resolve) => {
 
         cosmiconfig('stylelint', {
-          cwd : path.dirname(configPath)
+          cwd : path.dirname(filePath)
         }).then(result => {
 
           const options = {
             code: text,
             config: assign(rules, result.config),
-            configBasedir: path.dirname(configPath)
+            configBasedir: path.dirname(result.filepath)
           };
 
           if (scopes.indexOf('source.css.scss') !== -1) {
@@ -100,8 +95,8 @@ export const provideLinter = () => {
           });
 
         }).catch(error => {
-          atom.notifications.addWarning(`Invalid ${path.basename(configPath)}`, {
-            detail: `Failed to parse ${path.basename(configPath)}`,
+          atom.notifications.addWarning(`Invalid config file`, {
+            detail: `Failed to parse config file`,
             dismissable: true
           });
         });
