@@ -1,0 +1,17 @@
+dependencies:
+  pre:
+    # Force updating wget due to the current containers being too out of date
+    - sudo apt-get update
+    - sudo apt-get install wget
+  override:
+    - wget -O atom-amd64.deb https://atom.io/download/deb
+    # - sudo apt-get update # Cut out until wget is fixed on the containers
+    - sudo dpkg --install atom-amd64.deb || true
+    - sudo apt-get -f install
+    - apm install
+test:
+  override:
+    - atom -v
+    - apm -v
+    - ./node_modules/.bin/eslint ./
+    - apm test
