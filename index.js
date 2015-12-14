@@ -57,7 +57,7 @@ export const provideLinter = () => {
       return new Promise((resolve) => {
 
         cosmiconfig('stylelint', {
-          configPath : configPath
+          cwd : path.dirname(configPath)
         }).then(result => {
 
           const options = {
