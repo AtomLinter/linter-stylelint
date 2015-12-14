@@ -1,6 +1,5 @@
 'use babel';
 
-import fs from 'fs';
 import path from 'path';
 import { Range } from 'atom';
 import stylelint from 'stylelint';
@@ -25,7 +24,6 @@ export const config = {
 
 const usePreset = () => atom.config.get('linter-stylelint.usePreset');
 const presetConfig = () => atom.config.get('linter-stylelint.presetConfig');
-const configFiles = ['.stylelintrc', 'stylelint.config.js', 'package.json'];
 
 export const activate = () => {
   require('atom-package-deps').install('linter-stylelint');
@@ -80,7 +78,7 @@ export const provideLinter = () => {
       }
 
       // setup base config which is based on selected preset if usePreset() is true
-      let rules = usePreset() ? require(presetConfig()) : {};
+      const rules = usePreset() ? require(presetConfig()) : {};
 
       const options = {
         code: text,
@@ -92,17 +90,14 @@ export const provideLinter = () => {
       }
 
       return new Promise((resolve) => {
-
         cosmiconfig('stylelint', {
-          cwd : path.dirname(filePath)
+          cwd: path.dirname(filePath)
         }).then(result => {
-
           options.config = assign(rules, result.config);
           options.configBasedir = path.dirname(result.filepath);
 
           resolve(runStylelint(options, filePath));
-
-        }).catch(error => {
+        }).catch(() => {
           if (usePreset()) {
             resolve(runStylelint(options, filePath));
           } else {
