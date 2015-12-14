@@ -42,7 +42,8 @@
   },
   "eslintConfig": {
     "rules": {
-      "comma-dangle": [2, "never"]
+      "comma-dangle": [2, "never"],
+      "no-console": 0
     },
     "extends": "airbnb/base",
     "parser": "babel-eslint",
