@@ -47,9 +47,6 @@ const getConfig = (configFile) => {
 };
 
 export const provideLinter = () => {
-
-  let preset = require(presetConfig());
-
   return {
     name: 'stylelint',
     grammarScopes: ['source.css', 'source.css.scss'],
@@ -60,7 +57,7 @@ export const provideLinter = () => {
       let filePath = editor.getPath();
       let text = editor.getText();
       let scopes = editor.getLastCursor().getScopeDescriptor().getScopesArray();
-      let config = usePreset() ? preset : {};
+      let config = usePreset() ? require(presetConfig()) : {};
 
       if (!text) {
         return [];
