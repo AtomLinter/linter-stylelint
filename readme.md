@@ -14,7 +14,8 @@ $ apm install linter-stylelint
 
 You can pass configuration to stylelint in the following ways:
 
-- Place a `.stylelintrc` file in your project's root.
+- Place a config file (`.stylelintrc` or `stylelint.config.js`) in your project's root or upper directories.
+- Add a `stylelint` section in your `package.json`.
 - In the settings, check `Use preset` and select one of the following presets:
     - [stylelint-config-cssrecipes](https://github.com/stylelint/stylelint-config-cssrecipes)
     - [stylelint-config-suitcss](https://github.com/stylelint/stylelint-config-suitcss)
