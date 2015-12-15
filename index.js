@@ -46,8 +46,8 @@ const runStylelint = (options, filePath) => {
       return {
         type: (warning.severity === 2) ? 'Error' : 'Warning',
         text: warning.text,
-        filePath: filePath,
-        range: range
+        filePath,
+        range
       };
     });
   }).catch(error => {
