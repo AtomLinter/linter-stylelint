@@ -1,6 +1,5 @@
 'use babel';
 
-import fs from 'fs';
 import path from 'path';
 import { Range } from 'atom';
 import stylelint from 'stylelint';
@@ -25,10 +24,42 @@ export const config = {
 
 const usePreset = () => atom.config.get('linter-stylelint.usePreset');
 const presetConfig = () => atom.config.get('linter-stylelint.presetConfig');
-const configFiles = ['.stylelintrc', 'stylelint.config.js', 'package.json'];
 
 export const activate = () => {
   require('atom-package-deps').install('linter-stylelint');
+};
+
+const runStylelint = (options, filePath) => {
+  return new Promise((resolve) => {
+    stylelint.lint(options).then(data => {
+      const result = data.results.shift();
+
+      if (!result) {
+        resolve([]);
+      }
+
+      resolve(result.warnings.map(warning => {
+        const range = new Range(
+          [warning.line - 1, warning.column - 1],
+          [warning.line - 1, warning.column + 1000]
+        );
+
+        return {
+          type: (warning.severity === 2) ? 'Error' : 'Warning',
+          text: warning.text,
+          filePath: filePath,
+          range: range
+        };
+      }));
+    }).catch(error => {
+      if (error.line && error.reason) {
+        atom.notifications.addWarning(`CSS Syntax Error`, {
+          detail: `${error.reason} on line ${error.line}`,
+          dismissable: true
+        });
+      }
+    });
+  });
 };
 
 export const provideLinter = () => {
@@ -47,58 +78,34 @@ export const provideLinter = () => {
       }
 
       // setup base config which is based on selected preset if usePreset() is true
-      let rules = usePreset() ? require(presetConfig()) : {};
+      const rules = usePreset() ? require(presetConfig()) : {};
+
+      const options = {
+        code: text,
+        config: rules,
+        configBasedir: path.dirname(filePath)
+      };
+      if (scopes.indexOf('source.css.scss') !== -1) {
+        options.syntax = 'scss';
+      }
 
       return new Promise((resolve) => {
-
         cosmiconfig('stylelint', {
-          cwd : path.dirname(filePath)
+          cwd: path.dirname(filePath)
         }).then(result => {
+          options.config = assign(rules, result.config);
+          options.configBasedir = path.dirname(result.filepath);
 
-          const options = {
-            code: text,
-            config: assign(rules, result.config),
-            configBasedir: path.dirname(result.filepath)
-          };
-
-          if (scopes.indexOf('source.css.scss') !== -1) {
-            options.syntax = 'scss';
+          resolve(runStylelint(options, filePath));
+        }).catch(() => {
+          if (usePreset()) {
+            resolve(runStylelint(options, filePath));
+          } else {
+            atom.notifications.addWarning(`Invalid config file`, {
+              detail: `Failed to parse config file`,
+              dismissable: true
+            });
           }
-
-          stylelint.lint(options).then(data => {
-            const result = data.results.shift();
-
-            if (!result) {
-              resolve([]);
-            }
-
-            resolve(result.warnings.map(warning => {
-              const range = new Range(
-                [warning.line - 1, warning.column - 1],
-                [warning.line - 1, warning.column + 1000]
-              );
-
-              return {
-                type: (warning.severity === 2) ? 'Error' : 'Warning',
-                text: warning.text,
-                filePath: filePath,
-                range: range
-              };
-            }));
-          }).catch(error => {
-            if (error.line && error.reason) {
-              atom.notifications.addWarning(`CSS Syntax Error`, {
-                detail: `${error.reason} on line ${error.line}`,
-                dismissable: true
-              });
-            }
-          });
-
-        }).catch(error => {
-          atom.notifications.addWarning(`Invalid config file`, {
-            detail: `Failed to parse config file`,
-            dismissable: true
-          });
         });
       });
     }
