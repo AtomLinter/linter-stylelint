@@ -11,7 +11,7 @@ export const config = {
     title: 'Use preset',
     description: 'Use preset lint config',
     type: 'boolean',
-    default: true
+    default: false
   },
   presetConfig: {
     title: 'Preset config',
