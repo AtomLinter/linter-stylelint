@@ -13,6 +13,7 @@ describe('The stylelint provider for Linter', () => {
         atom.workspace.open(path.join(__dirname, 'fixtures', 'good.css'))
       );
     });
+    atom.config.set('linter-stylelint.usePreset', true);
   });
 
   describe('checks bad.css and', () => {
