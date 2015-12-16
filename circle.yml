@@ -13,5 +13,5 @@ test:
   override:
     - atom -v
     - apm -v
-    - ./node_modules/.bin/eslint ./
+    - npm test
     - apm test
