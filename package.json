@@ -10,6 +10,9 @@
   "engines": {
     "atom": ">=1.0.0"
   },
+  "scripts": {
+    "test": "eslint ."
+  },
   "keywords": [
     "css",
     "lint",
