@@ -52,10 +52,17 @@ const runStylelint = (options, filePath) => {
     });
   }).catch(error => {
     if (error.line && error.reason) {
-      atom.notifications.addWarning(`CSS Syntax Error`, {
-        detail: `${error.reason} on line ${error.line}`,
-        dismissable: true
-      });
+      const range = new Range(
+        [error.line - 1, 0],
+        [error.line - 1, 1000]
+      );
+
+      return [{
+        type: 'Error',
+        text: error.reason,
+        filePath,
+        range
+      }];
     }
   });
 };
