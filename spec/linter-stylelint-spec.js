@@ -62,4 +62,24 @@ describe('The stylelint provider for Linter', () => {
       });
     });
   });
+
+  it('show CSS syntax error with an invalid file', () => {
+    waitsForPromise(() => {
+      return atom.workspace.open(path.join(__dirname, 'fixtures', 'invalid.css')).then(editor => {
+        return lint(editor).then(messages => {
+          expect(messages[0].type).toBeDefined();
+          expect(messages[0].type).toEqual('Error');
+          expect(messages[0].text).toBeDefined();
+          expect(messages[0].text).toEqual('Unknown word');
+          expect(messages[0].filePath).toBeDefined();
+          expect(messages[0].filePath).toMatch(/.+invalid\.css$/);
+          expect(messages[0].range).toBeDefined();
+          expect(messages[0].range).toEqual({
+            start: { row: 0, column: 0 },
+            end: { row: 0, column: 1000 }
+          });
+        });
+      });
+    });
+  });
 });
