@@ -44,7 +44,7 @@ const runStylelint = (options, filePath) => {
       );
 
       return {
-        type: (warning.severity === 2) ? 'Error' : 'Warning',
+        type: (warning.severity === 'error') ? 'Error' : 'Warning',
         text: warning.text,
         filePath,
         range
