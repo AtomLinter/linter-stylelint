@@ -1,7 +1,7 @@
 'use babel';
 
 import path from 'path';
-import { Range } from 'atom';
+import { rangeFromLineNumber } from 'atom-linter';
 import stylelint from 'stylelint';
 import assign from 'deep-assign';
 import cosmiconfig from 'cosmiconfig';
@@ -25,11 +25,19 @@ export const config = {
 const usePreset = () => atom.config.get('linter-stylelint.usePreset');
 const presetConfig = () => atom.config.get('linter-stylelint.presetConfig');
 
+function createRange(editor, data) {
+  // data.line & data.column might be undefined for non-fatal invalid rules,
+  // e.g.: "block-no-empty": "foo"
+  // so we convert undefineds to 1, which will pass 0 to the underlying rangeFromLineNumber
+  // which selects the first line of the file
+  return rangeFromLineNumber(editor, (data.line || 1) - 1, (data.column || 1) - 1);
+}
+
 export const activate = () => {
   require('atom-package-deps').install('linter-stylelint');
 };
 
-const runStylelint = (options, filePath) => {
+const runStylelint = (editor, options, filePath) => {
   return stylelint.lint(options).then(data => {
     const result = data.results.shift();
 
@@ -38,32 +46,30 @@ const runStylelint = (options, filePath) => {
     }
 
     return result.warnings.map(warning => {
-      const range = new Range(
-        [warning.line - 1, warning.column - 1],
-        [warning.line - 1, warning.column + 1000]
-      );
-
       return {
-        type: (warning.severity === 'error') ? 'Error' : 'Warning',
+        type: (!warning.severity || warning.severity === 'error') ? 'Error' : 'Warning',
         text: warning.text,
         filePath,
-        range
+        range: createRange(editor, warning)
       };
     });
-  }).catch(error => {
-    if (error.line && error.reason) {
-      const range = new Range(
-        [error.line - 1, 0],
-        [error.line - 1, 1000]
-      );
-
+  }, error => {
+    // was it a code parsing error?
+    if (error.line) {
       return [{
         type: 'Error',
-        text: error.reason,
+        text: error.reason || error.message,
         filePath,
-        range
+        range: createRange(editor, error)
       }];
     }
+
+    // if we got here, stylelint found something really wrong with the configuration,
+    // such as extending an invalid configuration
+    atom.notifications.addError('Unable to run stylelint', {
+      detail: error.reason || error.message,
+      dismissable: true
+    });
   });
 };
 
@@ -95,29 +101,24 @@ export const provideLinter = () => {
         options.syntax = 'scss';
       }
 
-      return new Promise((resolve) => {
-        cosmiconfig('stylelint', {
-          cwd: path.dirname(filePath)
-        }).then(result => {
-          if (result) {
-            options.config = assign(rules, result.config);
-            options.configBasedir = path.dirname(result.filepath);
-          }
+      return cosmiconfig('stylelint', {
+        cwd: path.dirname(filePath)
+      }).then(result => {
+        if (result) {
+          options.config = assign(rules, result.config);
+          options.configBasedir = path.dirname(result.filepath);
+        }
 
-          resolve(runStylelint(options, filePath));
-        }).catch(error => {
-          atom.notifications.addWarning(`Invalid config file`, {
-            detail: error.message || `Failed to parse config file`,
-            dismissable: true
-          });
-
-          if (usePreset()) {
-            resolve(runStylelint(options, filePath));
-          } else {
-            resolve([]);
-          }
+        return runStylelint(editor, options, filePath);
+      }, error => {
+        // if we got here, cosmiconfig failed to parse the configuration
+        // there's no point of re-linting if usePreset is true, because the user does not have
+        // the complete set of desired rules parsed
+        atom.notifications.addError('Unable to parse stylelint configuration', {
+          detail: error.message,
+          dismissable: true
         });
-      });
+      }).then(result => result || []);
     }
   };
 };
