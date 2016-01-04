@@ -19,11 +19,18 @@ export const config = {
     type: 'string',
     default: 'stylelint-config-suitcss',
     enum: ['stylelint-config-suitcss', 'stylelint-config-cssrecipes', 'stylelint-config-wordpress']
+  },
+  disableWhenNoConfig: {
+    title: 'Disable when no config file is found',
+    description: 'Either .stylelintrc or stylelint.config.js',
+    type: 'boolean',
+    default: false
   }
 };
 
 const usePreset = () => atom.config.get('linter-stylelint.usePreset');
 const presetConfig = () => atom.config.get('linter-stylelint.presetConfig');
+const disableWhenNoConfig = () => atom.config.get('linter-stylelint.disableWhenNoConfig');
 
 function createRange(editor, data) {
   // data.line & data.column might be undefined for non-fatal invalid rules,
@@ -107,6 +114,10 @@ export const provideLinter = () => {
         if (result) {
           options.config = assign(rules, result.config);
           options.configBasedir = path.dirname(result.filepath);
+        }
+
+        if (!result && disableWhenNoConfig()) {
+          return [];
         }
 
         return runStylelint(editor, options, filePath);

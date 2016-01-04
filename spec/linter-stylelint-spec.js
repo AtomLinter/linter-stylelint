@@ -8,6 +8,7 @@ describe('The stylelint provider for Linter', () => {
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
     atom.config.set('linter-stylelint.usePreset', true);
+    atom.config.set('linter-stylelint.disableWhenNoConfig', false);
 
     waitsForPromise(() => {
       return atom.packages.activatePackage('linter-stylelint').then(() => {
@@ -124,6 +125,20 @@ describe('The stylelint provider for Linter', () => {
         expect(atom.notifications.addError.mostRecentCall.args[0]).toEqual('Unable to parse stylelint configuration');
         expect(atom.notifications.addError.mostRecentCall.args[1].detail).toContain('>>>');
         expect(atom.notifications.addError.mostRecentCall.args[1].dismissable).toEqual(true);
+      });
+    });
+  });
+
+  it('disable when no config file is found', () => {
+    atom.config.set('linter-stylelint.disableWhenNoConfig', true);
+    spyOn(atom.notifications, 'addError').andCallFake(() => {});
+
+    waitsForPromise(() => {
+      return atom.workspace.open(path.join(__dirname, 'fixtures', 'bad', 'bad.css')).then(editor => {
+        return lint(editor);
+      }).then(messages => {
+        expect(messages.length).toEqual(0);
+        expect(atom.notifications.addError.calls.length).toEqual(0);
       });
     });
   });
