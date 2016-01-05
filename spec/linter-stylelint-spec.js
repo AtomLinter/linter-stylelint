@@ -19,7 +19,8 @@ describe('The stylelint provider for Linter', () => {
 
   it('detects invalid coding style in bad.css and report as error', () => {
     waitsForPromise(() => {
-      return atom.workspace.open(path.join(__dirname, 'fixtures', 'bad', 'bad.css')).then(editor => {
+      const bad = path.join(__dirname, 'fixtures', 'bad', 'bad.css');
+      return atom.workspace.open(bad).then(editor => {
         return lint(editor);
       }).then(messages => {
         expect(messages.length).toBeGreaterThan(0);
@@ -37,7 +38,8 @@ describe('The stylelint provider for Linter', () => {
     atom.config.set('linter-stylelint.usePreset', false);
 
     waitsForPromise(() => {
-      return atom.workspace.open(path.join(__dirname, 'fixtures', 'warn', 'warn.css')).then(editor => {
+      const warn = path.join(__dirname, 'fixtures', 'warn', 'warn.css');
+      return atom.workspace.open(warn).then(editor => {
         return lint(editor);
       }).then(messages => {
         expect(messages.length).toBeGreaterThan(0);
@@ -53,7 +55,8 @@ describe('The stylelint provider for Linter', () => {
 
   it('finds nothing wrong with a valid file (good.css)', () => {
     waitsForPromise(() => {
-      return atom.workspace.open(path.join(__dirname, 'fixtures', 'good', 'good.css')).then(editor => {
+      const good = path.join(__dirname, 'fixtures', 'good', 'good.css');
+      return atom.workspace.open(good).then(editor => {
         return lint(editor);
       }).then(messages => {
         expect(messages.length).toEqual(0);
@@ -63,7 +66,8 @@ describe('The stylelint provider for Linter', () => {
 
   it('show CSS syntax error with an invalid file (invalid.css)', () => {
     waitsForPromise(() => {
-      return atom.workspace.open(path.join(__dirname, 'fixtures', 'invalid', 'invalid.css')).then(editor => {
+      const invalid = path.join(__dirname, 'fixtures', 'invalid', 'invalid.css');
+      return atom.workspace.open(invalid).then(editor => {
         return lint(editor);
       }).then(messages => {
         expect(messages.length).toEqual(1);
@@ -80,7 +84,8 @@ describe('The stylelint provider for Linter', () => {
     atom.config.set('linter-stylelint.usePreset', false);
 
     waitsForPromise(() => {
-      return atom.workspace.open(path.join(__dirname, 'fixtures', 'invalid-rule', 'styles.css')).then(editor => {
+      const invalid = path.join(__dirname, 'fixtures', 'invalid-rule', 'styles.css');
+      return atom.workspace.open(invalid).then(editor => {
         return lint(editor);
       }).then(messages => {
         expect(messages.length).toEqual(1);
@@ -98,15 +103,18 @@ describe('The stylelint provider for Linter', () => {
     spyOn(atom.notifications, 'addError').andCallFake(() => {});
 
     waitsForPromise(() => {
-      return atom.workspace.open(path.join(__dirname, 'fixtures', 'invalid-extends', 'styles.css')).then(editor => {
+      const invalid = path.join(__dirname, 'fixtures', 'invalid-extends', 'styles.css');
+      return atom.workspace.open(invalid).then(editor => {
         return lint(editor);
       }).then(messages => {
         expect(messages.length).toEqual(0);
 
-        expect(atom.notifications.addError.calls.length).toEqual(1);
-        expect(atom.notifications.addError.mostRecentCall.args[0]).toEqual('Unable to run stylelint');
-        expect(atom.notifications.addError.mostRecentCall.args[1].detail).toContain('Could not find "some-module-that-will-never-exist". Do you need a `configBasedir`?');
-        expect(atom.notifications.addError.mostRecentCall.args[1].dismissable).toEqual(true);
+        const addError = atom.notifications.addError;
+        const args = addError.mostRecentCall.args;
+        expect(addError.calls.length).toEqual(1);
+        expect(args[0]).toEqual('Unable to run stylelint');
+        expect(args[1].detail).toContain('Could not find "some-module-that-will-never-exist".');
+        expect(args[1].dismissable).toEqual(true);
       });
     });
   });
@@ -116,15 +124,18 @@ describe('The stylelint provider for Linter', () => {
     spyOn(atom.notifications, 'addError').andCallFake(() => {});
 
     waitsForPromise(() => {
-      return atom.workspace.open(path.join(__dirname, 'fixtures', 'invalid-config', 'styles.css')).then(editor => {
+      const invalid = path.join(__dirname, 'fixtures', 'invalid-config', 'styles.css');
+      return atom.workspace.open(invalid).then(editor => {
         return lint(editor);
       }).then(messages => {
         expect(messages.length).toEqual(0);
 
-        expect(atom.notifications.addError.calls.length).toEqual(1);
-        expect(atom.notifications.addError.mostRecentCall.args[0]).toEqual('Unable to parse stylelint configuration');
-        expect(atom.notifications.addError.mostRecentCall.args[1].detail).toContain('>>>');
-        expect(atom.notifications.addError.mostRecentCall.args[1].dismissable).toEqual(true);
+        const addError = atom.notifications.addError;
+        const args = addError.mostRecentCall.args;
+        expect(addError.calls.length).toEqual(1);
+        expect(args[0]).toEqual('Unable to parse stylelint configuration');
+        expect(args[1].detail).toContain('>>>');
+        expect(args[1].dismissable).toEqual(true);
       });
     });
   });
@@ -134,7 +145,8 @@ describe('The stylelint provider for Linter', () => {
     spyOn(atom.notifications, 'addError').andCallFake(() => {});
 
     waitsForPromise(() => {
-      return atom.workspace.open(path.join(__dirname, 'fixtures', 'bad', 'bad.css')).then(editor => {
+      const bad = path.join(__dirname, 'fixtures', 'bad', 'bad.css');
+      return atom.workspace.open(bad).then(editor => {
         return lint(editor);
       }).then(messages => {
         expect(messages.length).toEqual(0);
