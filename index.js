@@ -11,14 +11,14 @@ export const config = {
     title: 'Use preset',
     description: 'Use preset lint config',
     type: 'boolean',
-    'default': false
+    default: false
   },
   presetConfig: {
     title: 'Preset config',
     description: 'Select lint style if you select from presets',
     type: 'string',
-    'default': 'stylelint-config-suitcss',
-    'enum': [
+    default: 'stylelint-config-suitcss',
+    enum: [
       'stylelint-config-suitcss',
       'stylelint-config-cssrecipes',
       'stylelint-config-wordpress'
@@ -28,7 +28,7 @@ export const config = {
     title: 'Disable when no config file is found',
     description: 'Either .stylelintrc or stylelint.config.js',
     type: 'boolean',
-    'default': false
+    default: false
   }
 };
 
