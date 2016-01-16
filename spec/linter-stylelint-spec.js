@@ -3,7 +3,7 @@
 import * as path from 'path';
 
 describe('The stylelint provider for Linter', () => {
-  const lint = require(path.join('..', 'index.js')).provideLinter().lint;
+  const lint = require(path.join('..', 'lib', 'index.js')).provideLinter().lint;
 
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
