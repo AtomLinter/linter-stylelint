@@ -36,7 +36,7 @@
     "deep-assign": "^2.0.0",
     "stylelint": "^4.0.0",
     "stylelint-config-cssrecipes": "^2.0.0",
-    "stylelint-config-suitcss": "^2.0.0",
+    "stylelint-config-suitcss": "^3.0.0",
     "stylelint-config-wordpress": "^1.0.1"
   },
   "devDependencies": {
