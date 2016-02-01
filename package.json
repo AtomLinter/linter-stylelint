@@ -17,6 +17,7 @@
   "keywords": [
     "css",
     "lint",
+    "postcss",
     "stylelint"
   ],
   "author": {
