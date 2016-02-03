@@ -10,19 +10,17 @@ describe('The stylelint provider for Linter', () => {
     atom.config.set('linter-stylelint.usePreset', true);
     atom.config.set('linter-stylelint.disableWhenNoConfig', false);
 
-    waitsForPromise(() => {
-      return atom.packages.activatePackage('linter-stylelint').then(() => {
-        return atom.packages.activatePackage('language-css');
-      });
-    });
+    waitsForPromise(() =>
+      atom.packages.activatePackage('linter-stylelint').then(() =>
+        atom.packages.activatePackage('language-css')
+      )
+    );
   });
 
   it('detects invalid coding style in bad.css and report as error', () => {
     waitsForPromise(() => {
       const bad = path.join(__dirname, 'fixtures', 'bad', 'bad.css');
-      return atom.workspace.open(bad).then(editor => {
-        return lint(editor);
-      }).then(messages => {
+      return atom.workspace.open(bad).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toBeGreaterThan(0);
 
         // test only the first error
@@ -39,9 +37,7 @@ describe('The stylelint provider for Linter', () => {
 
     waitsForPromise(() => {
       const warn = path.join(__dirname, 'fixtures', 'warn', 'warn.css');
-      return atom.workspace.open(warn).then(editor => {
-        return lint(editor);
-      }).then(messages => {
+      return atom.workspace.open(warn).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toBeGreaterThan(0);
 
         // test only the first error
@@ -56,9 +52,7 @@ describe('The stylelint provider for Linter', () => {
   it('finds nothing wrong with a valid file (good.css)', () => {
     waitsForPromise(() => {
       const good = path.join(__dirname, 'fixtures', 'good', 'good.css');
-      return atom.workspace.open(good).then(editor => {
-        return lint(editor);
-      }).then(messages => {
+      return atom.workspace.open(good).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toEqual(0);
       });
     });
@@ -67,9 +61,7 @@ describe('The stylelint provider for Linter', () => {
   it('show CSS syntax error with an invalid file (invalid.css)', () => {
     waitsForPromise(() => {
       const invalid = path.join(__dirname, 'fixtures', 'invalid', 'invalid.css');
-      return atom.workspace.open(invalid).then(editor => {
-        return lint(editor);
-      }).then(messages => {
+      return atom.workspace.open(invalid).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toEqual(1);
 
         expect(messages[0].type).toEqual('Error');
@@ -85,9 +77,7 @@ describe('The stylelint provider for Linter', () => {
 
     waitsForPromise(() => {
       const invalid = path.join(__dirname, 'fixtures', 'invalid-rule', 'styles.css');
-      return atom.workspace.open(invalid).then(editor => {
-        return lint(editor);
-      }).then(messages => {
+      return atom.workspace.open(invalid).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toEqual(1);
 
         expect(messages[0].type).toEqual('Error');
@@ -100,13 +90,11 @@ describe('The stylelint provider for Linter', () => {
 
   it('show error notification on fatal stylelint runtime error', () => {
     atom.config.set('linter-stylelint.usePreset', false);
-    spyOn(atom.notifications, 'addError').andCallFake(() => {});
+    spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
 
     waitsForPromise(() => {
       const invalid = path.join(__dirname, 'fixtures', 'invalid-extends', 'styles.css');
-      return atom.workspace.open(invalid).then(editor => {
-        return lint(editor);
-      }).then(messages => {
+      return atom.workspace.open(invalid).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toEqual(0);
 
         const addError = atom.notifications.addError;
@@ -121,13 +109,11 @@ describe('The stylelint provider for Linter', () => {
 
   it('show error notification on an broken syntax configuration', () => {
     atom.config.set('linter-stylelint.usePreset', false);
-    spyOn(atom.notifications, 'addError').andCallFake(() => {});
+    spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
 
     waitsForPromise(() => {
       const invalid = path.join(__dirname, 'fixtures', 'invalid-config', 'styles.css');
-      return atom.workspace.open(invalid).then(editor => {
-        return lint(editor);
-      }).then(messages => {
+      return atom.workspace.open(invalid).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toEqual(0);
 
         const addError = atom.notifications.addError;
@@ -142,13 +128,11 @@ describe('The stylelint provider for Linter', () => {
 
   it('disable when no config file is found', () => {
     atom.config.set('linter-stylelint.disableWhenNoConfig', true);
-    spyOn(atom.notifications, 'addError').andCallFake(() => {});
+    spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
 
     waitsForPromise(() => {
       const bad = path.join(__dirname, 'fixtures', 'bad', 'bad.css');
-      return atom.workspace.open(bad).then(editor => {
-        return lint(editor);
-      }).then(messages => {
+      return atom.workspace.open(bad).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toEqual(0);
         expect(atom.notifications.addError.calls.length).toEqual(0);
       });
