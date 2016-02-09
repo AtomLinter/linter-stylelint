@@ -10,6 +10,8 @@ A plugin for [Atom Linter](https://github.com/AtomLinter/atom-linter) providing 
 $ apm install linter-stylelint
 ```
 
+linter-stylelint checks both `.css` and `.scss` files. (For `.scss` files, it automatically tells stylelint to use the right parser.)
+
 ## Config
 
 You can pass configuration to stylelint in the following ways:
