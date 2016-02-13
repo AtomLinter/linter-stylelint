@@ -38,7 +38,7 @@
     "stylelint": "^4.2.0",
     "stylelint-config-cssrecipes": "^2.0.1",
     "stylelint-config-standard": "^3.0.0",
-    "stylelint-config-suitcss": "^3.0.0",
+    "stylelint-config-suitcss": "^4.0.0",
     "stylelint-config-wordpress": "^1.1.1"
   },
   "devDependencies": {
