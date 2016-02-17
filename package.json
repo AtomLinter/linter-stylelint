@@ -39,7 +39,7 @@
     "stylelint-config-cssrecipes": "^2.0.1",
     "stylelint-config-standard": "^3.0.0",
     "stylelint-config-suitcss": "^4.0.0",
-    "stylelint-config-wordpress": "^1.1.1"
+    "stylelint-config-wordpress": "^2.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^5.0.0",
