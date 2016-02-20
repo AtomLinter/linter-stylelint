@@ -138,4 +138,16 @@ describe('The stylelint provider for Linter', () => {
       });
     });
   });
+
+  it('ignore files when files are specified in ignoreFiles', () => {
+    spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
+
+    waitsForPromise(() => {
+      const ignore = path.join(__dirname, 'fixtures', 'ignore-files', 'styles.css');
+      return atom.workspace.open(ignore).then(editor => lint(editor)).then(messages => {
+        expect(messages.length).toEqual(0);
+        expect(atom.notifications.addError.calls.length).toEqual(0);
+      });
+    });
+  });
 });
