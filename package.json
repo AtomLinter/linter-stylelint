@@ -35,7 +35,7 @@
     "atom-package-deps": "^4.0.1",
     "cosmiconfig": "^1.1.0",
     "deep-assign": "^2.0.0",
-    "stylelint": "^4.3.3",
+    "stylelint": "4.4.0",
     "stylelint-config-cssrecipes": "^2.0.1",
     "stylelint-config-standard": "^3.0.0",
     "stylelint-config-suitcss": "^4.0.0",
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^5.0.0",
-    "eslint": "^2.2.0",
+    "eslint": "2.2.0",
     "eslint-config-airbnb": "^6.0.1"
   },
   "eslintConfig": {
