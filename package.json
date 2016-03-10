@@ -35,7 +35,7 @@
     "atom-package-deps": "^4.0.1",
     "cosmiconfig": "^1.1.0",
     "deep-assign": "^2.0.0",
-    "stylelint": "4.4.0",
+    "stylelint": "^4.5.1",
     "stylelint-config-cssrecipes": "^2.0.1",
     "stylelint-config-standard": "^3.0.0",
     "stylelint-config-suitcss": "^4.0.0",
