@@ -1,5 +1,5 @@
 {
   "rules": {
-    "block-no-empty": [true, { "warn": true }]
+    "block-no-empty": [true, { "severity": "warning" }]
   }
 }
