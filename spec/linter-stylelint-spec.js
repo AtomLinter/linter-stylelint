@@ -143,16 +143,16 @@ describe('The stylelint provider for Linter', () => {
   });
 
   it('shows an error on non-fatal stylelint runtime error', () => {
+    const text = 'Unexpected option value "foo" for rule "block-no-empty"';
     atom.config.set('linter-stylelint.usePreset', false);
     waitsForPromise(() =>
       atom.workspace.open(invalidRulePath).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toBe(1);
 
         expect(messages[0].type).toBe('Error');
-        const text = 'Unexpected option value "foo" for rule "block-no-empty"';
         expect(messages[0].text).toBe(text);
         expect(messages[0].filePath).toBe(invalidRulePath);
-        expect(messages[0].range).toEqual([[0, 0], [0, 6]]);
+        expect(messages[0].range).not.toBeDefined();
       })
     );
   });
