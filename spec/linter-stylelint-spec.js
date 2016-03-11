@@ -3,10 +3,7 @@
 import * as path from 'path';
 
 const badDir = path.join(__dirname, 'fixtures', 'bad');
-const configCSSRecipesPath = path.join(badDir, 'stylelint-config-cssrecipes.css');
 const configStandardPath = path.join(badDir, 'stylelint-config-standard.css');
-const configSuitCSSPath = path.join(badDir, 'stylelint-config-suitcss.css');
-const configWordPressPath = path.join(badDir, 'stylelint-config-wordpress.css');
 const warn = path.join(__dirname, 'fixtures', 'warn', 'warn.css');
 const good = path.join(__dirname, 'fixtures', 'good', 'good.css');
 const ignorePath = path.join(__dirname, 'fixtures', 'ignore-files', 'styles.css');
@@ -45,21 +42,6 @@ describe('The stylelint provider for Linter', () => {
     );
   });
 
-  it('bundles and works with stylelint-config-cssrecipes', () => {
-    atom.config.set('linter-stylelint.presetConfig', 'stylelint-config-cssrecipes');
-    waitsForPromise(() =>
-      atom.workspace.open(configCSSRecipesPath).then(editor => lint(editor)).then(messages => {
-        expect(messages.length).toBeGreaterThan(0);
-
-        // test only the first error
-        expect(messages[0].type).toBe('Error');
-        expect(messages[0].text).toBe('Unexpected leading zero (number-leading-zero)');
-        expect(messages[0].filePath).toBe(configCSSRecipesPath);
-        expect(messages[0].range).toEqual([[1, 7], [1, 13]]);
-      })
-    );
-  });
-
   it('bundles and works with stylelint-config-standard', () => {
     atom.config.set('linter-stylelint.presetConfig', 'stylelint-config-standard');
     waitsForPromise(() =>
@@ -71,36 +53,6 @@ describe('The stylelint provider for Linter', () => {
         expect(messages[0].text).toBe('Unexpected empty block (block-no-empty)');
         expect(messages[0].filePath).toBe(configStandardPath);
         expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
-      })
-    );
-  });
-
-  it('bundles and works with stylelint-config-suitcss', () => {
-    atom.config.set('linter-stylelint.presetConfig', 'stylelint-config-suitcss');
-    waitsForPromise(() =>
-      atom.workspace.open(configSuitCSSPath).then(editor => lint(editor)).then(messages => {
-        expect(messages.length).toBeGreaterThan(0);
-
-        // test only the first error
-        expect(messages[0].type).toBe('Error');
-        expect(messages[0].text).toBe('Unexpected empty block (block-no-empty)');
-        expect(messages[0].filePath).toBe(configSuitCSSPath);
-        expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
-      })
-    );
-  });
-
-  it('bundles and works with stylelint-config-wordpress', () => {
-    atom.config.set('linter-stylelint.presetConfig', 'stylelint-config-wordpress');
-    waitsForPromise(() =>
-      atom.workspace.open(configWordPressPath).then(editor => lint(editor)).then(messages => {
-        expect(messages.length).toBeGreaterThan(0);
-
-        // test only the first error
-        expect(messages[0].type).toBe('Error');
-        expect(messages[0].text).toBe('Expected a leading zero (number-leading-zero)');
-        expect(messages[0].filePath).toBe(configWordPressPath);
-        expect(messages[0].range).toEqual([[1, 5], [1, 11]]);
       })
     );
   });
