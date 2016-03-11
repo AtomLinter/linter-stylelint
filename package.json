@@ -36,10 +36,7 @@
     "cosmiconfig": "^1.1.0",
     "deep-assign": "^2.0.0",
     "stylelint": "5.0.0",
-    "stylelint-config-cssrecipes": "^2.0.1",
-    "stylelint-config-standard": "^4.0.1",
-    "stylelint-config-suitcss": "^4.0.0",
-    "stylelint-config-wordpress": "^2.0.2"
+    "stylelint-config-standard": "^4.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^5.0.0",
