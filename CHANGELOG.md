@@ -1,5 +1,32 @@
 # Change Log
 
+## [v2.1.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.1.0) (2016-03-25)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.0.1...v2.1.0)
+
+**Implemented enhancements:**
+
+- Add changelog [\#128](https://github.com/AtomLinter/linter-stylelint/issues/128)
+- Update stylelint to version 5.2.0 🚀 [\#139](https://github.com/AtomLinter/linter-stylelint/pull/139) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- eslint-config-airbnb@6.2.0 [\#137](https://github.com/AtomLinter/linter-stylelint/pull/137) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update and pin stylelint [\#136](https://github.com/AtomLinter/linter-stylelint/pull/136) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Fixed bugs:**
+
+- no-duplicate-selectors bug [\#138](https://github.com/AtomLinter/linter-stylelint/issues/138)
+- Remove 3rd party stlyelint shared-configs from readme.md [\#131](https://github.com/AtomLinter/linter-stylelint/issues/131)
+- Dispose of subscriptions [\#129](https://github.com/AtomLinter/linter-stylelint/issues/129)
+- Error: Column start \(18\) greater than line length \(17\) [\#107](https://github.com/AtomLinter/linter-stylelint/issues/107)
+- Could not find "stylelint-config-standard". Do you need a `configBasedir`? [\#68](https://github.com/AtomLinter/linter-stylelint/issues/68)
+- Track and dispose of subscriptions [\#130](https://github.com/AtomLinter/linter-stylelint/pull/130) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Closed issues:**
+
+- Update stylelint [\#134](https://github.com/AtomLinter/linter-stylelint/issues/134)
+
+**Merged pull requests:**
+
+- Update the readme [\#132](https://github.com/AtomLinter/linter-stylelint/pull/132) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v2.0.1](https://github.com/AtomLinter/linter-stylelint/tree/v2.0.1) (2016-03-12)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.0.0...v2.0.1)
 
