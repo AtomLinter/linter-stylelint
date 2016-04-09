@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.3.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.3.0) (2016-04-08)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.2.0...v2.3.0)
+
+**Implemented enhancements:**
+
+- Add less support [\#135](https://github.com/AtomLinter/linter-stylelint/issues/135)
+- Update stylelint to version 5.4.0 🚀 [\#146](https://github.com/AtomLinter/linter-stylelint/pull/146) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
 ## [v2.2.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.2.0) (2016-04-07)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.1.1...v2.2.0)
 
