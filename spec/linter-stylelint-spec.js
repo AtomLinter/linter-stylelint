@@ -14,8 +14,7 @@ const invalidPath = path.join(__dirname, 'fixtures', 'invalid', 'invalid.css');
 const invalidRulePath = path.join(__dirname, 'fixtures', 'invalid-rule', 'styles.css');
 const invalidExtendsPath = path.join(__dirname, 'fixtures', 'invalid-extends', 'styles.css');
 const invalidConfigPath = path.join(__dirname, 'fixtures', 'invalid-config', 'styles.css');
-const goodPCSS = path.join(__dirname, 'fixtures', 'postcss', 'styles.pcss');
-const goodPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'styles.postcss');
+const goodPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'styles.pcss');
 
 describe('The stylelint provider for Linter', () => {
   const lint = require(path.join('..', 'lib', 'index.js')).provideLinter().lint;
@@ -200,14 +199,6 @@ describe('The stylelint provider for Linter', () => {
   });
 
   it('finds nothing wrong with a valid .pcss file', () => {
-    waitsForPromise(() =>
-      atom.workspace.open(goodPCSS).then(editor => lint(editor)).then(messages => {
-        expect(messages.length).toBe(0);
-      })
-    );
-  });
-
-  it('finds nothing wrong with a valid .postcss file', () => {
     waitsForPromise(() =>
       atom.workspace.open(goodPostCSS).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toBe(0);
