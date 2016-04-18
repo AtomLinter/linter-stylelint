@@ -1,0 +1,29 @@
+.test {
+  @mixin test-mixin;
+
+  color: red;
+}
+
+.another-test {
+  color: orange;
+
+  @media (--viewport-test) {
+    color: blue;
+
+    &__test {
+      color: purple;
+    }
+  }
+
+  .nested-elememt {
+    &::before {
+      color: yellow;
+    }
+    .another-nested-element {
+      color: green;
+    }
+    & > span {
+      color: skyblue;
+    }
+  }
+}
