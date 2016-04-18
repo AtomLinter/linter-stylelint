@@ -196,5 +196,4 @@ describe('The stylelint provider for Linter', () => {
       })
     );
   });
-  
 });
