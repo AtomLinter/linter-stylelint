@@ -4,8 +4,11 @@ import * as path from 'path';
 
 const badDir = path.join(__dirname, 'fixtures', 'bad');
 const configStandardPath = path.join(badDir, 'stylelint-config-standard.css');
+const lessDir = path.join(__dirname, 'fixtures', 'less');
+const configStandardLessPath = path.join(lessDir, 'stylelint-config-standard.less');
 const warn = path.join(__dirname, 'fixtures', 'warn', 'warn.css');
 const good = path.join(__dirname, 'fixtures', 'good', 'good.css');
+const goodLess = path.join(lessDir, 'good.less');
 const ignorePath = path.join(__dirname, 'fixtures', 'ignore-files', 'styles.css');
 const invalidPath = path.join(__dirname, 'fixtures', 'invalid', 'invalid.css');
 const invalidRulePath = path.join(__dirname, 'fixtures', 'invalid-rule', 'styles.css');
@@ -42,6 +45,20 @@ describe('The stylelint provider for Linter', () => {
     );
   });
 
+  it('bundles and works with stylelint-config-standard in less files', () => {
+    waitsForPromise(() =>
+      atom.workspace.open(configStandardLessPath).then(editor => lint(editor)).then(messages => {
+        expect(messages.length).toBeGreaterThan(0);
+
+        // test only the first error
+        expect(messages[0].type).toBe('Error');
+        expect(messages[0].text).toBe('Unexpected empty block (block-no-empty)');
+        expect(messages[0].filePath).toBe(configStandardLessPath);
+        expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
+      })
+    );
+  });
+
   it('reports rules set as warnings as a Warning', () => {
     atom.config.set('linter-stylelint.useStandard', false);
 
@@ -61,6 +78,14 @@ describe('The stylelint provider for Linter', () => {
   it('finds nothing wrong with a valid file', () => {
     waitsForPromise(() =>
       atom.workspace.open(good).then(editor => lint(editor)).then(messages => {
+        expect(messages.length).toBe(0);
+      })
+    );
+  });
+
+  it('finds nothing wrong with a valid less file', () => {
+    waitsForPromise(() =>
+      atom.workspace.open(goodLess).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toBe(0);
       })
     );
