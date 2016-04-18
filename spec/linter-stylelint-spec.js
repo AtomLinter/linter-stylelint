@@ -4,8 +4,8 @@ import * as path from 'path';
 
 const badDir = path.join(__dirname, 'fixtures', 'bad');
 const configStandardPath = path.join(badDir, 'stylelint-config-standard.css');
-const badLessDir = path.join(__dirname, 'fixtures', 'less');
-const configStandardLessPath = path.join(badLessDir, 'stylelint-config-standard.less');
+const lessDir = path.join(__dirname, 'fixtures', 'less');
+const configStandardLessPath = path.join(lessDir, 'stylelint-config-standard.less');
 const warn = path.join(__dirname, 'fixtures', 'warn', 'warn.css');
 const good = path.join(__dirname, 'fixtures', 'good', 'good.css');
 const goodLess = path.join(__dirname, 'fixtures', 'less', 'good.less');
