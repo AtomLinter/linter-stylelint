@@ -1,11 +1,30 @@
 # Change Log
 
-## [v2.3.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.3.0) (2016-04-08)
-[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.2.0...v2.3.0)
+## [v2.4.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.4.0) (2016-04-18)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.3.0...v2.4.0)
 
 **Implemented enhancements:**
 
 - Add less support [\#135](https://github.com/AtomLinter/linter-stylelint/issues/135)
+- Postcss files lint [\#101](https://github.com/AtomLinter/linter-stylelint/issues/101)
+- Add less support [\#156](https://github.com/AtomLinter/linter-stylelint/pull/156) ([onedesert](https://github.com/onedesert))
+- Lazy require packages [\#150](https://github.com/AtomLinter/linter-stylelint/pull/150) ([Arcanemagus](https://github.com/Arcanemagus))
+- Enable linting \*.postcss and \*.pcss files [\#149](https://github.com/AtomLinter/linter-stylelint/pull/149) ([juwain](https://github.com/juwain))
+- Update eslint-config-airbnb to version 7.0.0 🚀 [\#148](https://github.com/AtomLinter/linter-stylelint/pull/148) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
+**Fixed bugs:**
+
+- Keep the preset pristine [\#154](https://github.com/AtomLinter/linter-stylelint/pull/154) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Closed issues:**
+
+- Column start \(n+1\) greater than line length\(n\) [\#155](https://github.com/AtomLinter/linter-stylelint/issues/155)
+
+## [v2.3.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.3.0) (2016-04-09)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.2.0...v2.3.0)
+
+**Implemented enhancements:**
+
 - Update stylelint to version 5.4.0 🚀 [\#146](https://github.com/AtomLinter/linter-stylelint/pull/146) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
 
 ## [v2.2.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.2.0) (2016-04-07)
