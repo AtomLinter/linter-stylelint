@@ -14,6 +14,8 @@ const invalidPath = path.join(__dirname, 'fixtures', 'invalid', 'invalid.css');
 const invalidRulePath = path.join(__dirname, 'fixtures', 'invalid-rule', 'styles.css');
 const invalidExtendsPath = path.join(__dirname, 'fixtures', 'invalid-extends', 'styles.css');
 const invalidConfigPath = path.join(__dirname, 'fixtures', 'invalid-config', 'styles.css');
+const goodPCSS = path.join(__dirname, 'fixtures', 'postcss', 'styles.pcss');
+const goodPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'styles.postcss');
 
 describe('The stylelint provider for Linter', () => {
   const lint = require(path.join('..', 'lib', 'index.js')).provideLinter().lint;
@@ -193,6 +195,22 @@ describe('The stylelint provider for Linter', () => {
         expect(messages[0].text).toBe('Unexpected empty block (block-no-empty)');
         expect(messages[0].filePath).toBe(configStandardPath);
         expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
+      })
+    );
+  });
+
+  it('finds nothing wrong with a valid .pcss file', () => {
+    waitsForPromise(() =>
+      atom.workspace.open(goodPCSS).then(editor => lint(editor)).then(messages => {
+        expect(messages.length).toBe(0);
+      })
+    );
+  });
+
+  it('finds nothing wrong with a valid .postcss file', () => {
+    waitsForPromise(() =>
+      atom.workspace.open(goodPostCSS).then(editor => lint(editor)).then(messages => {
+        expect(messages.length).toBe(0);
       })
     );
   });
