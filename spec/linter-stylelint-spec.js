@@ -28,20 +28,6 @@ describe('The stylelint provider for Linter', () => {
     );
   });
 
-  it('detects invalid coding style in bad.css and reports an error', () => {
-    waitsForPromise(() =>
-      atom.workspace.open(configStandardPath).then(editor => lint(editor)).then(messages => {
-        expect(messages.length).toBeGreaterThan(0);
-
-        // test only the first error
-        expect(messages[0].type).toBe('Error');
-        expect(messages[0].text).toBe('Unexpected empty block (block-no-empty)');
-        expect(messages[0].filePath).toBe(configStandardPath);
-        expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
-      })
-    );
-  });
-
   it('bundles and works with stylelint-config-standard', () => {
     waitsForPromise(() =>
       atom.workspace.open(configStandardPath).then(editor => lint(editor)).then(messages => {
@@ -163,6 +149,25 @@ describe('The stylelint provider for Linter', () => {
       atom.workspace.open(ignorePath).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toBe(0);
         expect(atom.notifications.addError.calls.length).toBe(0);
+      })
+    );
+  });
+
+  it("doesn't persist settings across runs", () => {
+    waitsForPromise(() =>
+      // The config for this folder breaks the block-no-empty rule
+      atom.workspace.open(invalidRulePath).then(editor => lint(editor))
+    );
+    waitsForPromise(() =>
+      // While this file uses that rule
+      atom.workspace.open(configStandardPath).then(editor => lint(editor)).then(messages => {
+        expect(messages.length).toBeGreaterThan(0);
+
+        // test only the first error
+        expect(messages[0].type).toBe('Error');
+        expect(messages[0].text).toBe('Unexpected empty block (block-no-empty)');
+        expect(messages[0].filePath).toBe(configStandardPath);
+        expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
       })
     );
   });
