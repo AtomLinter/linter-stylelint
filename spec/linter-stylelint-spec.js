@@ -98,7 +98,7 @@ describe('The stylelint provider for Linter', () => {
         expect(messages.length).toBe(1);
 
         expect(messages[0].type).toBe('Error');
-        expect(messages[0].text).toBe('Unknown word');
+        expect(messages[0].text).toBe('Unknown word (CssSyntaxError)');
         expect(messages[0].filePath).toBe(invalidPath);
         expect(messages[0].range).toEqual([[0, 0], [0, 3]]);
       })
