@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.5.2](https://github.com/AtomLinter/linter-stylelint/tree/v2.5.2) (2016-04-20)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.5.1...v2.5.2)
+
+**Implemented enhancements:**
+
+- Update stylelint to version 6.0.2 🚀 [\#165](https://github.com/AtomLinter/linter-stylelint/pull/165) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Switch to eslint-config-airbnb-base [\#164](https://github.com/AtomLinter/linter-stylelint/pull/164) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v2.5.1](https://github.com/AtomLinter/linter-stylelint/tree/v2.5.1) (2016-04-19)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.5.0...v2.5.1)
 
