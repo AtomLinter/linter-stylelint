@@ -40,6 +40,7 @@ describe('The stylelint provider for Linter', () => {
 
         // test only the first error
         expect(messages[0].type).toBe('Error');
+        expect(messages[0].severity).toBe('error');
         expect(messages[0].text).toBe('Unexpected empty block (block-no-empty)');
         expect(messages[0].filePath).toBe(configStandardPath);
         expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
@@ -56,6 +57,7 @@ describe('The stylelint provider for Linter', () => {
 
         // test only the first error
         expect(messages[0].type).toBe('Warning');
+        expect(messages[0].severity).toBe('warning');
         expect(messages[0].text).toBe('Unexpected empty block (block-no-empty)');
         expect(messages[0].filePath).toMatch(/.+warn\.css$/);
         expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
@@ -77,6 +79,7 @@ describe('The stylelint provider for Linter', () => {
         expect(messages.length).toBe(1);
 
         expect(messages[0].type).toBe('Error');
+        expect(messages[0].severity).toBe('error');
         expect(messages[0].text).toBe('Unknown word (CssSyntaxError)');
         expect(messages[0].filePath).toBe(invalidPath);
         expect(messages[0].range).toEqual([[0, 0], [0, 3]]);
@@ -92,6 +95,7 @@ describe('The stylelint provider for Linter', () => {
         expect(messages.length).toBe(1);
 
         expect(messages[0].type).toBe('Error');
+        expect(messages[0].severity).toBe('error');
         expect(messages[0].text).toBe(text);
         expect(messages[0].filePath).toBe(invalidRulePath);
         expect(messages[0].range).not.toBeDefined();
@@ -155,6 +159,7 @@ describe('The stylelint provider for Linter', () => {
         expect(messages.length).toBe(1);
 
         expect(messages[0].type).toBe('Warning');
+        expect(messages[0].severity).toBe('warning');
         expect(messages[0].text).toBe('This file is ignored');
         expect(messages[0].filePath).toBe(ignorePath);
         expect(messages[0].range).toEqual([[0, 0], [0, 7]]);
@@ -175,6 +180,7 @@ describe('The stylelint provider for Linter', () => {
 
         // test only the first error
         expect(messages[0].type).toBe('Error');
+        expect(messages[0].severity).toBe('error');
         expect(messages[0].text).toBe('Unexpected empty block (block-no-empty)');
         expect(messages[0].filePath).toBe(configStandardPath);
         expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
@@ -190,6 +196,7 @@ describe('The stylelint provider for Linter', () => {
 
           // test only the first error
           expect(messages[0].type).toBe('Error');
+          expect(messages[0].severity).toBe('error');
           expect(messages[0].text).toBe('Unexpected empty block (block-no-empty)');
           expect(messages[0].filePath).toBe(configStandardLessPath);
           expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
@@ -214,6 +221,7 @@ describe('The stylelint provider for Linter', () => {
 
           // test only the first error
           expect(messages[0].type).toBe('Error');
+          expect(messages[0].severity).toBe('error');
           expect(messages[0].text).toBe('Unexpected empty block (block-no-empty)');
           expect(messages[0].filePath).toBe(issuesPostCSS);
           expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
