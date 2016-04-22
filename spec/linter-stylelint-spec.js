@@ -173,7 +173,12 @@ describe('The stylelint provider for Linter', () => {
 
     waitsForPromise(() =>
       atom.workspace.open(ignorePath).then(editor => lint(editor)).then(messages => {
-        expect(messages.length).toBe(0);
+        expect(messages.length).toBe(1);
+
+        expect(messages[0].type).toBe('Warning');
+        expect(messages[0].text).toBe('This file is ignored');
+        expect(messages[0].filePath).toBe(ignorePath);
+        expect(messages[0].range).toEqual([[0, 0], [0, 7]]);
         expect(atom.notifications.addError.calls.length).toBe(0);
       })
     );
