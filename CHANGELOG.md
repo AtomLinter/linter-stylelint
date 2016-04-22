@@ -1,6 +1,18 @@
 # Change Log
 
-## [v2.5.3](https://github.com/AtomLinter/linter-stylelint/tree/v2.5.3) (2016-04-20)
+## [v2.6.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.6.0) (2016-04-22)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.5.3...v2.6.0)
+
+**Implemented enhancements:**
+
+- Update stylelint to version 6.1.0 🚀 [\#169](https://github.com/AtomLinter/linter-stylelint/pull/169) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- eslint-config-airbnb-base@1.0.3 [\#168](https://github.com/AtomLinter/linter-stylelint/pull/168) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
+**Fixed bugs:**
+
+- Add a test with messages for PostCSS and update CI configuration [\#170](https://github.com/AtomLinter/linter-stylelint/pull/170) ([Arcanemagus](https://github.com/Arcanemagus))
+
+## [v2.5.3](https://github.com/AtomLinter/linter-stylelint/tree/v2.5.3) (2016-04-21)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.5.2...v2.5.3)
 
 **Implemented enhancements:**
@@ -34,7 +46,6 @@
 
 **Implemented enhancements:**
 
-- Add less support [\#135](https://github.com/AtomLinter/linter-stylelint/issues/135)
 - Postcss files lint [\#101](https://github.com/AtomLinter/linter-stylelint/issues/101)
 - Add less support [\#156](https://github.com/AtomLinter/linter-stylelint/pull/156) ([onedesert](https://github.com/onedesert))
 - Lazy require packages [\#150](https://github.com/AtomLinter/linter-stylelint/pull/150) ([Arcanemagus](https://github.com/Arcanemagus))
@@ -44,10 +55,6 @@
 **Fixed bugs:**
 
 - Keep the preset pristine [\#154](https://github.com/AtomLinter/linter-stylelint/pull/154) ([Arcanemagus](https://github.com/Arcanemagus))
-
-**Closed issues:**
-
-- Column start \(n+1\) greater than line length\(n\) [\#155](https://github.com/AtomLinter/linter-stylelint/issues/155)
 
 ## [v2.3.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.3.0) (2016-04-09)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.2.0...v2.3.0)
@@ -87,7 +94,6 @@
 
 **Fixed bugs:**
 
-- no-duplicate-selectors bug [\#138](https://github.com/AtomLinter/linter-stylelint/issues/138)
 - Remove 3rd party stlyelint shared-configs from readme.md [\#131](https://github.com/AtomLinter/linter-stylelint/issues/131)
 - Dispose of subscriptions [\#129](https://github.com/AtomLinter/linter-stylelint/issues/129)
 - Error: Column start \(18\) greater than line length \(17\) [\#107](https://github.com/AtomLinter/linter-stylelint/issues/107)
@@ -112,8 +118,6 @@
 
 **Closed issues:**
 
--  'Unsafe-eval' is not an allowed source of script in the following Content Security Policy directive: "script-src 'self'" [\#116](https://github.com/AtomLinter/linter-stylelint/issues/116)
-- Fails when extending configs that extend other configs and include plugins [\#104](https://github.com/AtomLinter/linter-stylelint/issues/104)
 - Doesn't refresh with config changes [\#80](https://github.com/AtomLinter/linter-stylelint/issues/80)
 
 ## [v2.0.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.0.0) (2016-03-11)
@@ -148,10 +152,6 @@
 - Update eslint-config-airbnb [\#102](https://github.com/AtomLinter/linter-stylelint/pull/102) ([1000ch](https://github.com/1000ch))
 - Update eslint to version 2.2.0 🚀 [\#99](https://github.com/AtomLinter/linter-stylelint/pull/99) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
 
-**Fixed bugs:**
-
-- ignoreFiles config value is ignored [\#84](https://github.com/AtomLinter/linter-stylelint/issues/84)
-
 ## [v1.13.0](https://github.com/AtomLinter/linter-stylelint/tree/v1.13.0) (2016-02-20)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v1.12.0...v1.13.0)
 
@@ -167,10 +167,6 @@
 - Update stylelint-config-wordpress to version 2.0.2 🚀 [\#98](https://github.com/AtomLinter/linter-stylelint/pull/98) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
 - Update babel-eslint to version 5.0.0 🚀 [\#95](https://github.com/AtomLinter/linter-stylelint/pull/95) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
 - Update atom-package-deps to version 4.0.1 🚀 [\#94](https://github.com/AtomLinter/linter-stylelint/pull/94) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
-
-**Fixed bugs:**
-
-- Refused to evaluate a string as JavaScript because 'unsafe-eval' is not an allowed source of script in the following Content Security Policy directive: "script-src 'self'". [\#90](https://github.com/AtomLinter/linter-stylelint/issues/90)
 
 ## [v1.11.2](https://github.com/AtomLinter/linter-stylelint/tree/v1.11.2) (2016-02-14)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v1.11.1...v1.11.2)
@@ -191,9 +187,6 @@
 
 **Closed issues:**
 
-- hierarchicalSelectors not working [\#82](https://github.com/AtomLinter/linter-stylelint/issues/82)
-- Possible to add a parser option? [\#81](https://github.com/AtomLinter/linter-stylelint/issues/81)
-- Error: Column start \(1268\) greater than line length \(25\) [\#79](https://github.com/AtomLinter/linter-stylelint/issues/79)
 - TypeError: Cannot assign to read only property '0' of \[object String\] [\#73](https://github.com/AtomLinter/linter-stylelint/issues/73)
 
 **Merged pull requests:**
@@ -219,10 +212,6 @@
 
 - Add `postcss` keyword to `package.json` [\#74](https://github.com/AtomLinter/linter-stylelint/pull/74) ([ntwb](https://github.com/ntwb))
 - Update stylelint-config-standard to version 3.0.0 🚀 [\#70](https://github.com/AtomLinter/linter-stylelint/pull/70) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
-
-**Closed issues:**
-
-- Invalid option value "float" for rule "rule-properties-order": should be an object [\#71](https://github.com/AtomLinter/linter-stylelint/issues/71)
 
 **Merged pull requests:**
 
