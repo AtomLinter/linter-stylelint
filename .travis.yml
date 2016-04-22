@@ -20,7 +20,9 @@ os:
 
 env:
   global:
-    - APM_TEST_PACKAGES=""
+    # Pre-install the required language file as package activation doesn't wait
+    # for the installation to complete.
+    - APM_TEST_PACKAGES="language-postcss"
 
   matrix:
     - ATOM_CHANNEL=stable

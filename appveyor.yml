@@ -1,20 +1,18 @@
 version: "{build}"
-os: Windows Server 2012 R2
+platform: x64
 branches:
   only:
     - master
+clone_depth: 10
+skip_tags: true
 test: off
 deploy: off
+environment:
+  APM_TEST_PACKAGES: language-postcss
 
 install:
-  - appveyor DownloadFile https://atom.io/download/windows -FileName AtomSetup.exe
-  - AtomSetup.exe /silent
+  # Install Node.js to run any configured linters
+  - ps: Install-Product node 5
 
 build_script:
-  - cd %APPVEYOR_BUILD_FOLDER%
-  - SET PATH=%LOCALAPPDATA%\atom\bin;%PATH%
-  - atom -v
-  - apm -v
-  - apm clean
-  - apm install
-  - apm test
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/atom/ci/master/build-package.ps1'))
