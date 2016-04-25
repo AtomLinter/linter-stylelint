@@ -36,7 +36,7 @@
     "atom-package-deps": "^4.0.1",
     "cosmiconfig": "^1.1.0",
     "lazy-req": "^1.1.0",
-    "stylelint": "6.1.0",
+    "stylelint": "6.2.1",
     "stylelint-config-standard": "^6.0.0"
   },
   "devDependencies": {
