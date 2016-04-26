@@ -1,5 +1,14 @@
 # Change Log
 
+## [v2.7.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.7.0) (2016-04-26)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.6.0...v2.7.0)
+
+**Implemented enhancements:**
+
+- Update stylelint to version 6.2.2 🚀 [\#177](https://github.com/AtomLinter/linter-stylelint/pull/177) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- eslint-config-airbnb-base@1.0.4 [\#175](https://github.com/AtomLinter/linter-stylelint/pull/175) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Add support for severity message attribute [\#171](https://github.com/AtomLinter/linter-stylelint/pull/171) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v2.6.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.6.0) (2016-04-22)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.5.3...v2.6.0)
 
