@@ -12,7 +12,8 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "scripts": {
-    "test": "eslint ."
+    "test": "apm test",
+    "lint": "eslint ."
   },
   "keywords": [
     "css",
@@ -40,25 +41,15 @@
     "stylelint-config-standard": "^6.0.0"
   },
   "devDependencies": {
-    "eslint": "^2.8.0",
-    "eslint-config-airbnb-base": "^1.0.4",
-    "eslint-plugin-import": "^1.6.0"
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb-base": "^2.0.0",
+    "eslint-plugin-import": "^1.6.1"
   },
   "eslintConfig": {
     "rules": {
-      "comma-dangle": [
-        2,
-        "never"
-      ],
+      "comma-dangle": [2, "never"],
       "global-require": 0,
-      "import/no-unresolved": [
-        2,
-        {
-          "ignore": [
-            "atom"
-          ]
-        }
-      ]
+      "import/no-unresolved": [2, {"ignore": ["atom"]}]
     },
     "extends": "airbnb-base",
     "globals": {
