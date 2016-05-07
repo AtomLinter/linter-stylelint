@@ -37,7 +37,7 @@
     "atom-package-deps": "^4.0.1",
     "cosmiconfig": "^1.1.0",
     "lazy-req": "^1.1.0",
-    "stylelint": "6.2.2",
+    "stylelint": "6.3.1",
     "stylelint-config-standard": "^6.0.0"
   },
   "devDependencies": {
@@ -47,9 +47,19 @@
   },
   "eslintConfig": {
     "rules": {
-      "comma-dangle": [2, "never"],
+      "comma-dangle": [
+        2,
+        "never"
+      ],
       "global-require": 0,
-      "import/no-unresolved": [2, {"ignore": ["atom"]}]
+      "import/no-unresolved": [
+        2,
+        {
+          "ignore": [
+            "atom"
+          ]
+        }
+      ]
     },
     "extends": "airbnb-base",
     "globals": {
