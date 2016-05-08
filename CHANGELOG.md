@@ -1,5 +1,28 @@
 # Change Log
 
+## [v2.8.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.8.0) (2016-05-08)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.7.0...v2.8.0)
+
+**Implemented enhancements:**
+
+- \<style\> tag [\#8](https://github.com/AtomLinter/linter-stylelint/issues/8)
+- Update stylelint to version 6.3.3 🚀 [\#192](https://github.com/AtomLinter/linter-stylelint/pull/192) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update atom-linter to version 5.0.0 🚀 [\#191](https://github.com/AtomLinter/linter-stylelint/pull/191) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update stylelint to version 6.3.2 🚀 [\#189](https://github.com/AtomLinter/linter-stylelint/pull/189) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update stylelint-config-standard to version 7.0.0 🚀 [\#188](https://github.com/AtomLinter/linter-stylelint/pull/188) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update stylelint to version 6.3.1 🚀 [\#187](https://github.com/AtomLinter/linter-stylelint/pull/187) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update eslint-config-airbnb-base to version 3.0.0 🚀 [\#186](https://github.com/AtomLinter/linter-stylelint/pull/186) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update eslint-config-airbnb-base to version 2.0.0 🚀 [\#184](https://github.com/AtomLinter/linter-stylelint/pull/184) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- \[Feature\] Added support for linting style tags within html files [\#142](https://github.com/AtomLinter/linter-stylelint/pull/142) ([blake-newman](https://github.com/blake-newman))
+
+**Fixed bugs:**
+
+- Properly handle enabling and disabling embedded scopes [\#194](https://github.com/AtomLinter/linter-stylelint/pull/194) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Closed issues:**
+
+- Strange LESS file message [\#181](https://github.com/AtomLinter/linter-stylelint/issues/181)
+
 ## [v2.7.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.7.0) (2016-04-26)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.6.0...v2.7.0)
 
