@@ -28,8 +28,6 @@ describe('The stylelint provider for Linter', () => {
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
     atom.config.set('linter-stylelint.useStandard', true);
-    atom.config.set('linter-stylelint.disableWhenNoConfig', false);
-    atom.config.set('linter-stylelint.enableHtmlLinting', false);
 
     waitsForPromise(() =>
       Promise.all([
@@ -113,7 +111,7 @@ describe('The stylelint provider for Linter', () => {
     );
   });
 
-  it('show error notification on fatal stylelint runtime error', () => {
+  it('shows an error notification for a fatal stylelint runtime error', () => {
     atom.config.set('linter-stylelint.useStandard', false);
     spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
     const addError = atom.notifications.addError;
@@ -131,7 +129,7 @@ describe('The stylelint provider for Linter', () => {
     );
   });
 
-  it('show error notification on an broken syntax configuration', () => {
+  it('shows an error notification with a broken syntax configuration', () => {
     atom.config.set('linter-stylelint.useStandard', false);
     spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
     const addError = atom.notifications.addError;
@@ -149,7 +147,7 @@ describe('The stylelint provider for Linter', () => {
     );
   });
 
-  it('disable when no config file is found', () => {
+  it('disables when no configuration file is found', () => {
     atom.config.set('linter-stylelint.disableWhenNoConfig', true);
     spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
 
@@ -161,7 +159,7 @@ describe('The stylelint provider for Linter', () => {
     );
   });
 
-  it('ignore files when files are specified in ignoreFiles', () => {
+  it('ignores files when files are specified in ignoreFiles', () => {
     spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
 
     waitsForPromise(() =>
@@ -253,7 +251,6 @@ describe('The stylelint provider for Linter', () => {
       );
     });
   });
-
 
   describe('works with PostCSS files and', () => {
     it('works with stylelint-config-standard', () => {
