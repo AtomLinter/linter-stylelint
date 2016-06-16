@@ -30,6 +30,26 @@
   "bugs": {
     "url": "https://github.com/AtomLinter/linter-stylelint/issues"
   },
+  "configSchema": {
+    "useStandard": {
+      "title": "Use standard",
+      "description": "Use the stylelint-config-standard lint configuration",
+      "type": "boolean",
+      "default": false
+    },
+    "disableWhenNoConfig": {
+      "title": "Disable when no config file is found",
+      "description": "Either .stylelintrc or stylelint.config.js",
+      "type": "boolean",
+      "default": false
+    },
+    "enableHtmlLinting": {
+      "title": "Enable linting of styles within html",
+      "description": "Turn on linting of your style tags within html files.",
+      "type": "boolean",
+      "default": false
+    }
+  },
   "homepage": "https://github.com/AtomLinter/linter-stylelint#readme",
   "dependencies": {
     "assign-deep": "^0.4.5",
