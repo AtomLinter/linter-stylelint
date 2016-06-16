@@ -1,5 +1,17 @@
 # Change Log
 
+## [v2.12.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.12.0) (2016-06-16)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.11.0...v2.12.0)
+
+**Implemented enhancements:**
+
+- Consider display rule ID and uri [\#208](https://github.com/AtomLinter/linter-stylelint/issues/208)
+- Add a link to rule documentation [\#209](https://github.com/AtomLinter/linter-stylelint/pull/209) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Closed issues:**
+
+- length-zero-no-unit [\#207](https://github.com/AtomLinter/linter-stylelint/issues/207)
+
 ## [v2.11.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.11.0) (2016-06-13)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.10.0...v2.11.0)
 
