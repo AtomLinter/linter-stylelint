@@ -1,5 +1,14 @@
 # Change Log
 
+## [v2.14.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.14.0) (2016-06-23)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.13.0...v2.14.0)
+
+**Implemented enhancements:**
+
+- Update atom-linter to version 6.0.0 🚀 [\#214](https://github.com/AtomLinter/linter-stylelint/pull/214) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Show deprecation messages to the user [\#213](https://github.com/AtomLinter/linter-stylelint/pull/213) ([Arcanemagus](https://github.com/Arcanemagus))
+- Update stylelint to version 6.7.1 🚀 [\#212](https://github.com/AtomLinter/linter-stylelint/pull/212) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
 ## [v2.13.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.13.0) (2016-06-20)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.12.0...v2.13.0)
 
