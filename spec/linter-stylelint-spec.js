@@ -171,7 +171,7 @@ describe('The stylelint provider for Linter', () => {
         expect(messages[0].text).not.toBeDefined();
         expect(messages[0].html).toBe('This file is ignored');
         expect(messages[0].filePath).toBe(ignorePath);
-        expect(messages[0].range).toEqual([[0, 0], [0, 7]]);
+        expect(messages[0].range).toEqual([[0, 0], [0, 4]]);
         expect(atom.notifications.addError.calls.length).toBe(0);
       })
     );
