@@ -199,6 +199,8 @@ describe('The stylelint provider for Linter', () => {
   });
 
   describe('works with Less files and', () => {
+    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-less')));
+
     it('works with stylelint-config-standard', () => {
       waitsForPromise(() =>
         atom.workspace.open(configStandardLessPath).then(editor => lint(editor)).then(messages => {
@@ -225,6 +227,8 @@ describe('The stylelint provider for Linter', () => {
   });
 
   describe('works with HTML files and', () => {
+    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-html')));
+
     it('works with stylelint-config-standard', () => {
       atom.config.set('linter-stylelint.enableHtmlLinting', true);
       waitsForPromise(() =>
@@ -253,6 +257,8 @@ describe('The stylelint provider for Linter', () => {
   });
 
   describe('works with PostCSS files and', () => {
+    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-postcss')));
+
     it('works with stylelint-config-standard', () => {
       waitsForPromise(() =>
         atom.workspace.open(issuesPostCSS).then(editor => lint(editor)).then(messages => {
