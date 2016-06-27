@@ -19,6 +19,8 @@ const goodHtml = path.join(htmlDir, 'good.html');
 const configStandardHtmlPath = path.join(htmlDir, 'stylelint-config-standard.html');
 const goodPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'styles.pcss');
 const issuesPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'issues.pcss');
+const goodSugarSS = path.join(__dirname, 'fixtures', 'sugarss', 'good.sss');
+const badSugarSS = path.join(__dirname, 'fixtures', 'sugarss', 'bad.sss');
 
 const blockNoEmpty = 'Unexpected empty block (<a href="http://stylelint.io/user-guide/rules/block-no-empty">block-no-empty</a>)';
 
@@ -278,6 +280,32 @@ describe('The stylelint provider for Linter', () => {
     it('finds nothing wrong with a valid file', () => {
       waitsForPromise(() =>
         atom.workspace.open(goodPostCSS).then(editor => lint(editor)).then(messages => {
+          expect(messages.length).toBe(0);
+        })
+      );
+    });
+  });
+
+  describe('works with SugarSS files and', () => {
+    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-postcss')));
+
+    it('works with stylelint-config-standard', () => {
+      const nlzMessage = 'Expected a leading zero (<a href="http://stylelint.io/user-guide/rules/number-leading-zero">number-leading-zero</a>)';
+      waitsForPromise(() =>
+        atom.workspace.open(badSugarSS).then(editor => lint(editor)).then(messages => {
+          expect(messages[0].type).toBe('Error');
+          expect(messages[0].severity).toBe('error');
+          expect(messages[0].text).not.toBeDefined();
+          expect(messages[0].html).toBe(nlzMessage);
+          expect(messages[0].filePath).toBe(badSugarSS);
+          expect(messages[0].range).toEqual([[1, 37], [1, 40]]);
+        })
+      );
+    });
+
+    it('finds nothing wrong with a valid file', () => {
+      waitsForPromise(() =>
+        atom.workspace.open(goodSugarSS).then(editor => lint(editor)).then(messages => {
           expect(messages.length).toBe(0);
         })
       );
