@@ -1,5 +1,17 @@
 # Change Log
 
+## [v2.15.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.15.0) (2016-06-27)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.14.0...v2.15.0)
+
+**Implemented enhancements:**
+
+- Parsing .sss files for lint [\#204](https://github.com/AtomLinter/linter-stylelint/issues/204)
+- SugarSS Support [\#215](https://github.com/AtomLinter/linter-stylelint/pull/215) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Fixed bugs:**
+
+- Fix rule name linking [\#216](https://github.com/AtomLinter/linter-stylelint/pull/216) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v2.14.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.14.0) (2016-06-23)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.13.0...v2.14.0)
 
