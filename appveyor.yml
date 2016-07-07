@@ -12,7 +12,7 @@ environment:
 
 install:
   # Install Node.js to run any configured linters
-  - ps: Install-Product node 5
+  - ps: Install-Product node 6
 
 build_script:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/atom/ci/master/build-package.ps1'))
