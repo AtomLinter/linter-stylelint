@@ -79,7 +79,8 @@
             "atom"
           ]
         }
-      ]
+      ],
+      "import/no-extraneous-dependencies": "off"
     },
     "extends": "airbnb-base",
     "globals": {
