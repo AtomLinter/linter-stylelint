@@ -1,5 +1,16 @@
 # Change Log
 
+## [v2.17.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.17.0) (2016-07-07)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.16.0...v2.17.0)
+
+**Implemented enhancements:**
+
+- Update stylelint to version 6.9.0 🚀 [\#226](https://github.com/AtomLinter/linter-stylelint/pull/226) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
+**Fixed bugs:**
+
+- Only attempt extraction in embedded code [\#228](https://github.com/AtomLinter/linter-stylelint/pull/228) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v2.16.0](https://github.com/AtomLinter/linter-stylelint/tree/v2.16.0) (2016-06-30)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v2.15.0...v2.16.0)
 
