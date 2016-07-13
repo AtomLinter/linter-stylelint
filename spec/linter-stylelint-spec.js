@@ -37,6 +37,7 @@ describe('The stylelint provider for Linter', () => {
   });
 
   it('bundles and works with stylelint-config-standard', () => {
+    atom.config.set('linter-stylelint.disableWhenNoConfig', false);
     waitsForPromise(() =>
       atom.workspace.open(configStandardPath).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toBeGreaterThan(0);
@@ -79,6 +80,7 @@ describe('The stylelint provider for Linter', () => {
   });
 
   it('shows CSS syntax errors with an invalid file', () => {
+    atom.config.set('linter-stylelint.disableWhenNoConfig', false);
     waitsForPromise(() =>
       atom.workspace.open(invalidPath).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toBe(1);
@@ -186,6 +188,7 @@ describe('The stylelint provider for Linter', () => {
   });
 
   it("doesn't persist settings across runs", () => {
+    atom.config.set('linter-stylelint.disableWhenNoConfig', false);
     waitsForPromise(() =>
       // The config for this folder breaks the block-no-empty rule
       atom.workspace.open(invalidRulePath).then(editor => lint(editor))
@@ -207,7 +210,10 @@ describe('The stylelint provider for Linter', () => {
   });
 
   describe('works with Less files and', () => {
-    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-less')));
+    beforeEach(() => {
+      atom.config.set('linter-stylelint.disableWhenNoConfig', false);
+      waitsForPromise(() => atom.packages.activatePackage('language-less'));
+    });
 
     it('works with stylelint-config-standard', () => {
       waitsForPromise(() =>
@@ -235,7 +241,10 @@ describe('The stylelint provider for Linter', () => {
   });
 
   describe('works with PostCSS files and', () => {
-    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-postcss')));
+    beforeEach(() => {
+      atom.config.set('linter-stylelint.disableWhenNoConfig', false);
+      waitsForPromise(() => atom.packages.activatePackage('language-postcss'));
+    });
 
     it('works with stylelint-config-standard', () => {
       waitsForPromise(() =>
@@ -263,7 +272,10 @@ describe('The stylelint provider for Linter', () => {
   });
 
   describe('works with SugarSS files and', () => {
-    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-postcss')));
+    beforeEach(() => {
+      atom.config.set('linter-stylelint.disableWhenNoConfig', false);
+      waitsForPromise(() => atom.packages.activatePackage('language-postcss'));
+    });
 
     it('works with stylelint-config-standard', () => {
       const nlzMessage = 'Expected a leading zero (<a href="http://stylelint.io/user-guide/rules/number-leading-zero">number-leading-zero</a>)';

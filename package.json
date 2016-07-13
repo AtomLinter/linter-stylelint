@@ -41,7 +41,7 @@
       "title": "Disable when no config file is found",
       "description": "Either .stylelintrc or stylelint.config.js",
       "type": "boolean",
-      "default": false
+      "default": true
     },
     "showIgnored": {
       "title": "Show message when a file is ignored",
