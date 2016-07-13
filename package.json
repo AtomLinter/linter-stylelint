@@ -42,12 +42,6 @@
       "description": "Either .stylelintrc or stylelint.config.js",
       "type": "boolean",
       "default": false
-    },
-    "enableHtmlLinting": {
-      "title": "Enable linting of styles within html",
-      "description": "Turn on linting of your style tags within html files.",
-      "type": "boolean",
-      "default": false
     }
   },
   "homepage": "https://github.com/AtomLinter/linter-stylelint#readme",

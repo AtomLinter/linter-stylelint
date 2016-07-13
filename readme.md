@@ -29,6 +29,16 @@ You can pass configuration to `stylelint` in any of the following ways:
 settings and also have a `.stylelintrc` file, your `.stylelintrc` configuration
 will extend the preset, using [stylelint's extend functionality](http://stylelint.io/?/docs/user-guide/configuration.md).
 
+## Notes
+
+As of `stylelint` v7.0.0 the ability to lint embedded style code has been
+removed from core, replaced with the ability for generic processors to handle
+any file format. Currently one has yet to be written for pulling style code
+out of HTML, if you are interested in bringing this functionality back to
+`linter-stylelint`, check out [their documentation](https://github.com/stylelint/stylelint/blob/master/docs/developer-guide/processors.md)
+on how to write a processor to handle HTML, and any other files that contain
+style code!
+
 ## License
 
 MIT: <http://1000ch.mit-license.org/>

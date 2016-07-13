@@ -14,9 +14,6 @@ const invalidConfigPath = path.join(__dirname, 'fixtures', 'invalid-config', 'st
 const lessDir = path.join(__dirname, 'fixtures', 'less');
 const goodLess = path.join(lessDir, 'good.less');
 const configStandardLessPath = path.join(lessDir, 'stylelint-config-standard.less');
-const htmlDir = path.join(__dirname, 'fixtures', 'html');
-const goodHtml = path.join(htmlDir, 'good.html');
-const configStandardHtmlPath = path.join(htmlDir, 'stylelint-config-standard.html');
 const goodPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'styles.pcss');
 const issuesPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'issues.pcss');
 const goodSugarSS = path.join(__dirname, 'fixtures', 'sugarss', 'good.sss');
@@ -222,36 +219,6 @@ describe('The stylelint provider for Linter', () => {
     it('finds nothing wrong with a valid file', () => {
       waitsForPromise(() =>
         atom.workspace.open(goodLess).then(editor => lint(editor)).then(messages => {
-          expect(messages.length).toBe(0);
-        })
-      );
-    });
-  });
-
-  describe('works with HTML files and', () => {
-    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-html')));
-
-    it('works with stylelint-config-standard', () => {
-      atom.config.set('linter-stylelint.enableHtmlLinting', true);
-      waitsForPromise(() =>
-        atom.workspace.open(configStandardHtmlPath).then(editor => lint(editor)).then(messages => {
-          expect(messages.length).toBeGreaterThan(0);
-
-          // test only the first error
-          expect(messages[0].type).toBe('Error');
-          expect(messages[0].severity).toBe('error');
-          expect(messages[0].text).not.toBeDefined();
-          expect(messages[0].html).toBe(blockNoEmpty);
-          expect(messages[0].filePath).toBe(configStandardHtmlPath);
-          expect(messages[0].range).toEqual([[1, 7], [1, 9]]);
-        })
-      );
-    });
-
-    it('finds nothing wrong with a valid file', () => {
-      atom.config.set('linter-stylelint.enableHtmlLinting', true);
-      waitsForPromise(() =>
-        atom.workspace.open(goodHtml).then(editor => lint(editor)).then(messages => {
           expect(messages.length).toBe(0);
         })
       );
