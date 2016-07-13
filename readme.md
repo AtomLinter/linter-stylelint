@@ -11,15 +11,15 @@ an interface to [stylelint](https://github.com/stylelint/stylelint).
 apm install linter-stylelint
 ```
 
-linter-stylelint checks both `.css` and `.scss` files. (For `.scss` files, it
-automatically tells `stylelint` to use the right parser.)
+linter-stylelint runs `stylelint` against your CSS, SCSS, Less, PostCSS,
+and SugarSS files.
 
 ## Configuration
 
-You can pass configuration to `stylelint` in any of the following ways:
+You can pass a configuration to `stylelint` in any of the following ways:
 
--   Place a config file (`.stylelintrc` or `stylelint.config.js`) in your
-    project's root or upper directories.
+-   Place a configuration file (`.stylelintrc` or `stylelint.config.js`) in your
+    project's root folder or in any parent folder.
 
 -   Add a `stylelint` section in your `package.json`.
 
