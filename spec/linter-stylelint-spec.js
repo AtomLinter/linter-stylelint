@@ -158,22 +158,31 @@ describe('The stylelint provider for Linter', () => {
     );
   });
 
-  it('ignores files when files are specified in ignoreFiles', () => {
-    spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
+  describe('ignores files when files are specified in ignoreFiles and', () => {
+    it('shows a message when asked to', () => {
+      atom.config.set('linter-stylelint.showIgnored', true);
+      waitsForPromise(() =>
+        atom.workspace.open(ignorePath).then(editor => lint(editor)).then(messages => {
+          expect(messages.length).toBe(1);
 
-    waitsForPromise(() =>
-      atom.workspace.open(ignorePath).then(editor => lint(editor)).then(messages => {
-        expect(messages.length).toBe(1);
+          expect(messages[0].type).toBe('Warning');
+          expect(messages[0].severity).toBe('warning');
+          expect(messages[0].text).toBe('This file is ignored');
+          expect(messages[0].html).not.toBeDefined();
+          expect(messages[0].filePath).toBe(ignorePath);
+          expect(messages[0].range).not.toBeDefined();
+        })
+      );
+    });
 
-        expect(messages[0].type).toBe('Warning');
-        expect(messages[0].severity).toBe('warning');
-        expect(messages[0].text).not.toBeDefined();
-        expect(messages[0].html).toBe('This file is ignored');
-        expect(messages[0].filePath).toBe(ignorePath);
-        expect(messages[0].range).toEqual([[0, 0], [0, 4]]);
-        expect(atom.notifications.addError.calls.length).toBe(0);
-      })
-    );
+    it("doesn't show a message when not asked to", () => {
+      atom.config.set('linter-stylelint.showIgnored', false);
+      waitsForPromise(() =>
+        atom.workspace.open(ignorePath).then(editor => lint(editor)).then(messages => {
+          expect(messages.length).toBe(0);
+        })
+      );
+    });
   });
 
   it("doesn't persist settings across runs", () => {
