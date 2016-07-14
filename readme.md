@@ -11,15 +11,15 @@ an interface to [stylelint](https://github.com/stylelint/stylelint).
 apm install linter-stylelint
 ```
 
-linter-stylelint checks both `.css` and `.scss` files. (For `.scss` files, it
-automatically tells `stylelint` to use the right parser.)
+linter-stylelint runs `stylelint` against your CSS, SCSS, Less, PostCSS,
+and SugarSS files.
 
 ## Configuration
 
-You can pass configuration to `stylelint` in any of the following ways:
+You can pass a configuration to `stylelint` in any of the following ways:
 
--   Place a config file (`.stylelintrc` or `stylelint.config.js`) in your
-    project's root or upper directories.
+-   Place a configuration file (`.stylelintrc` or `stylelint.config.js`) in your
+    project's root folder or in any parent folder.
 
 -   Add a `stylelint` section in your `package.json`.
 
@@ -28,6 +28,16 @@ You can pass configuration to `stylelint` in any of the following ways:
 `.stylelintrc` is always prioritized. If you have checked `Use standard` in the
 settings and also have a `.stylelintrc` file, your `.stylelintrc` configuration
 will extend the preset, using [stylelint's extend functionality](http://stylelint.io/?/docs/user-guide/configuration.md).
+
+## Notes
+
+As of `stylelint` v7.0.0 the ability to lint embedded style code has been
+removed from core, replaced with the ability for generic processors to handle
+any file format. Currently one has yet to be written for pulling style code
+out of HTML, if you are interested in bringing this functionality back to
+`linter-stylelint`, check out [their documentation](https://github.com/stylelint/stylelint/blob/master/docs/developer-guide/processors.md)
+on how to write a processor to handle HTML, and any other files that contain
+style code!
 
 ## License
 

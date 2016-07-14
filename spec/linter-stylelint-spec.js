@@ -14,9 +14,6 @@ const invalidConfigPath = path.join(__dirname, 'fixtures', 'invalid-config', 'st
 const lessDir = path.join(__dirname, 'fixtures', 'less');
 const goodLess = path.join(lessDir, 'good.less');
 const configStandardLessPath = path.join(lessDir, 'stylelint-config-standard.less');
-const htmlDir = path.join(__dirname, 'fixtures', 'html');
-const goodHtml = path.join(htmlDir, 'good.html');
-const configStandardHtmlPath = path.join(htmlDir, 'stylelint-config-standard.html');
 const goodPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'styles.pcss');
 const issuesPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'issues.pcss');
 const goodSugarSS = path.join(__dirname, 'fixtures', 'sugarss', 'good.sss');
@@ -40,6 +37,7 @@ describe('The stylelint provider for Linter', () => {
   });
 
   it('bundles and works with stylelint-config-standard', () => {
+    atom.config.set('linter-stylelint.disableWhenNoConfig', false);
     waitsForPromise(() =>
       atom.workspace.open(configStandardPath).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toBeGreaterThan(0);
@@ -82,6 +80,7 @@ describe('The stylelint provider for Linter', () => {
   });
 
   it('shows CSS syntax errors with an invalid file', () => {
+    atom.config.set('linter-stylelint.disableWhenNoConfig', false);
     waitsForPromise(() =>
       atom.workspace.open(invalidPath).then(editor => lint(editor)).then(messages => {
         expect(messages.length).toBe(1);
@@ -161,25 +160,35 @@ describe('The stylelint provider for Linter', () => {
     );
   });
 
-  it('ignores files when files are specified in ignoreFiles', () => {
-    spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
+  describe('ignores files when files are specified in ignoreFiles and', () => {
+    it('shows a message when asked to', () => {
+      atom.config.set('linter-stylelint.showIgnored', true);
+      waitsForPromise(() =>
+        atom.workspace.open(ignorePath).then(editor => lint(editor)).then(messages => {
+          expect(messages.length).toBe(1);
 
-    waitsForPromise(() =>
-      atom.workspace.open(ignorePath).then(editor => lint(editor)).then(messages => {
-        expect(messages.length).toBe(1);
+          expect(messages[0].type).toBe('Warning');
+          expect(messages[0].severity).toBe('warning');
+          expect(messages[0].text).toBe('This file is ignored');
+          expect(messages[0].html).not.toBeDefined();
+          expect(messages[0].filePath).toBe(ignorePath);
+          expect(messages[0].range).not.toBeDefined();
+        })
+      );
+    });
 
-        expect(messages[0].type).toBe('Warning');
-        expect(messages[0].severity).toBe('warning');
-        expect(messages[0].text).not.toBeDefined();
-        expect(messages[0].html).toBe('This file is ignored');
-        expect(messages[0].filePath).toBe(ignorePath);
-        expect(messages[0].range).toEqual([[0, 0], [0, 4]]);
-        expect(atom.notifications.addError.calls.length).toBe(0);
-      })
-    );
+    it("doesn't show a message when not asked to", () => {
+      atom.config.set('linter-stylelint.showIgnored', false);
+      waitsForPromise(() =>
+        atom.workspace.open(ignorePath).then(editor => lint(editor)).then(messages => {
+          expect(messages.length).toBe(0);
+        })
+      );
+    });
   });
 
   it("doesn't persist settings across runs", () => {
+    atom.config.set('linter-stylelint.disableWhenNoConfig', false);
     waitsForPromise(() =>
       // The config for this folder breaks the block-no-empty rule
       atom.workspace.open(invalidRulePath).then(editor => lint(editor))
@@ -201,7 +210,10 @@ describe('The stylelint provider for Linter', () => {
   });
 
   describe('works with Less files and', () => {
-    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-less')));
+    beforeEach(() => {
+      atom.config.set('linter-stylelint.disableWhenNoConfig', false);
+      waitsForPromise(() => atom.packages.activatePackage('language-less'));
+    });
 
     it('works with stylelint-config-standard', () => {
       waitsForPromise(() =>
@@ -228,38 +240,11 @@ describe('The stylelint provider for Linter', () => {
     });
   });
 
-  describe('works with HTML files and', () => {
-    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-html')));
-
-    it('works with stylelint-config-standard', () => {
-      atom.config.set('linter-stylelint.enableHtmlLinting', true);
-      waitsForPromise(() =>
-        atom.workspace.open(configStandardHtmlPath).then(editor => lint(editor)).then(messages => {
-          expect(messages.length).toBeGreaterThan(0);
-
-          // test only the first error
-          expect(messages[0].type).toBe('Error');
-          expect(messages[0].severity).toBe('error');
-          expect(messages[0].text).not.toBeDefined();
-          expect(messages[0].html).toBe(blockNoEmpty);
-          expect(messages[0].filePath).toBe(configStandardHtmlPath);
-          expect(messages[0].range).toEqual([[1, 7], [1, 9]]);
-        })
-      );
-    });
-
-    it('finds nothing wrong with a valid file', () => {
-      atom.config.set('linter-stylelint.enableHtmlLinting', true);
-      waitsForPromise(() =>
-        atom.workspace.open(goodHtml).then(editor => lint(editor)).then(messages => {
-          expect(messages.length).toBe(0);
-        })
-      );
-    });
-  });
-
   describe('works with PostCSS files and', () => {
-    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-postcss')));
+    beforeEach(() => {
+      atom.config.set('linter-stylelint.disableWhenNoConfig', false);
+      waitsForPromise(() => atom.packages.activatePackage('language-postcss'));
+    });
 
     it('works with stylelint-config-standard', () => {
       waitsForPromise(() =>
@@ -287,7 +272,10 @@ describe('The stylelint provider for Linter', () => {
   });
 
   describe('works with SugarSS files and', () => {
-    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage('language-postcss')));
+    beforeEach(() => {
+      atom.config.set('linter-stylelint.disableWhenNoConfig', false);
+      waitsForPromise(() => atom.packages.activatePackage('language-postcss'));
+    });
 
     it('works with stylelint-config-standard', () => {
       const nlzMessage = 'Expected a leading zero (<a href="http://stylelint.io/user-guide/rules/number-leading-zero">number-leading-zero</a>)';

@@ -41,11 +41,10 @@
       "title": "Disable when no config file is found",
       "description": "Either .stylelintrc or stylelint.config.js",
       "type": "boolean",
-      "default": false
+      "default": true
     },
-    "enableHtmlLinting": {
-      "title": "Enable linting of styles within html",
-      "description": "Turn on linting of your style tags within html files.",
+    "showIgnored": {
+      "title": "Show message when a file is ignored",
       "type": "boolean",
       "default": false
     }
@@ -58,8 +57,8 @@
     "cosmiconfig": "^1.1.0",
     "escape-html": "^1.0.3",
     "lazy-req": "^1.1.0",
-    "stylelint": "6.9.0",
-    "stylelint-config-standard": "^10.0.0"
+    "stylelint": "7.0.1",
+    "stylelint-config-standard": "^11.0.0"
   },
   "devDependencies": {
     "eslint": "^2.9.0",
