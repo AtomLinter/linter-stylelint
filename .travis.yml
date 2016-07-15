@@ -1,23 +1,4 @@
-notifications:
-  email:
-    on_success: never
-    on_failure: change
-
-branches:
-  only:
-    - master
-
-script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
-
-git:
-  depth: 10
-
-sudo: false
-
-os:
-  - linux
-  - osx
-
+# Project specific config
 env:
   global:
     # Pre-install the required language file as package activation doesn't wait
@@ -27,6 +8,31 @@ env:
   matrix:
     - ATOM_CHANNEL=stable
     - ATOM_CHANNEL=beta
+
+os:
+  - linux
+  - osx
+
+# Installed for linting the project
+language: node_js
+node_js: "6"
+
+# Generic setup follows
+script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+branches:
+  only:
+    - master
+
+git:
+  depth: 10
+
+sudo: false
 
 addons:
   apt:
