@@ -1,5 +1,18 @@
 # Change Log
 
+## [v3.0.2](https://github.com/AtomLinter/linter-stylelint/tree/v3.0.2) (2016-07-20)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.0.1...v3.0.2)
+
+**Implemented enhancements:**
+
+- Update atom-linter to version 7.0.0 🚀 [\#243](https://github.com/AtomLinter/linter-stylelint/pull/243) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update stylelint to version 7.0.3 🚀 [\#241](https://github.com/AtomLinter/linter-stylelint/pull/241) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update CI Configurations [\#240](https://github.com/AtomLinter/linter-stylelint/pull/240) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Fixed bugs:**
+
+- Add default config with rules object for SugarSS [\#245](https://github.com/AtomLinter/linter-stylelint/pull/245) ([7rulnik](https://github.com/7rulnik))
+
 ## [v3.0.1](https://github.com/AtomLinter/linter-stylelint/tree/v3.0.1) (2016-07-14)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.0.0...v3.0.1)
 
