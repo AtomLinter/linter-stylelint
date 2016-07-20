@@ -68,12 +68,13 @@
   "eslintConfig": {
     "rules": {
       "comma-dangle": [
-        2,
+        "error",
         "never"
       ],
-      "global-require": 0,
+      "global-require": "off",
+      "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": [
-        2,
+        "error",
         {
           "ignore": [
             "atom"
