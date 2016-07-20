@@ -15,4 +15,4 @@ install:
   - ps: Install-Product node 6
 
 build_script:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/atom/ci/master/build-package.ps1'))
+  - ps: iex ((new-object net.webclient).DownloadString('https://github.com/Arcanemagus/ci/raw/atomlinter/build-package.ps1'))
