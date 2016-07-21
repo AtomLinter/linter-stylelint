@@ -61,19 +61,20 @@
     "stylelint-config-standard": "^11.0.0"
   },
   "devDependencies": {
-    "eslint": "^2.9.0",
-    "eslint-config-airbnb-base": "^3.0.0",
-    "eslint-plugin-import": "^1.7.0"
+    "eslint": "^3.1.1",
+    "eslint-config-airbnb-base": "^4.0.2",
+    "eslint-plugin-import": "^1.11.1"
   },
   "eslintConfig": {
     "rules": {
       "comma-dangle": [
-        2,
+        "error",
         "never"
       ],
-      "global-require": 0,
+      "global-require": "off",
+      "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": [
-        2,
+        "error",
         {
           "ignore": [
             "atom"

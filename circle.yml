@@ -4,16 +4,18 @@ dependencies:
     - sudo dpkg --install atom-amd64.deb || true
     - sudo apt-get update
     - sudo apt-get -f install
-    - apm install
     # Pre-install the required language file as package activation doesn't wait
     # for the installation to complete.
     - apm install language-postcss
 
 test:
   override:
+    - npm install
+    - npm run lint
+    - rm -Rf node_modules
     - atom -v
     - apm -v
-    - npm run lint
+    - apm install --production
     - apm test
 
 machine:
