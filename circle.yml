@@ -1,23 +1,14 @@
 dependencies:
   override:
-    - curl -L https://atom.io/download/deb -o atom-amd64.deb
-    - sudo dpkg --install atom-amd64.deb || true
-    - sudo apt-get update
-    - sudo apt-get -f install
-    # Pre-install the required language file as package activation doesn't wait
-    # for the installation to complete.
-    - apm install language-postcss
+    - echo "Managed in the script"
 
 test:
   override:
-    - npm install
-    - npm run lint
-    - rm -Rf node_modules
-    - atom -v
-    - apm -v
-    - apm install --production
-    - apm test
+    - curl -s https://raw.githubusercontent.com/Arcanemagus/ci/e7ccf0907488e853c2abc8f844f3ac784bc579be/build-package.sh | sh
 
 machine:
   node:
     version: 6
+  environment:
+    ATOM_LINT_WITH_BUNDLED_NODE: "false"
+    APM_TEST_PACKAGES: "language-postcss"
