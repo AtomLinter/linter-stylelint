@@ -4,6 +4,7 @@ env:
     # Pre-install the required language file as package activation doesn't wait
     # for the installation to complete.
     - APM_TEST_PACKAGES="language-postcss"
+    - ATOM_LINT_WITH_BUNDLED_NODE="false"
 
   matrix:
     - ATOM_CHANNEL=stable
@@ -18,7 +19,7 @@ language: node_js
 node_js: "6"
 
 # Generic setup follows
-script: 'curl -Ls https://github.com/Arcanemagus/ci/raw/atomlinter/build-package.sh | sh'
+script: 'curl -s https://raw.githubusercontent.com/Arcanemagus/ci/d0ca293e434549acaa9fcdf1d567fa2491544b53/build-package.sh | sh'
 
 notifications:
   email:
