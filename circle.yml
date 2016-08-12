@@ -1,3 +1,7 @@
+dependencies:
+  override:
+    - echo "Managed in the script"
+
 test:
   override:
     - curl -s https://raw.githubusercontent.com/Arcanemagus/ci/e7ccf0907488e853c2abc8f844f3ac784bc579be/build-package.sh | sh
