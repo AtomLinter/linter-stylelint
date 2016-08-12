@@ -21,7 +21,7 @@ node_js: "6"
 # Generic setup follows
 script: 'curl -s https://raw.githubusercontent.com/Arcanemagus/ci/e7ccf0907488e853c2abc8f844f3ac784bc579be/build-package.sh | sh'
 
-install: false
+install: true
 
 notifications:
   email:
