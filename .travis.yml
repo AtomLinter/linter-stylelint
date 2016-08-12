@@ -19,7 +19,7 @@ language: node_js
 node_js: "6"
 
 # Generic setup follows
-script: 'curl -s https://raw.githubusercontent.com/Arcanemagus/ci/d0ca293e434549acaa9fcdf1d567fa2491544b53/build-package.sh | sh'
+script: 'curl -s https://raw.githubusercontent.com/Arcanemagus/ci/e7ccf0907488e853c2abc8f844f3ac784bc579be/build-package.sh | sh'
 
 notifications:
   email:
