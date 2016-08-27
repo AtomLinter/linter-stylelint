@@ -1,24 +1,31 @@
-# Project specific config
+### Project specific config ###
+
+# Installed for linting the project
+language: node_js
+
+matrix:
+  include:
+    - os: linux
+      node_js: "6"
+      env: ATOM_CHANNEL=stable
+
+    - os: linux
+      node_js: "6"
+      env: ATOM_CHANNEL=beta
+
+    - os: osx
+      node_js: "6"
+      env: ATOM_CHANNEL=stable
+
 env:
   global:
     # Pre-install the required language file as package activation doesn't wait
     # for the installation to complete.
     - APM_TEST_PACKAGES="language-postcss"
+    - ATOM_LINT_WITH_BUNDLED_NODE="false"
 
-  matrix:
-    - ATOM_CHANNEL=stable
-    - ATOM_CHANNEL=beta
-
-os:
-  - linux
-  - osx
-
-# Installed for linting the project
-language: node_js
-node_js: "6"
-
-# Generic setup follows
-script: 'curl -Ls https://github.com/Arcanemagus/ci/raw/atomlinter/build-package.sh | sh'
+### Generic setup follows ###
+script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
 
 notifications:
   email:
