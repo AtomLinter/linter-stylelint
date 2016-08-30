@@ -1,5 +1,12 @@
 # Change Log
 
+## [v3.2.1](https://github.com/AtomLinter/linter-stylelint/tree/v3.2.1) (2016-08-30)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.2.0...v3.2.1)
+
+**Implemented enhancements:**
+
+- Add timing instrumentation [\#259](https://github.com/AtomLinter/linter-stylelint/pull/259) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v3.2.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.2.0) (2016-08-29)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.1.0...v3.2.0)
 
