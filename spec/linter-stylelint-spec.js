@@ -65,7 +65,7 @@ describe('The stylelint provider for Linter', () => {
         expect(messages[0].severity).toBe('warning');
         expect(messages[0].text).not.toBeDefined();
         expect(messages[0].html).toBe(blockNoEmpty);
-        expect(messages[0].filePath).toMatch(/.+warn\.css$/);
+        expect(messages[0].filePath).toBe(warn);
         expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
       })
     );
