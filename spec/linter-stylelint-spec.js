@@ -39,7 +39,7 @@ describe('The stylelint provider for Linter', () => {
   it('bundles and works with stylelint-config-standard', () => {
     atom.config.set('linter-stylelint.disableWhenNoConfig', false);
     waitsForPromise(() =>
-      atom.workspace.open(configStandardPath).then(editor => lint(editor)).then(messages => {
+      atom.workspace.open(configStandardPath).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBeGreaterThan(0);
 
         // test only the first error
@@ -57,7 +57,7 @@ describe('The stylelint provider for Linter', () => {
     atom.config.set('linter-stylelint.useStandard', false);
 
     waitsForPromise(() =>
-      atom.workspace.open(warn).then(editor => lint(editor)).then(messages => {
+      atom.workspace.open(warn).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBeGreaterThan(0);
 
         // test only the first error
@@ -73,7 +73,7 @@ describe('The stylelint provider for Linter', () => {
 
   it('finds nothing wrong with a valid file', () => {
     waitsForPromise(() =>
-      atom.workspace.open(good).then(editor => lint(editor)).then(messages => {
+      atom.workspace.open(good).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBe(0);
       })
     );
@@ -82,7 +82,7 @@ describe('The stylelint provider for Linter', () => {
   it('shows CSS syntax errors with an invalid file', () => {
     atom.config.set('linter-stylelint.disableWhenNoConfig', false);
     waitsForPromise(() =>
-      atom.workspace.open(invalidPath).then(editor => lint(editor)).then(messages => {
+      atom.workspace.open(invalidPath).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBe(1);
 
         expect(messages[0].type).toBe('Error');
@@ -99,7 +99,7 @@ describe('The stylelint provider for Linter', () => {
     const text = 'Unexpected option value "foo" for rule "block-no-empty"';
     atom.config.set('linter-stylelint.useStandard', false);
     waitsForPromise(() =>
-      atom.workspace.open(invalidRulePath).then(editor => lint(editor)).then(messages => {
+      atom.workspace.open(invalidRulePath).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBe(1);
 
         expect(messages[0].type).toBe('Error');
@@ -118,7 +118,7 @@ describe('The stylelint provider for Linter', () => {
     const addError = atom.notifications.addError;
 
     waitsForPromise(() =>
-      atom.workspace.open(invalidExtendsPath).then(editor => lint(editor)).then(messages => {
+      atom.workspace.open(invalidExtendsPath).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBe(0);
 
         const args = addError.mostRecentCall.args;
@@ -136,7 +136,7 @@ describe('The stylelint provider for Linter', () => {
     const addError = atom.notifications.addError;
 
     waitsForPromise(() =>
-      atom.workspace.open(invalidConfigPath).then(editor => lint(editor)).then(messages => {
+      atom.workspace.open(invalidConfigPath).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBe(0);
 
         const args = addError.mostRecentCall.args;
@@ -153,7 +153,7 @@ describe('The stylelint provider for Linter', () => {
     spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
 
     waitsForPromise(() =>
-      atom.workspace.open(configStandardPath).then(editor => lint(editor)).then(messages => {
+      atom.workspace.open(configStandardPath).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBe(0);
         expect(atom.notifications.addError.calls.length).toBe(0);
       })
@@ -164,7 +164,7 @@ describe('The stylelint provider for Linter', () => {
     it('shows a message when asked to', () => {
       atom.config.set('linter-stylelint.showIgnored', true);
       waitsForPromise(() =>
-        atom.workspace.open(ignorePath).then(editor => lint(editor)).then(messages => {
+        atom.workspace.open(ignorePath).then(editor => lint(editor)).then((messages) => {
           expect(messages.length).toBe(1);
 
           expect(messages[0].type).toBe('Warning');
@@ -180,7 +180,7 @@ describe('The stylelint provider for Linter', () => {
     it("doesn't show a message when not asked to", () => {
       atom.config.set('linter-stylelint.showIgnored', false);
       waitsForPromise(() =>
-        atom.workspace.open(ignorePath).then(editor => lint(editor)).then(messages => {
+        atom.workspace.open(ignorePath).then(editor => lint(editor)).then((messages) => {
           expect(messages.length).toBe(0);
         })
       );
@@ -195,7 +195,7 @@ describe('The stylelint provider for Linter', () => {
     );
     waitsForPromise(() =>
       // While this file uses that rule
-      atom.workspace.open(configStandardPath).then(editor => lint(editor)).then(messages => {
+      atom.workspace.open(configStandardPath).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBeGreaterThan(0);
 
         // test only the first error
@@ -217,23 +217,25 @@ describe('The stylelint provider for Linter', () => {
 
     it('works with stylelint-config-standard', () => {
       waitsForPromise(() =>
-        atom.workspace.open(configStandardLessPath).then(editor => lint(editor)).then(messages => {
-          expect(messages.length).toBeGreaterThan(0);
+        atom.workspace.open(configStandardLessPath).then(editor => lint(editor))
+          .then((messages) => {
+            expect(messages.length).toBeGreaterThan(0);
 
-          // test only the first error
-          expect(messages[0].type).toBe('Error');
-          expect(messages[0].severity).toBe('error');
-          expect(messages[0].text).not.toBeDefined();
-          expect(messages[0].html).toBe(blockNoEmpty);
-          expect(messages[0].filePath).toBe(configStandardLessPath);
-          expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
-        })
+            // test only the first error
+            expect(messages[0].type).toBe('Error');
+            expect(messages[0].severity).toBe('error');
+            expect(messages[0].text).not.toBeDefined();
+            expect(messages[0].html).toBe(blockNoEmpty);
+            expect(messages[0].filePath).toBe(configStandardLessPath);
+            expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
+          }
+        )
       );
     });
 
     it('finds nothing wrong with a valid file', () => {
       waitsForPromise(() =>
-        atom.workspace.open(goodLess).then(editor => lint(editor)).then(messages => {
+        atom.workspace.open(goodLess).then(editor => lint(editor)).then((messages) => {
           expect(messages.length).toBe(0);
         })
       );
@@ -248,7 +250,7 @@ describe('The stylelint provider for Linter', () => {
 
     it('works with stylelint-config-standard', () => {
       waitsForPromise(() =>
-        atom.workspace.open(issuesPostCSS).then(editor => lint(editor)).then(messages => {
+        atom.workspace.open(issuesPostCSS).then(editor => lint(editor)).then((messages) => {
           expect(messages.length).toBeGreaterThan(0);
 
           // test only the first error
@@ -264,7 +266,7 @@ describe('The stylelint provider for Linter', () => {
 
     it('finds nothing wrong with a valid file', () => {
       waitsForPromise(() =>
-        atom.workspace.open(goodPostCSS).then(editor => lint(editor)).then(messages => {
+        atom.workspace.open(goodPostCSS).then(editor => lint(editor)).then((messages) => {
           expect(messages.length).toBe(0);
         })
       );
@@ -280,7 +282,7 @@ describe('The stylelint provider for Linter', () => {
     it('works with stylelint-config-standard', () => {
       const nlzMessage = 'Expected a leading zero (<a href="http://stylelint.io/user-guide/rules/number-leading-zero">number-leading-zero</a>)';
       waitsForPromise(() =>
-        atom.workspace.open(badSugarSS).then(editor => lint(editor)).then(messages => {
+        atom.workspace.open(badSugarSS).then(editor => lint(editor)).then((messages) => {
           expect(messages[0].type).toBe('Error');
           expect(messages[0].severity).toBe('error');
           expect(messages[0].text).not.toBeDefined();
@@ -293,7 +295,7 @@ describe('The stylelint provider for Linter', () => {
 
     it('finds nothing wrong with a valid file', () => {
       waitsForPromise(() =>
-        atom.workspace.open(goodSugarSS).then(editor => lint(editor)).then(messages => {
+        atom.workspace.open(goodSugarSS).then(editor => lint(editor)).then((messages) => {
           expect(messages.length).toBe(0);
         })
       );
