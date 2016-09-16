@@ -4,13 +4,11 @@ test:
 
 dependencies:
   override:
+    # If nothing is put here, CircleCI will run `npm install` using the system Node.js
     - echo "Managed in the script"
 
 machine:
-  node:
-    version: 6
   environment:
-    ATOM_LINT_WITH_BUNDLED_NODE: "false"
     # Pre-install the required language file as package activation doesn't wait
     # for the installation to complete.
     APM_TEST_PACKAGES: "language-postcss"
