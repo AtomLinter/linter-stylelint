@@ -1,5 +1,19 @@
 # Change Log
 
+## [v3.2.2](https://github.com/AtomLinter/linter-stylelint/tree/v3.2.2) (2016-09-19)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.2.1...v3.2.2)
+
+**Implemented enhancements:**
+
+- Update the CI configuration [\#268](https://github.com/AtomLinter/linter-stylelint/pull/268) ([Arcanemagus](https://github.com/Arcanemagus))
+- eslint-config-airbnb-base@7.1.0 breaks build 🚨 [\#267](https://github.com/AtomLinter/linter-stylelint/pull/267) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update eslint-config-airbnb-base to version 7.0.0 🚀 [\#262](https://github.com/AtomLinter/linter-stylelint/pull/262) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update eslint-config-airbnb-base to version 6.0.0 🚀 [\#261](https://github.com/AtomLinter/linter-stylelint/pull/261) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
+**Fixed bugs:**
+
+- Add table@3.7.9 dependency [\#270](https://github.com/AtomLinter/linter-stylelint/pull/270) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v3.2.1](https://github.com/AtomLinter/linter-stylelint/tree/v3.2.1) (2016-08-30)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.2.0...v3.2.1)
 
