@@ -1,6 +1,6 @@
-test:
-  override:
-    - curl -s https://raw.githubusercontent.com/Arcanemagus/ci/atomlinter/build-package.sh | sh
+# test:
+#   override:
+#     - curl -s https://raw.githubusercontent.com/Arcanemagus/ci/atomlinter/build-package.sh | sh
 
 dependencies:
   override:
