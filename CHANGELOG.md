@@ -1,5 +1,19 @@
 # Change Log
 
+## [v3.3.1](https://github.com/AtomLinter/linter-stylelint/tree/v3.3.1) (2016-09-20)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.3.0...v3.3.1)
+
+**Fixed bugs:**
+
+- about configBasedir [\#263](https://github.com/AtomLinter/linter-stylelint/issues/263)
+- Fix configBaseDir [\#275](https://github.com/AtomLinter/linter-stylelint/pull/275) ([Arcanemagus](https://github.com/Arcanemagus))
+- End Lint measure properly [\#274](https://github.com/AtomLinter/linter-stylelint/pull/274) ([Arcanemagus](https://github.com/Arcanemagus))
+- Prevent race condition [\#273](https://github.com/AtomLinter/linter-stylelint/pull/273) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Closed issues:**
+
+- Doesn't work with some ignore options [\#252](https://github.com/AtomLinter/linter-stylelint/issues/252)
+
 ## [v3.3.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.3.0) (2016-09-20)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.2.2...v3.3.0)
 
