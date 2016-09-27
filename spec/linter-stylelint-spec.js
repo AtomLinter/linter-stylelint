@@ -22,7 +22,7 @@ const badSugarSS = path.join(__dirname, 'fixtures', 'sugarss', 'bad.sss');
 const blockNoEmpty = 'Unexpected empty block (<a href="http://stylelint.io/user-guide/rules/block-no-empty">block-no-empty</a>)';
 
 describe('The stylelint provider for Linter', () => {
-  const lint = require(path.join('..', 'lib', 'index.js')).provideLinter().lint;
+  const lint = require('../lib/index.js').provideLinter().lint;
 
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
