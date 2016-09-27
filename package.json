@@ -62,9 +62,9 @@
     "table": "3.7.9"
   },
   "devDependencies": {
-    "eslint": "^3.5.0",
+    "eslint": "^3.6.0",
     "eslint-config-airbnb-base": "^8.0.0",
-    "eslint-plugin-import": "^1.14.0"
+    "eslint-plugin-import": "^1.16.0"
   },
   "eslintConfig": {
     "rules": {
