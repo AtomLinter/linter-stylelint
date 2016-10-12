@@ -288,7 +288,7 @@ describe('The stylelint provider for Linter', () => {
           expect(messages[0].text).not.toBeDefined();
           expect(messages[0].html).toBe(nlzMessage);
           expect(messages[0].filePath).toBe(badSugarSS);
-          expect(messages[0].range).toEqual([[1, 37], [1, 40]]);
+          expect(messages[0].range).toEqual([[1, 38], [1, 40]]);
         })
       );
     });
