@@ -1,5 +1,19 @@
 # Change Log
 
+## [v3.4.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.4.0) (2016-10-12)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.3.1...v3.4.0)
+
+**Implemented enhancements:**
+
+- Update stylelint to version 7.4.2 🚀 [\#285](https://github.com/AtomLinter/linter-stylelint/pull/285) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update eslint-config-airbnb-base to version 8.0.0 🚀 [\#278](https://github.com/AtomLinter/linter-stylelint/pull/278) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
+**Fixed bugs:**
+
+- .stylelintrc.yaml format not supported [\#288](https://github.com/AtomLinter/linter-stylelint/issues/288)
+- .stylelintignore is not respected [\#251](https://github.com/AtomLinter/linter-stylelint/issues/251)
+- Update stylelint to version 7.4.2 🚀 [\#285](https://github.com/AtomLinter/linter-stylelint/pull/285) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
 ## [v3.3.1](https://github.com/AtomLinter/linter-stylelint/tree/v3.3.1) (2016-09-20)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.3.0...v3.3.1)
 
