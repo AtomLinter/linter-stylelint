@@ -123,7 +123,7 @@ describe('The stylelint provider for Linter', () => {
 
         const args = addError.mostRecentCall.args;
         expect(addError.calls.length).toBe(1);
-        expect(args[0]).toBe('Unable to run stylelint');
+        expect(args[0]).toBe('Unable to parse stylelint configuration');
         expect(args[1].detail).toContain('Could not find "some-module-that-will-never-exist".');
         expect(args[1].dismissable).toBe(true);
       })
@@ -288,7 +288,7 @@ describe('The stylelint provider for Linter', () => {
           expect(messages[0].text).not.toBeDefined();
           expect(messages[0].html).toBe(nlzMessage);
           expect(messages[0].filePath).toBe(badSugarSS);
-          expect(messages[0].range).toEqual([[1, 37], [1, 40]]);
+          expect(messages[0].range).toEqual([[1, 38], [1, 40]]);
         })
       );
     });
