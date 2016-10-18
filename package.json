@@ -58,7 +58,7 @@
     "lazy-req": "^1.1.0",
     "stylelint": "7.4.2",
     "stylelint-config-standard": "^13.0.0",
-    "table": "3.7.9"
+    "table": "3.8.3"
   },
   "devDependencies": {
     "eslint": "^3.6.0",
