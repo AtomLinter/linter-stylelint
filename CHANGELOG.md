@@ -1,5 +1,13 @@
 # Change Log
 
+## [v3.6.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.6.0) (2016-11-21)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.5.0...v3.6.0)
+
+**Implemented enhancements:**
+
+- Bump `stylelint` to 7.6.0 [\#303](https://github.com/AtomLinter/linter-stylelint/issues/303)
+- Bumping stylelint to 7.6.0 and stylelint-config-standard to 15.0.0 [\#304](https://github.com/AtomLinter/linter-stylelint/pull/304) ([AntonNiklasson](https://github.com/AntonNiklasson))
+
 ## [v3.5.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.5.0) (2016-10-24)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.4.1...v3.5.0)
 
