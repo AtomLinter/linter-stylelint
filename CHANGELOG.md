@@ -1,5 +1,12 @@
 # Change Log
 
+## [v3.7.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.7.0) (2017-01-06)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.6.0...v3.7.0)
+
+**Implemented enhancements:**
+
+- Update dependencies to enable Greenkeeper 🌴 [\#305](https://github.com/AtomLinter/linter-stylelint/pull/305) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+
 ## [v3.6.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.6.0) (2016-11-21)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.5.0...v3.6.0)
 
