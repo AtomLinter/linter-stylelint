@@ -71,7 +71,6 @@
         "never"
       ],
       "global-require": "off",
-      "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": [
         "error",
         {
@@ -86,7 +85,6 @@
       "atom": true
     },
     "env": {
-      "es6": true,
       "node": true,
       "browser": true
     }
