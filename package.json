@@ -55,7 +55,7 @@
     "atom-linter": "^8.0.0",
     "atom-package-deps": "^4.0.1",
     "escape-html": "^1.0.3",
-    "lazy-req": "^1.1.0",
+    "lazy-req": "^2.0.0",
     "stylelint": "7.7.1",
     "stylelint-config-standard": "^15.0.0"
   },
