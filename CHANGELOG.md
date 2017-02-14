@@ -1,6 +1,14 @@
 # Change Log
 
-## [v3.7.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.7.0) (2017-01-06)
+## [v3.8.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.8.0) (2017-02-07)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.7.0...v3.8.0)
+
+**Implemented enhancements:**
+
+- Updated stylelint and config-standard to latest [\#316](https://github.com/AtomLinter/linter-stylelint/pull/316) ([SpainTrain](https://github.com/SpainTrain))
+- Update lazy-req to the latest version 🚀 [\#308](https://github.com/AtomLinter/linter-stylelint/pull/308) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+
+## [v3.7.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.7.0) (2017-01-07)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.6.0...v3.7.0)
 
 **Implemented enhancements:**
