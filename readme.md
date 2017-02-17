@@ -12,7 +12,7 @@ apm install linter-stylelint
 ```
 
 linter-stylelint runs `stylelint` against your CSS, SCSS, Less, PostCSS,
-and SugarSS files.
+SugarSS, and [Styled Components](https://github.com/styled-components/styled-components#linting) files.
 
 ## Configuration
 
