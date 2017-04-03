@@ -1,6 +1,6 @@
 {
   "name": "linter-stylelint",
-  "version": "3.9.0",
+  "version": "3.10.0",
   "private": true,
   "description": "A plugin for Atom Linter providing an interface to stylelint.",
   "main": "lib/index.js",
