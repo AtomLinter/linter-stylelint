@@ -1,22 +1,16 @@
 ### Project specific config ###
 language: generic
-
-matrix:
-  include:
-    - os: linux
-      env: ATOM_CHANNEL=stable
-
-    - os: linux
-      env: ATOM_CHANNEL=beta
-
-    - os: osx
-      env: ATOM_CHANNEL=stable
+os: linux
 
 env:
   global:
     # Pre-install the required language file as package activation doesn't wait
     # for the installation to complete.
     - APM_TEST_PACKAGES="language-postcss"
+
+  matrix:
+    - ATOM_CHANNEL=stable
+    # - ATOM_CHANNEL=beta
 
 ### Generic setup follows ###
 script:
