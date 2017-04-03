@@ -10,7 +10,7 @@ env:
 
   matrix:
     - ATOM_CHANNEL=stable
-    - ATOM_CHANNEL=beta
+    # - ATOM_CHANNEL=beta
 
 ### Generic setup follows ###
 script:
