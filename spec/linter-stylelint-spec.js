@@ -18,6 +18,8 @@ const goodPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'styles.pcss');
 const issuesPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'issues.pcss');
 const goodSugarSS = path.join(__dirname, 'fixtures', 'sugarss', 'good.sss');
 const badSugarSS = path.join(__dirname, 'fixtures', 'sugarss', 'bad.sss');
+const goodStyledComponents = path.join(__dirname, 'fixtures', 'styled-components', 'good.js');
+const badStyledComponents = path.join(__dirname, 'fixtures', 'styled-components', 'bad.js');
 
 const blockNoEmpty = 'Unexpected empty block (<a href="http://stylelint.io/user-guide/rules/block-no-empty">block-no-empty</a>)';
 
@@ -296,6 +298,35 @@ describe('The stylelint provider for Linter', () => {
     it('finds nothing wrong with a valid file', () => {
       waitsForPromise(() =>
         atom.workspace.open(goodSugarSS).then(editor => lint(editor)).then((messages) => {
+          expect(messages.length).toBe(0);
+        })
+      );
+    });
+  });
+
+  describe('works with JS files (language-babel) with Styled Components and', () => {
+    beforeEach(() => {
+      atom.config.set('linter-stylelint.disableWhenNoConfig', false);
+      waitsForPromise(() => atom.packages.activatePackage('language-babel'));
+    });
+
+    it('correctly detects an error present in a file', () => {
+      const ntscMessage = 'Expected a trailing semicolon (<a href="http://stylelint.io/user-guide/rules/declaration-block-trailing-semicolon">declaration-block-trailing-semicolon</a>)';
+      waitsForPromise(() =>
+        atom.workspace.open(badStyledComponents).then(editor => lint(editor)).then((messages) => {
+          expect(messages[0].type).toBe('Error');
+          expect(messages[0].severity).toBe('error');
+          expect(messages[0].text).not.toBeDefined();
+          expect(messages[0].html).toBe(ntscMessage);
+          expect(messages[0].filePath).toBe(badStyledComponents);
+          expect(messages[0].range).toEqual([[5, 12], [5, 13]]);
+        })
+      );
+    });
+
+    it('finds nothing wrong with a valid file', () => {
+      waitsForPromise(() =>
+        atom.workspace.open(goodStyledComponents).then(editor => lint(editor)).then((messages) => {
           expect(messages.length).toBe(0);
         })
       );

@@ -47,6 +47,33 @@
       "title": "Show message when a file is ignored",
       "type": "boolean",
       "default": false
+    },
+    "grammarScopes": {
+      "title": "Enable for grammars",
+      "type": "array",
+      "default": [
+        "source.css",
+        "source.scss",
+        "source.css.scss",
+        "source.less",
+        "source.css.less",
+        "source.css.postcss",
+        "source.css.postcss.sugarss",
+        "source.inside-js.css.styled"
+      ],
+      "items": {
+        "type": "string",
+        "enum": [
+          "source.css",
+          "source.scss",
+          "source.css.scss",
+          "source.less",
+          "source.css.less",
+          "source.css.postcss",
+          "source.css.postcss.sugarss",
+          "source.inside-js.css.styled"
+        ]
+      }
     }
   },
   "homepage": "https://github.com/AtomLinter/linter-stylelint#readme",
@@ -62,7 +89,8 @@
   "devDependencies": {
     "eslint": "^3.12.0",
     "eslint-config-airbnb-base": "^11.0.0",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-plugin-import": "^2.2.0",
+    "stylelint-processor-styled-components": "^0.0.4"
   },
   "eslintConfig": {
     "rules": {

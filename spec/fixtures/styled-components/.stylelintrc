@@ -1,0 +1,7 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "rules": {
+    "declaration-block-trailing-semicolon": "always"
+  },
+  "syntax": "scss"
+}
