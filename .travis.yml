@@ -10,7 +10,7 @@ env:
 
   matrix:
     - ATOM_CHANNEL=stable
-    # - ATOM_CHANNEL=beta
+    - ATOM_CHANNEL=beta
 
 ### Generic setup follows ###
 script:
@@ -30,12 +30,16 @@ branches:
 git:
   depth: 10
 
+dist: trusty
+
 sudo: false
 
 addons:
   apt:
+    sources:
+    - ubuntu-toolchain-r-test
     packages:
-    - build-essential
-    - git
-    - libgnome-keyring-dev
+    - g++-6
     - fakeroot
+    - git
+    - libsecret-1-dev
