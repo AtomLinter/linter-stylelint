@@ -20,6 +20,8 @@ const goodPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'styles.pcss');
 const issuesPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'issues.pcss');
 const goodSugarSS = path.join(__dirname, 'fixtures', 'sugarss', 'good.sss');
 const badSugarSS = path.join(__dirname, 'fixtures', 'sugarss', 'bad.sss');
+const toFixCSS = path.join(__dirname, 'fixtures', 'attemptFix', 'broken.css');
+const doneFixCSS = path.join(__dirname, 'fixtures', 'attemptFix', 'fixed.css');
 
 const blockNoEmpty = 'Unexpected empty block (<a href="http://stylelint.io/user-guide/rules/block-no-empty">block-no-empty</a>)';
 
@@ -261,6 +263,29 @@ describe('The stylelint provider for Linter', () => {
       const editor = await atom.workspace.open(goodSugarSS);
       const messages = await lint(editor);
       expect(messages.length).toBe(0);
+    });
+  });
+
+  describe('will autofix what errors it can', () => {
+    it('saves fixed css if attemptFix is true', async () => {
+      atom.config.set('linter-stylelint.attemptFix', true);
+      atom.config.set('linter-stylelint.disableWhenNoConfig', false);
+      const fixedEditor = await atom.workspace.open(doneFixCSS);
+      const fixedCSS = fixedEditor.getText();
+      const editor = await atom.workspace.open(toFixCSS);
+      const messages = await lint(editor);
+      const result = editor.getText();
+      expect(result).toBe(fixedCSS);
+    });
+
+    it('does not saved fixed css if attemptFix is false', async () => {
+      atom.config.set('linter-stylelint.attemptFix', false);
+      atom.config.set('linter-stylelint.disableWhenNoConfig', false);
+      const editor = await atom.workspace.open(toFixCSS);
+      const brokenCSS = editor.getText();
+      const _ = await lint(editor);
+      const result = editor.getText();
+      expect(result).toBe(brokenCSS);
     });
   });
 });
