@@ -273,7 +273,7 @@ describe('The stylelint provider for Linter', () => {
       const fixedEditor = await atom.workspace.open(doneFixCSS);
       const fixedCSS = fixedEditor.getText();
       const editor = await atom.workspace.open(toFixCSS);
-      const messages = await lint(editor);
+      await lint(editor);
       const result = editor.getText();
       expect(result).toBe(fixedCSS);
     });
@@ -283,7 +283,7 @@ describe('The stylelint provider for Linter', () => {
       atom.config.set('linter-stylelint.disableWhenNoConfig', false);
       const editor = await atom.workspace.open(toFixCSS);
       const brokenCSS = editor.getText();
-      const _ = await lint(editor);
+      await lint(editor);
       const result = editor.getText();
       expect(result).toBe(brokenCSS);
     });
