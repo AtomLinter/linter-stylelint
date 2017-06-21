@@ -20,8 +20,6 @@ const goodPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'styles.pcss');
 const issuesPostCSS = path.join(__dirname, 'fixtures', 'postcss', 'issues.pcss');
 const goodSugarSS = path.join(__dirname, 'fixtures', 'sugarss', 'good.sss');
 const badSugarSS = path.join(__dirname, 'fixtures', 'sugarss', 'bad.sss');
-const toFixCSS = path.join(__dirname, 'fixtures', 'attemptFix', 'broken.css');
-const doneFixCSS = path.join(__dirname, 'fixtures', 'attemptFix', 'fixed.css');
 
 const blockNoEmpty = 'Unexpected empty block (<a href="http://stylelint.io/user-guide/rules/block-no-empty">block-no-empty</a>)';
 
@@ -267,25 +265,42 @@ describe('The stylelint provider for Linter', () => {
   });
 
   describe('will autofix what errors it can', () => {
+    const toFixCSS = `
+.FixMe
+{
+
+
+  height: 0.5em;
+    color: #EEE;
+}
+`;
+
+    const doneFixCSS = `
+.FixMe
+{
+  height: 0.5em;
+  color: #eee;
+}
+`;
+
     it('applies fixed css if attemptFix is true', async () => {
       atom.config.set('linter-stylelint.attemptFix', true);
       atom.config.set('linter-stylelint.disableWhenNoConfig', false);
-      const fixedEditor = await atom.workspace.open(doneFixCSS);
-      const fixedCSS = fixedEditor.getText();
-      const editor = await atom.workspace.open(toFixCSS);
+      const editor = await atom.workspace.open(configStandardPath);
+      editor.setText(toFixCSS);
       await lint(editor);
       const result = editor.getText();
-      expect(result).toBe(fixedCSS);
+      expect(result).toBe(doneFixCSS);
     });
 
     it('does not attempt fixes if attemptFix is false', async () => {
       atom.config.set('linter-stylelint.attemptFix', false);
       atom.config.set('linter-stylelint.disableWhenNoConfig', false);
-      const editor = await atom.workspace.open(toFixCSS);
-      const brokenCSS = editor.getText();
+      const editor = await atom.workspace.open(configStandardPath);
+      editor.setText(toFixCSS);
       await lint(editor);
       const result = editor.getText();
-      expect(result).toBe(brokenCSS);
+      expect(result).toBe(toFixCSS);
     });
   });
 });
