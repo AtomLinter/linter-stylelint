@@ -267,7 +267,7 @@ describe('The stylelint provider for Linter', () => {
   });
 
   describe('will autofix what errors it can', () => {
-    it('saves fixed css if attemptFix is true', async () => {
+    it('applies fixed css if attemptFix is true', async () => {
       atom.config.set('linter-stylelint.attemptFix', true);
       atom.config.set('linter-stylelint.disableWhenNoConfig', false);
       const fixedEditor = await atom.workspace.open(doneFixCSS);
@@ -278,7 +278,7 @@ describe('The stylelint provider for Linter', () => {
       expect(result).toBe(fixedCSS);
     });
 
-    it('does not saved fixed css if attemptFix is false', async () => {
+    it('does not attempt fixes if attemptFix is false', async () => {
       atom.config.set('linter-stylelint.attemptFix', false);
       atom.config.set('linter-stylelint.disableWhenNoConfig', false);
       const editor = await atom.workspace.open(toFixCSS);
