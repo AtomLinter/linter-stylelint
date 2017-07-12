@@ -1,5 +1,12 @@
 # Change Log
 
+## [v3.12.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.12.0) (2017-07-12)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.11.0...v3.12.0)
+
+**Implemented enhancements:**
+
+- Update stylelint to version 7.13.0 🚀 [\#350](https://github.com/AtomLinter/linter-stylelint/pull/350) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
 ## [v3.11.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.11.0) (2017-07-10)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.10.0...v3.11.0)
 
