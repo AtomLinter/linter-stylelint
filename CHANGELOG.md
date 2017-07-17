@@ -1,5 +1,18 @@
 # Change Log
 
+## [v4.0.0](https://github.com/AtomLinter/linter-stylelint/tree/v4.0.0) (2017-07-17)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.12.0...v4.0.0)
+
+**Implemented enhancements:**
+
+- Migrate to Linter v2 API [\#356](https://github.com/AtomLinter/linter-stylelint/pull/356) ([Arcanemagus](https://github.com/Arcanemagus))
+- Stop relying on useStandard in all the specs [\#355](https://github.com/AtomLinter/linter-stylelint/pull/355) ([Arcanemagus](https://github.com/Arcanemagus))
+- Update stylelint to version 8.0.0 🚀 [\#352](https://github.com/AtomLinter/linter-stylelint/pull/352) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
+**Fixed bugs:**
+
+- Stop merging stylelint-config-standard when enabled [\#354](https://github.com/AtomLinter/linter-stylelint/pull/354) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v3.12.0](https://github.com/AtomLinter/linter-stylelint/tree/v3.12.0) (2017-07-12)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.11.0...v3.12.0)
 
