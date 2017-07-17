@@ -143,6 +143,10 @@ describe('The stylelint provider for Linter', () => {
   });
 
   describe('ignores files when files are specified in ignoreFiles and', () => {
+    beforeEach(() => {
+      atom.config.set('linter-stylelint.useStandard', true);
+    });
+
     it('shows a message when asked to', async () => {
       atom.config.set('linter-stylelint.showIgnored', true);
       const editor = await atom.workspace.open(ignorePath);
@@ -166,6 +170,7 @@ describe('The stylelint provider for Linter', () => {
   });
 
   it("doesn't persist settings across runs", async () => {
+    atom.config.set('linter-stylelint.useStandard', true);
     atom.config.set('linter-stylelint.disableWhenNoConfig', false);
     // The config for this folder breaks the block-no-empty rule
     const invalidEditor = await atom.workspace.open(invalidRulePath);
@@ -187,6 +192,7 @@ describe('The stylelint provider for Linter', () => {
 
   describe('works with Less files and', () => {
     beforeEach(async () => {
+      atom.config.set('linter-stylelint.useStandard', true);
       atom.config.set('linter-stylelint.disableWhenNoConfig', false);
       await atom.packages.activatePackage('language-less');
     });
@@ -214,6 +220,7 @@ describe('The stylelint provider for Linter', () => {
 
   describe('works with PostCSS files and', () => {
     beforeEach(async () => {
+      atom.config.set('linter-stylelint.useStandard', true);
       atom.config.set('linter-stylelint.disableWhenNoConfig', false);
       await atom.packages.activatePackage('language-postcss');
     });
@@ -241,6 +248,7 @@ describe('The stylelint provider for Linter', () => {
 
   describe('works with SugarSS files and', () => {
     beforeEach(async () => {
+      atom.config.set('linter-stylelint.useStandard', true);
       atom.config.set('linter-stylelint.disableWhenNoConfig', false);
       await atom.packages.activatePackage('language-postcss');
     });
