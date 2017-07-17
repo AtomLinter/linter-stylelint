@@ -9,7 +9,8 @@ const configStandardPath = path.join(fixtures, 'bad', 'stylelint-config-standard
 const warningPath = path.join(fixtures, 'warn', 'warn.css');
 const invalidRulePath = path.join(fixtures, 'invalid-rule', 'styles.css');
 
-const blockNoEmpty = 'Unexpected empty block (<a href="http://stylelint.io/user-guide/rules/block-no-empty">block-no-empty</a>)';
+const blockNoEmpty = 'Unexpected empty block (block-no-empty)';
+const blockNoEmptyUrl = 'http://stylelint.io/user-guide/rules/block-no-empty';
 
 describe('The stylelint provider for Linter', () => {
   const lint = require('../lib/index.js').provideLinter().lint;
@@ -28,12 +29,11 @@ describe('The stylelint provider for Linter', () => {
     expect(messages.length).toBeGreaterThan(0);
 
     // test only the first error
-    expect(messages[0].type).toBe('Error');
     expect(messages[0].severity).toBe('error');
-    expect(messages[0].text).not.toBeDefined();
-    expect(messages[0].html).toBe(blockNoEmpty);
-    expect(messages[0].filePath).toBe(configStandardPath);
-    expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
+    expect(messages[0].excerpt).toBe(blockNoEmpty);
+    expect(messages[0].url).toBe(blockNoEmptyUrl);
+    expect(messages[0].location.file).toBe(configStandardPath);
+    expect(messages[0].location.position).toEqual([[0, 5], [0, 7]]);
   });
 
   it('reports rules set as warnings as a Warning', async () => {
@@ -43,12 +43,11 @@ describe('The stylelint provider for Linter', () => {
     expect(messages.length).toBeGreaterThan(0);
 
     // test only the first error
-    expect(messages[0].type).toBe('Warning');
     expect(messages[0].severity).toBe('warning');
-    expect(messages[0].text).not.toBeDefined();
-    expect(messages[0].html).toBe(blockNoEmpty);
-    expect(messages[0].filePath).toMatch(/.+warn\.css$/);
-    expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
+    expect(messages[0].excerpt).toBe(blockNoEmpty);
+    expect(messages[0].url).toBe(blockNoEmptyUrl);
+    expect(messages[0].location.file).toMatch(/.+warn\.css$/);
+    expect(messages[0].location.position).toEqual([[0, 5], [0, 7]]);
   });
 
   it('finds nothing wrong with a valid file', async () => {
@@ -64,12 +63,10 @@ describe('The stylelint provider for Linter', () => {
     const messages = await lint(editor);
     expect(messages.length).toBe(1);
 
-    expect(messages[0].type).toBe('Error');
     expect(messages[0].severity).toBe('error');
-    expect(messages[0].text).not.toBeDefined();
-    expect(messages[0].html).toBe('Unknown word (CssSyntaxError)');
-    expect(messages[0].filePath).toBe(invalidPath);
-    expect(messages[0].range).toEqual([[0, 0], [0, 3]]);
+    expect(messages[0].excerpt).toBe('Unknown word (CssSyntaxError)');
+    expect(messages[0].location.file).toBe(invalidPath);
+    expect(messages[0].location.position).toEqual([[0, 0], [0, 3]]);
   });
 
   it('shows an error on non-fatal stylelint runtime error', async () => {
@@ -78,12 +75,10 @@ describe('The stylelint provider for Linter', () => {
     const messages = await lint(editor);
     expect(messages.length).toBe(1);
 
-    expect(messages[0].type).toBe('Error');
     expect(messages[0].severity).toBe('error');
-    expect(messages[0].text).toBe(text);
-    expect(messages[0].html).not.toBeDefined();
-    expect(messages[0].filePath).toBe(invalidRulePath);
-    expect(messages[0].range).not.toBeDefined();
+    expect(messages[0].excerpt).toBe(text);
+    expect(messages[0].location.file).toBe(invalidRulePath);
+    expect(messages[0].location.position).toEqual([[0, 0], [0, 6]]);
   });
 
   it('shows an error notification for a fatal stylelint runtime error', async () => {
@@ -138,12 +133,10 @@ describe('The stylelint provider for Linter', () => {
       const messages = await lint(editor);
       expect(messages.length).toBe(1);
 
-      expect(messages[0].type).toBe('Warning');
       expect(messages[0].severity).toBe('warning');
-      expect(messages[0].text).toBe('This file is ignored');
-      expect(messages[0].html).not.toBeDefined();
-      expect(messages[0].filePath).toBe(ignorePath);
-      expect(messages[0].range).not.toBeDefined();
+      expect(messages[0].excerpt).toBe('This file is ignored');
+      expect(messages[0].location.file).toBe(ignorePath);
+      expect(messages[0].location.position).toEqual([[0, 0], [0, 7]]);
     });
 
     it("doesn't show a message when not asked to", async () => {
@@ -165,12 +158,11 @@ describe('The stylelint provider for Linter', () => {
     expect(messages.length).toBeGreaterThan(0);
 
     // test only the first error
-    expect(messages[0].type).toBe('Warning');
     expect(messages[0].severity).toBe('warning');
-    expect(messages[0].text).not.toBeDefined();
-    expect(messages[0].html).toBe(blockNoEmpty);
-    expect(messages[0].filePath).toBe(warningPath);
-    expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
+    expect(messages[0].excerpt).toBe(blockNoEmpty);
+    expect(messages[0].url).toBe(blockNoEmptyUrl);
+    expect(messages[0].location.file).toBe(warningPath);
+    expect(messages[0].location.position).toEqual([[0, 5], [0, 7]]);
   });
 
   describe('works with Less files and', () => {
@@ -188,12 +180,11 @@ describe('The stylelint provider for Linter', () => {
       expect(messages.length).toBeGreaterThan(0);
 
       // test only the first error
-      expect(messages[0].type).toBe('Error');
       expect(messages[0].severity).toBe('error');
-      expect(messages[0].text).not.toBeDefined();
-      expect(messages[0].html).toBe(blockNoEmpty);
-      expect(messages[0].filePath).toBe(badLess);
-      expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
+      expect(messages[0].excerpt).toBe(blockNoEmpty);
+      expect(messages[0].url).toBe(blockNoEmptyUrl);
+      expect(messages[0].location.file).toBe(badLess);
+      expect(messages[0].location.position).toEqual([[0, 5], [0, 7]]);
     });
 
     it('finds nothing wrong with a valid file', async () => {
@@ -217,12 +208,11 @@ describe('The stylelint provider for Linter', () => {
       expect(messages.length).toBeGreaterThan(0);
 
       // test only the first error
-      expect(messages[0].type).toBe('Error');
       expect(messages[0].severity).toBe('error');
-      expect(messages[0].text).not.toBeDefined();
-      expect(messages[0].html).toBe(blockNoEmpty);
-      expect(messages[0].filePath).toBe(issuesPostCSS);
-      expect(messages[0].range).toEqual([[0, 5], [0, 7]]);
+      expect(messages[0].excerpt).toBe(blockNoEmpty);
+      expect(messages[0].url).toBe(blockNoEmptyUrl);
+      expect(messages[0].location.file).toBe(issuesPostCSS);
+      expect(messages[0].location.position).toEqual([[0, 5], [0, 7]]);
     });
 
     it('finds nothing wrong with a valid file', async () => {
@@ -241,15 +231,14 @@ describe('The stylelint provider for Linter', () => {
     });
 
     it('shows lint messages when found', async () => {
-      const nlzMessage = 'Expected a leading zero (<a href="http://stylelint.io/user-guide/rules/number-leading-zero">number-leading-zero</a>)';
       const editor = await atom.workspace.open(badSugarSS);
       const messages = await lint(editor);
-      expect(messages[0].type).toBe('Error');
+
       expect(messages[0].severity).toBe('error');
-      expect(messages[0].text).not.toBeDefined();
-      expect(messages[0].html).toBe(nlzMessage);
-      expect(messages[0].filePath).toBe(badSugarSS);
-      expect(messages[0].range).toEqual([[1, 38], [1, 40]]);
+      expect(messages[0].excerpt).toBe('Expected a leading zero (number-leading-zero)');
+      expect(messages[0].url).toBe('http://stylelint.io/user-guide/rules/number-leading-zero');
+      expect(messages[0].location.file).toBe(badSugarSS);
+      expect(messages[0].location.position).toEqual([[1, 38], [1, 40]]);
     });
 
     it('finds nothing wrong with a valid file', async () => {
