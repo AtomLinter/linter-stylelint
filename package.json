@@ -33,7 +33,7 @@
   "configSchema": {
     "useStandard": {
       "title": "Use standard",
-      "description": "Use the stylelint-config-standard lint configuration",
+      "description": "Use the stylelint-config-standard lint configuration when no other configuration is found. Disables the \"Disable when no config\" option.",
       "type": "boolean",
       "default": false
     },
