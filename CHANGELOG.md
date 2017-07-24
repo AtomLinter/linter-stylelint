@@ -1,5 +1,16 @@
 # Change Log
 
+## [v4.0.1](https://github.com/AtomLinter/linter-stylelint/tree/v4.0.1) (2017-07-24)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v4.0.0...v4.0.1)
+
+**Implemented enhancements:**
+
+- Update eslint to version 4.0.0 🚀 [\#343](https://github.com/AtomLinter/linter-stylelint/pull/343) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
+**Fixed bugs:**
+
+- Fix \#358 by updating buggy version of browserslist manually. [\#360](https://github.com/AtomLinter/linter-stylelint/pull/360) ([retrixe](https://github.com/retrixe))
+
 ## [v4.0.0](https://github.com/AtomLinter/linter-stylelint/tree/v4.0.0) (2017-07-17)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v3.12.0...v4.0.0)
 
