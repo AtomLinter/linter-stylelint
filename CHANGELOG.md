@@ -1,5 +1,13 @@
 # Change Log
 
+## [v4.0.2](https://github.com/AtomLinter/linter-stylelint/tree/v4.0.2) (2017-08-21)
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v4.0.1...v4.0.2)
+
+**Fixed bugs:**
+
+- Could not find "stylelint-config-recommended". Do you need a `configBasedir`? [\#357](https://github.com/AtomLinter/linter-stylelint/issues/357)
+- Set proper configBaseDir for default configurations [\#368](https://github.com/AtomLinter/linter-stylelint/pull/368) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v4.0.1](https://github.com/AtomLinter/linter-stylelint/tree/v4.0.1) (2017-07-24)
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v4.0.0...v4.0.1)
 
