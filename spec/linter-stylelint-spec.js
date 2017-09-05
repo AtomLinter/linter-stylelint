@@ -13,7 +13,7 @@ const blockNoEmpty = 'Unexpected empty block (block-no-empty)';
 const blockNoEmptyUrl = 'http://stylelint.io/user-guide/rules/block-no-empty';
 
 describe('The stylelint provider for Linter', () => {
-  const lint = require('../lib/index.js').provideLinter().lint;
+  const { lint } = require('../lib/index.js').provideLinter();
 
   beforeEach(async () => {
     atom.workspace.destroyActivePaneItem();
@@ -85,13 +85,13 @@ describe('The stylelint provider for Linter', () => {
     const invalidExtendsPath = path.join(fixtures, 'invalid-extends', 'styles.css');
 
     spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
-    const addError = atom.notifications.addError;
+    const { addError } = atom.notifications;
 
     const editor = await atom.workspace.open(invalidExtendsPath);
     const messages = await lint(editor);
     expect(messages.length).toBe(0);
 
-    const args = addError.mostRecentCall.args;
+    const { args } = addError.mostRecentCall;
     expect(addError.calls.length).toBe(1);
     expect(args[0]).toBe('Unable to parse stylelint configuration');
     expect(args[1].detail).toContain('Could not find "some-module-that-will-never-exist".');
@@ -102,13 +102,13 @@ describe('The stylelint provider for Linter', () => {
     const invalidConfigPath = path.join(fixtures, 'invalid-config', 'styles.css');
 
     spyOn(atom.notifications, 'addError').andCallFake(() => ({}));
-    const addError = atom.notifications.addError;
+    const { addError } = atom.notifications;
 
     const editor = await atom.workspace.open(invalidConfigPath);
     const messages = await lint(editor);
     expect(messages.length).toBe(0);
 
-    const args = addError.mostRecentCall.args;
+    const { args } = addError.mostRecentCall;
     expect(addError.calls.length).toBe(1);
     expect(args[0]).toBe('Unable to parse stylelint configuration');
     expect(args[1].detail).toContain('>>>');
