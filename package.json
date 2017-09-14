@@ -1,6 +1,6 @@
 {
   "name": "linter-stylelint",
-  "version": "3.10.0",
+  "version": "4.0.2",
   "private": true,
   "description": "A plugin for Atom Linter providing an interface to stylelint.",
   "main": "lib/index.js",
@@ -33,7 +33,7 @@
   "configSchema": {
     "useStandard": {
       "title": "Use standard",
-      "description": "Use the stylelint-config-standard lint configuration",
+      "description": "Use the stylelint-config-standard lint configuration when no other configuration is found. Disables the \"Disable when no config\" option.",
       "type": "boolean",
       "default": false
     },
@@ -59,15 +59,15 @@
   "dependencies": {
     "assign-deep": "^0.4.5",
     "atom-linter": "^10.0.0",
-    "atom-package-deps": "^4.0.1",
-    "escape-html": "^1.0.3",
-    "stylelint": "7.11.1",
-    "stylelint-config-standard": "^16.0.0"
+    "atom-package-deps": "^4.6.0",
+    "browserslist": "^2.2.2",
+    "stylelint": "8.1.1",
+    "stylelint-config-standard": "^17.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.12.0",
-    "eslint-config-airbnb-base": "^11.0.0",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint": "^4.6.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
     "jasmine-fix": "^1.0.1"
   },
   "eslintConfig": {
@@ -96,12 +96,12 @@
     }
   },
   "package-deps": [
-    "linter"
+    "linter:2.0.0"
   ],
   "providedServices": {
     "linter": {
       "versions": {
-        "1.0.0": "provideLinter"
+        "2.0.0": "provideLinter"
       }
     }
   }
