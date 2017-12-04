@@ -1,5 +1,17 @@
 # Change Log
 
+## [v4.1.0](https://github.com/AtomLinter/linter-stylelint/tree/v4.1.0) (2017-12-04)
+
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v4.0.2...v4.1.0)
+
+**Implemented enhancements:**
+
+- fix\(package\): update stylelint to version 8.3.1 [\#380](https://github.com/AtomLinter/linter-stylelint/pull/380) ([Arcanemagus](https://github.com/Arcanemagus))
+- Update stylelint-config-standard to version 18.0.0 🚀 [\#377](https://github.com/AtomLinter/linter-stylelint/pull/377) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update stylelint to version 8.3.0 🚀 [\#372](https://github.com/AtomLinter/linter-stylelint/pull/372) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update stylelint to version 8.1.1 🚀 [\#370](https://github.com/AtomLinter/linter-stylelint/pull/370) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update eslint-config-airbnb-base to version 12.0.0 🚀 [\#369](https://github.com/AtomLinter/linter-stylelint/pull/369) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
 ## [v4.0.2](https://github.com/AtomLinter/linter-stylelint/tree/v4.0.2) (2017-08-21)
 
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v4.0.1...v4.0.2)
