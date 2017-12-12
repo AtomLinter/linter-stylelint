@@ -19,7 +19,7 @@ describe('Helpers', () => {
     it('falls back to the packaged stylelint when no local stylelint is found', () => {
       const modulesDir = 'not/a/real/path';
       const foundStylelint = helpers.findStylelintDirectory(modulesDir);
-      const expectedBundledPath = path.join(__dirname, '..', 'node_modules', 'stylelint');
+      const expectedBundledPath = require.resolve('stylelint');
       expect(foundStylelint).toBe(expectedBundledPath);
     });
   });
