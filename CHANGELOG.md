@@ -1,5 +1,13 @@
 # Change Log
 
+## [v4.2.0](https://github.com/AtomLinter/linter-stylelint/tree/v4.2.0) (2017-12-15)
+
+[Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v4.1.0...v4.2.0)
+
+**Implemented enhancements:**
+
+- Update stylelint to version 8.4.0 🚀 [\#382](https://github.com/AtomLinter/linter-stylelint/pull/382) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
 ## [v4.1.0](https://github.com/AtomLinter/linter-stylelint/tree/v4.1.0) (2017-12-04)
 
 [Full Changelog](https://github.com/AtomLinter/linter-stylelint/compare/v4.0.2...v4.1.0)
