@@ -247,4 +247,44 @@ describe('The stylelint provider for Linter', () => {
       expect(messages.length).toBe(0);
     });
   });
+
+  describe('will autofix what errors it can', () => {
+    const toFixCSS = `
+.FixMe
+{
+
+
+  height: 0.5em;
+    color: #EEE;
+}
+`;
+
+    const doneFixCSS = `
+.FixMe
+{
+  height: 0.5em;
+  color: #eee;
+}
+`;
+
+    it('applies fixed css if attemptFix is true', async () => {
+      atom.config.set('linter-stylelint.attemptFix', true);
+      atom.config.set('linter-stylelint.disableWhenNoConfig', false);
+      const editor = await atom.workspace.open(configStandardPath);
+      editor.setText(toFixCSS);
+      await lint(editor);
+      const result = editor.getText();
+      expect(result).toBe(doneFixCSS);
+    });
+
+    it('does not attempt fixes if attemptFix is false', async () => {
+      atom.config.set('linter-stylelint.attemptFix', false);
+      atom.config.set('linter-stylelint.disableWhenNoConfig', false);
+      const editor = await atom.workspace.open(configStandardPath);
+      editor.setText(toFixCSS);
+      await lint(editor);
+      const result = editor.getText();
+      expect(result).toBe(toFixCSS);
+    });
+  });
 });
