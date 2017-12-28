@@ -48,6 +48,12 @@
       "title": "Show message when a file is ignored",
       "type": "boolean",
       "default": false
+    },
+    "attemptFix": {
+      "description": "Automatically attempt to fix errors using stylelint --fix flag (experimental)",
+      "title": "Attempt to fix styles on save",
+      "type": "boolean",
+      "default": false
     }
   },
   "homepage": "https://github.com/AtomLinter/linter-stylelint#readme",
