@@ -1,5 +1,5 @@
 user=AtomLinter
 project=linter-stylelint
 unreleased=true
-future-release=v4.1.0
+future-release=v4.2.0
 exclude_labels=duplicate,question,invalid,wontfix,Duplicate,Question,Invalid,Wontfix,External
