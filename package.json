@@ -13,7 +13,7 @@
   },
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "test": "apm test",
+    "test": "atom --test spec",
     "lint": "eslint ."
   },
   "keywords": [
