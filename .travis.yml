@@ -1,5 +1,7 @@
 ### Project specific config ###
-language: generic
+language: node_js
+node_js: lts/*
+install: skip
 os: linux
 
 env:
@@ -8,15 +10,38 @@ env:
     # for the installation to complete.
     - APM_TEST_PACKAGES="language-postcss"
 
-  matrix:
-    - ATOM_CHANNEL=stable
-    - ATOM_CHANNEL=beta
+jobs:
+  include:
+    # Test Atom versions
+    - stage: test
+      env: ATOM_CHANNEL=stable
+    - stage: test
+      env: ATOM_CHANNEL=beta
+
+    # Check the commit messages and run the extra lint script
+    - stage: test
+      install:
+        - npm install
+      before_script: skip
+      script:
+        - commitlint-travis
+
+    - stage: release
+      # Since the deploy needs APM, currently the simplest method is to run
+      # build-package.sh, which requires the specs to pass.
+      before_deploy:
+        - export PATH=${PATH}:${HOME}/atom/usr/bin/
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
 
 ### Generic setup follows ###
 script:
   - curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
   - chmod u+x build-package.sh
-  - ./build-package.sh
+  - "./build-package.sh"
 
 notifications:
   email:
@@ -26,6 +51,7 @@ notifications:
 branches:
   only:
     - master
+    - "/^greenkeeper/.*$/"
 
 git:
   depth: 10
@@ -36,10 +62,13 @@ sudo: false
 
 addons:
   apt:
-    sources:
-    - ubuntu-toolchain-r-test
     packages:
-    - g++-6
-    - fakeroot
+    - build-essential
     - git
-    - libsecret-1-dev
+    - libgnome-keyring-dev
+    - fakeroot
+
+stages:
+  - test
+  - name: release
+    if: (NOT type = pull_request) AND branch = master
