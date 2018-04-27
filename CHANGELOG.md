@@ -1,3 +1,11 @@
+<a name="4.2.1"></a>
+## [4.2.1](https://github.com/AtomLinter/linter-stylelint/compare/v4.2.0...v4.2.1) (2018-04-27)
+
+
+### Bug Fixes
+
+* **package:** update stylelint to version 9.2.0 ([7d20459](https://github.com/AtomLinter/linter-stylelint/commit/7d20459)), closes [#389](https://github.com/AtomLinter/linter-stylelint/issues/389)
+
 # Change Log
 
 ## [v4.2.0](https://github.com/AtomLinter/linter-stylelint/tree/v4.2.0) (2017-12-15)
