@@ -39,8 +39,8 @@
       "default": false
     },
     "disableWhenNoConfig": {
-      "title": "Disable when no config file is found",
-      "description": "Either .stylelintrc or stylelint.config.js",
+      "title": "Disable when no config is found",
+      "description": "You can find the list of supported formats in the [stylelint docs](https://stylelint.io/user-guide/configuration/#loading-the-configuration-object).",
       "type": "boolean",
       "default": true
     },
