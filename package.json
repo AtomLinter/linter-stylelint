@@ -1,6 +1,6 @@
 {
   "name": "linter-stylelint",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "private": true,
   "description": "A plugin for Atom Linter providing an interface to stylelint.",
   "main": "lib/index.js",
@@ -12,7 +12,8 @@
     "atom": ">=1.7.0 <2.0.0"
   },
   "scripts": {
-    "test": "apm test",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "test": "atom --test spec",
     "lint": "eslint ."
   },
   "keywords": [
@@ -38,8 +39,8 @@
       "default": false
     },
     "disableWhenNoConfig": {
-      "title": "Disable when no config file is found",
-      "description": "Either .stylelintrc or stylelint.config.js",
+      "title": "Disable when no config is found",
+      "description": "You can find the list of supported formats in the [stylelint docs](https://stylelint.io/user-guide/configuration/#loading-the-configuration-object).",
       "type": "boolean",
       "default": true
     },
@@ -60,11 +61,17 @@
     "assign-deep": "^0.4.5",
     "atom-linter": "^10.0.0",
     "atom-package-deps": "^4.6.0",
-    "browserslist": "^2.2.2",
-    "stylelint": "8.4.0",
+    "resolve": "^1.5.0",
+    "stylelint": "9.2.0",
     "stylelint-config-standard": "^18.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^6.1.3",
+    "@commitlint/config-conventional": "^6.1.3",
+    "@commitlint/travis-cli": "^6.1.3",
+    "@semantic-release/apm-config": "^2.0.1",
+    "husky": "^0.14.3",
+    "semantic-release": "^15.1.7",
     "eslint": "^4.6.0",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-plugin-import": "^2.7.0",
@@ -104,5 +111,13 @@
         "2.0.0": "provideLinter"
       }
     }
+  },
+  "release": {
+    "extends": "@semantic-release/apm-config"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
