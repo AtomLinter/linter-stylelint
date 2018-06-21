@@ -1,4 +1,4 @@
-# linter-stylelint [![Dependency Status](https://david-dm.org/AtomLinter/linter-stylelint.svg)](https://david-dm.org/AtomLinter/linter-stylelint)
+# linter-stylelint [![Dependency Status](https://david-dm.org/AtomLinter/linter-stylelint.svg)](https://david-dm.org/AtomLinter/linter-stylelint) [![Greenkeeper badge](https://badges.greenkeeper.io/AtomLinter/linter-stylelint.svg)](https://greenkeeper.io/)
 
 A plugin for [Atom Linter](https://github.com/AtomLinter/atom-linter) providing
 an interface to [stylelint](https://github.com/stylelint/stylelint).
