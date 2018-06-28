@@ -1,8 +1,10 @@
 'use babel';
 
 import * as path from 'path';
-// eslint-disable-next-line no-unused-vars, import/no-extraneous-dependencies
-import { it, fit, wait, beforeEach, afterEach } from 'jasmine-fix';
+import {
+  // eslint-disable-next-line no-unused-vars
+  it, fit, wait, beforeEach, afterEach
+} from 'jasmine-fix';
 
 const fixtures = path.join(__dirname, 'fixtures');
 const configStandardPath = path.join(fixtures, 'bad', 'stylelint-config-standard.css');

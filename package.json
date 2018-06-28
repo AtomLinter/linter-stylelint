@@ -55,21 +55,21 @@
     "assign-deep": "^0.4.5",
     "atom-linter": "^10.0.0",
     "atom-package-deps": "^4.6.0",
-    "resolve": "^1.5.0",
-    "stylelint": "9.2.0",
+    "resolve": "^1.8.1",
+    "stylelint": "9.3.0",
     "stylelint-config-standard": "^18.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^6.1.3",
-    "@commitlint/config-conventional": "^6.1.3",
-    "@commitlint/travis-cli": "^6.1.3",
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
+    "@commitlint/travis-cli": "^7.0.0",
     "@semantic-release/apm-config": "^2.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
     "husky": "^0.14.3",
-    "semantic-release": "^15.1.7",
-    "eslint": "^4.6.0",
-    "eslint-config-airbnb-base": "^12.0.0",
-    "eslint-plugin-import": "^2.7.0",
-    "jasmine-fix": "^1.0.1"
+    "jasmine-fix": "^1.0.1",
+    "semantic-release": "^15.6.0"
   },
   "eslintConfig": {
     "rules": {

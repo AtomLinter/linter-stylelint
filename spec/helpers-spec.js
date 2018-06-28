@@ -1,8 +1,10 @@
 'use babel';
 
 import path from 'path';
-// eslint-disable-next-line no-unused-vars, import/no-extraneous-dependencies
-import { it, fit, wait, beforeEach, afterEach } from 'jasmine-fix';
+import {
+  // eslint-disable-next-line no-unused-vars
+  it, fit, wait, beforeEach, afterEach
+} from 'jasmine-fix';
 import * as helpers from '../lib/helpers';
 
 const fixturesLocal = path.join(__dirname, 'fixtures', 'local-stylelint');
