@@ -1,3 +1,10 @@
+## [4.3.2](https://github.com/AtomLinter/linter-stylelint/compare/v4.3.1...v4.3.2) (2018-06-29)
+
+
+### Bug Fixes
+
+* **dependencies:** bump minimum assign-deep to v0.4.7 ([a98e5f7](https://github.com/AtomLinter/linter-stylelint/commit/a98e5f7))
+
 ## [4.3.1](https://github.com/AtomLinter/linter-stylelint/compare/v4.3.0...v4.3.1) (2018-06-28)
 
 
