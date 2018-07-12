@@ -1,6 +1,6 @@
 ### Project specific config ###
 environment:
-  APM_TEST_PACKAGES: language-postcss
+  APM_TEST_PACKAGES: language-postcss language-vue
 
   matrix:
   - ATOM_CHANNEL: stable
