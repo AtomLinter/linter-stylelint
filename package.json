@@ -113,5 +113,10 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "renovate": {
+    "extends": [
+      "config:base"
+    ]
   }
 }
