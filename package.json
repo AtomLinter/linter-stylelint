@@ -64,7 +64,7 @@
     "@commitlint/config-conventional": "7.1.2",
     "@commitlint/travis-cli": "7.2.1",
     "@semantic-release/apm-config": "2.0.1",
-    "eslint": "4.19.1",
+    "eslint": "5.8.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.14.0",
     "husky": "0.14.3",
