@@ -66,7 +66,7 @@
     "@semantic-release/apm-config": "2.0.1",
     "eslint": "4.19.1",
     "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.13.0",
+    "eslint-plugin-import": "2.14.0",
     "husky": "0.14.3",
     "jasmine-fix": "1.3.1",
     "semantic-release": "15.6.0"
