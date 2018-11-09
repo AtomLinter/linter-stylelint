@@ -3,6 +3,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { tmpdir } from 'os';
+import rimraf from 'rimraf';
 import {
   // eslint-disable-next-line no-unused-vars
   it, fit, wait, beforeEach, afterEach
@@ -292,6 +293,7 @@ describe('The stylelint provider for Linter', () => {
       const messagesAfterFixing = await lint(editor, { shouldFix: true });
       expect(messagesAfterFixing.length).toBe(0);
       expect(editor.getText()).not.toEqual(oldText);
+      rimraf.sync(tempDir);
     });
 
     it('applies autofixes when saving', async () => {
@@ -307,6 +309,7 @@ describe('The stylelint provider for Linter', () => {
       expect(editor.getText()).not.toEqual(oldText);
       const messagesAfterFixing = await lint(editor);
       expect(messagesAfterFixing.length).toBe(0);
+      rimraf.sync(tempDir);
     });
 
     it('does not update the editor if fixOnSave is disabled', async () => {
@@ -322,6 +325,7 @@ describe('The stylelint provider for Linter', () => {
       expect(editor.getText()).toEqual(oldText);
       const messagesAfterFixing = await lint(editor);
       expect(messagesAfterFixing.length).toBe(3);
+      rimraf.sync(tempDir);
     });
   });
 });
