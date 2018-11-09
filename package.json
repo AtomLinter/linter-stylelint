@@ -56,7 +56,7 @@
     "atom-linter": "10.0.0",
     "atom-package-deps": "4.6.2",
     "resolve": "1.8.1",
-    "stylelint": "9.3.0",
+    "stylelint": "9.8.0",
     "stylelint-config-standard": "18.2.0"
   },
   "devDependencies": {
