@@ -1,3 +1,19 @@
+# [4.4.0](https://github.com/AtomLinter/linter-stylelint/compare/v4.3.2...v4.4.0) (2019-01-22)
+
+
+### Bug Fixes
+
+* add default option object ([a4d6c92](https://github.com/AtomLinter/linter-stylelint/commit/a4d6c92))
+* check passed-in editor, not a new one ([d9489c7](https://github.com/AtomLinter/linter-stylelint/commit/d9489c7))
+* don’t change editor text unless necessary ([32427ea](https://github.com/AtomLinter/linter-stylelint/commit/32427ea))
+* only save files (buffers) once ([cfd5b9c](https://github.com/AtomLinter/linter-stylelint/commit/cfd5b9c))
+* restore cursors ([5ebb26f](https://github.com/AtomLinter/linter-stylelint/commit/5ebb26f))
+
+
+### Features
+
+* added autofix on save ([3164aab](https://github.com/AtomLinter/linter-stylelint/commit/3164aab))
+
 ## [4.3.2](https://github.com/AtomLinter/linter-stylelint/compare/v4.3.1...v4.3.2) (2018-06-29)
 
 
