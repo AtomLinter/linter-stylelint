@@ -1,6 +1,9 @@
 'use babel';
 
 import * as path from 'path';
+import * as fs from 'fs';
+import { tmpdir } from 'os';
+import rimraf from 'rimraf';
 import {
   // eslint-disable-next-line no-unused-vars
   it, fit, wait, beforeEach, afterEach
@@ -10,9 +13,37 @@ const fixtures = path.join(__dirname, 'fixtures');
 const configStandardPath = path.join(fixtures, 'bad', 'stylelint-config-standard.css');
 const warningPath = path.join(fixtures, 'warn', 'warn.css');
 const invalidRulePath = path.join(fixtures, 'invalid-rule', 'styles.css');
+const autofixablePath = path.join(fixtures, 'autofix');
 
 const blockNoEmpty = 'Unexpected empty block (block-no-empty)';
 const blockNoEmptyUrl = 'http://stylelint.io/user-guide/rules/block-no-empty';
+
+/**
+ * Async helper to copy a file from one place to another on the filesystem.
+ * @param  {string} fileToCopyPath  Path of the file to be copied
+ * @param  {string} destinationDir  Directory to paste the file into
+ * @return {string}                 Full path of the file in copy destination
+ */
+function copyFileToDir(fileToCopyPath, destinationDir) {
+  return new Promise((resolve) => {
+    const destinationPath = path.join(destinationDir, path.basename(fileToCopyPath));
+    const ws = fs.createWriteStream(destinationPath);
+    ws.on('close', () => resolve(destinationPath));
+    fs.createReadStream(fileToCopyPath).pipe(ws);
+  });
+}
+
+/**
+ * Utility helper to copy a file into the OS temp directory.
+ *
+ * @param  {string} fileToCopyPath  Path of the file to be copied
+ * @return {string}                 Full path of the file in copy destination
+ */
+// eslint-disable-next-line import/prefer-default-export
+export async function copyFileToTempDir(fileToCopyPath) {
+  const tempFixtureDir = fs.mkdtempSync(tmpdir() + path.sep);
+  return copyFileToDir(fileToCopyPath, tempFixtureDir);
+}
 
 describe('The stylelint provider for Linter', () => {
   const { lint } = require('../lib/index.js').provideLinter();
@@ -247,6 +278,54 @@ describe('The stylelint provider for Linter', () => {
       const editor = await atom.workspace.open(goodSugarSS);
       const messages = await lint(editor);
       expect(messages.length).toBe(0);
+    });
+  });
+
+  describe('the fixOnSave option', () => {
+    it('lint updates the editor for autofixable rules when shouldFix is true', async () => {
+      const tempPath = await copyFileToTempDir(path.join(autofixablePath, 'bad.css'));
+      const tempDir = path.dirname(tempPath);
+      const editor = await atom.workspace.open(tempPath);
+      const oldText = editor.getText();
+      await copyFileToDir(path.join(autofixablePath, '.stylelintrc'), tempDir);
+      const messages = await lint(editor);
+      expect(messages.length).toBe(3);
+      const messagesAfterFixing = await lint(editor, { shouldFix: true });
+      expect(messagesAfterFixing.length).toBe(0);
+      expect(editor.getText()).not.toEqual(oldText);
+      rimraf.sync(tempDir);
+    });
+
+    it('applies autofixes when saving', async () => {
+      const tempPath = await copyFileToTempDir(path.join(autofixablePath, 'bad.css'));
+      const tempDir = path.dirname(tempPath);
+      const editor = await atom.workspace.open(tempPath);
+      const oldText = editor.getText();
+      atom.config.set('linter-stylelint.fixOnSave', true);
+      await copyFileToDir(path.join(autofixablePath, '.stylelintrc'), tempDir);
+      const messages = await lint(editor);
+      expect(messages.length).toBe(3);
+      await editor.save();
+      expect(editor.getText()).not.toEqual(oldText);
+      const messagesAfterFixing = await lint(editor);
+      expect(messagesAfterFixing.length).toBe(0);
+      rimraf.sync(tempDir);
+    });
+
+    it('does not update the editor if fixOnSave is disabled', async () => {
+      const tempPath = await copyFileToTempDir(path.join(autofixablePath, 'bad.css'));
+      const tempDir = path.dirname(tempPath);
+      const editor = await atom.workspace.open(tempPath);
+      const oldText = editor.getText();
+      atom.config.set('linter-stylelint.fixOnSave', false);
+      await copyFileToDir(path.join(autofixablePath, '.stylelintrc'), tempDir);
+      const messages = await lint(editor);
+      expect(messages.length).toBe(3);
+      await editor.save();
+      expect(editor.getText()).toEqual(oldText);
+      const messagesAfterFixing = await lint(editor);
+      expect(messagesAfterFixing.length).toBe(3);
+      rimraf.sync(tempDir);
     });
   });
 });

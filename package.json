@@ -48,6 +48,12 @@
       "title": "Show message when a file is ignored",
       "type": "boolean",
       "default": false
+    },
+    "fixOnSave": {
+      "description": "Automatically attempt to fix errors using stylelint --fix flag (experimental)",
+      "title": "Attempt to fix styles on save",
+      "type": "boolean",
+      "default": false
     }
   },
   "homepage": "https://github.com/AtomLinter/linter-stylelint#readme",
@@ -69,6 +75,7 @@
     "eslint-plugin-import": "2.15.0",
     "husky": "0.14.3",
     "jasmine-fix": "1.3.1",
+    "rimraf": "^2.6.2",
     "semantic-release": "15.13.3"
   },
   "eslintConfig": {
