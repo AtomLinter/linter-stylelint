@@ -12,7 +12,6 @@
     "atom": ">=1.7.0 <2.0.0"
   },
   "scripts": {
-    "commitmsg": "commitlint -e $GIT_PARAMS",
     "test": "atom --test spec",
     "lint": "eslint ."
   },
@@ -125,5 +124,10 @@
     "extends": [
       "config:base"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
