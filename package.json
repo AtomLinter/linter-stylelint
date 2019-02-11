@@ -65,9 +65,9 @@
     "stylelint-config-standard": "18.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "7.5.1",
+    "@commitlint/cli": "7.5.2",
     "@commitlint/config-conventional": "7.5.0",
-    "@commitlint/travis-cli": "7.5.1",
+    "@commitlint/travis-cli": "7.5.2",
     "@semantic-release/apm-config": "6.0.1",
     "eslint": "5.13.0",
     "eslint-config-airbnb-base": "13.1.0",
