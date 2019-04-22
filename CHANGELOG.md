@@ -1,3 +1,10 @@
+## [4.4.4](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.3...v4.4.4) (2019-04-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency atom-package-deps to v5.1.0 ([757fdb5](https://github.com/AtomLinter/linter-stylelint/commit/757fdb5))
+
 ## [4.4.3](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.2...v4.4.3) (2019-01-22)
 
 
