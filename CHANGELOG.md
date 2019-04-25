@@ -1,3 +1,10 @@
+## [4.4.6](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.5...v4.4.6) (2019-04-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency stylelint-config-standard to v18.3.0 ([769e7d3](https://github.com/AtomLinter/linter-stylelint/commit/769e7d3))
+
 ## [4.4.5](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.4...v4.4.5) (2019-04-24)
 
 
