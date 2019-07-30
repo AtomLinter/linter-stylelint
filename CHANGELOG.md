@@ -1,3 +1,10 @@
+## [4.4.9](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.8...v4.4.9) (2019-06-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency assign-deep to v0.4.8 ([5578c4c](https://github.com/AtomLinter/linter-stylelint/commit/5578c4c))
+
 ## [4.4.8](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.7...v4.4.8) (2019-06-04)
 
 
