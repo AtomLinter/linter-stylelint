@@ -11,7 +11,7 @@ an interface to [stylelint](https://github.com/stylelint/stylelint).
 apm install linter-stylelint
 ```
 
-linter-stylelint runs `stylelint` against your CSS, SCSS, Less, PostCSS,
+linter-stylelint runs `stylelint` against your CSS, SCSS, SASS, Less, PostCSS,
 and SugarSS files.
 
 ## Configuration
