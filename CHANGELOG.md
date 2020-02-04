@@ -1,3 +1,10 @@
+## [4.4.14](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.13...v4.4.14) (2020-02-04)
+
+
+### Bug Fixes
+
+* use local stylelint for config resolution if available ([21c1d7f](https://github.com/AtomLinter/linter-stylelint/commit/21c1d7ff69e67f4ea5388baedc3e9b0ee577e670)), closes [#381](https://github.com/AtomLinter/linter-stylelint/issues/381) [#440](https://github.com/AtomLinter/linter-stylelint/issues/440)
+
 ## [4.4.13](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.12...v4.4.13) (2020-02-04)
 
 
