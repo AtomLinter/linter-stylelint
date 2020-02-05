@@ -1,3 +1,10 @@
+## [4.4.15](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.14...v4.4.15) (2020-02-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency resolve to v1.15.1 ([7accea0](https://github.com/AtomLinter/linter-stylelint/commit/7accea0ed99582f497b6bdc0b398bea4a4f0541f))
+
 ## [4.4.14](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.13...v4.4.14) (2020-02-04)
 
 
