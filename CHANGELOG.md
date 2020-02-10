@@ -1,3 +1,10 @@
+## [4.4.17](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.16...v4.4.17) (2020-02-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency stylelint-config-standard to v20 ([717a5e3](https://github.com/AtomLinter/linter-stylelint/commit/717a5e303d77ad68f711bec7223038a7ba6c188e))
+
 ## [4.4.16](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.15...v4.4.16) (2020-02-08)
 
 
