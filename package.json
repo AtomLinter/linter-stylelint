@@ -1,6 +1,6 @@
 {
   "name": "linter-stylelint",
-  "version": "4.4.9",
+  "version": "4.4.18",
   "private": true,
   "description": "A plugin for Atom Linter providing an interface to stylelint.",
   "main": "lib/index.js",
@@ -60,22 +60,22 @@
     "assign-deep": "0.4.8",
     "atom-linter": "10.0.0",
     "atom-package-deps": "5.1.0",
-    "resolve": "1.11.1",
-    "stylelint": "9.10.1",
-    "stylelint-config-standard": "18.3.0"
+    "resolve": "1.15.1",
+    "stylelint": "13.2.0",
+    "stylelint-config-standard": "20.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.0.0",
-    "@commitlint/config-conventional": "8.0.0",
-    "@commitlint/travis-cli": "8.0.0",
-    "@semantic-release/apm-config": "6.0.1",
-    "eslint": "6.0.1",
-    "eslint-config-airbnb-base": "13.2.0",
-    "eslint-plugin-import": "2.18.0",
-    "husky": "2.7.0",
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@commitlint/travis-cli": "8.3.5",
+    "@semantic-release/apm-config": "8.0.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.20.1",
+    "husky": "4.2.3",
     "jasmine-fix": "1.3.1",
-    "rimraf": "2.6.3",
-    "semantic-release": "15.13.18"
+    "rimraf": "3.0.2",
+    "semantic-release": "17.0.4"
   },
   "eslintConfig": {
     "rules": {
