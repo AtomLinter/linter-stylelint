@@ -103,7 +103,7 @@ describe('The stylelint provider for Linter', () => {
   });
 
   it('shows an error on non-fatal stylelint runtime error', async () => {
-    const text = 'Unexpected option value "foo" for rule "block-no-empty"';
+    const text = 'Invalid option ""foo"" for rule block-no-empty';
     const editor = await atom.workspace.open(invalidRulePath);
     const messages = await lint(editor);
     expect(messages.length).toBe(1);

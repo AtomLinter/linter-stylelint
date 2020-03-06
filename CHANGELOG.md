@@ -1,3 +1,67 @@
+## [4.4.18](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.17...v4.4.18) (2020-02-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency stylelint to v13.2.0 ([93fbbb8](https://github.com/AtomLinter/linter-stylelint/commit/93fbbb815014a1c3ca75289795376af5b7cb1c17))
+
+## [4.4.17](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.16...v4.4.17) (2020-02-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency stylelint-config-standard to v20 ([717a5e3](https://github.com/AtomLinter/linter-stylelint/commit/717a5e303d77ad68f711bec7223038a7ba6c188e))
+
+## [4.4.16](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.15...v4.4.16) (2020-02-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency stylelint to v13.1.0 ([edafcdd](https://github.com/AtomLinter/linter-stylelint/commit/edafcdd65f65dd72298dae6a1a1d172bcddabe7a))
+
+## [4.4.15](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.14...v4.4.15) (2020-02-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency resolve to v1.15.1 ([7accea0](https://github.com/AtomLinter/linter-stylelint/commit/7accea0ed99582f497b6bdc0b398bea4a4f0541f))
+
+## [4.4.14](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.13...v4.4.14) (2020-02-04)
+
+
+### Bug Fixes
+
+* use local stylelint for config resolution if available ([21c1d7f](https://github.com/AtomLinter/linter-stylelint/commit/21c1d7ff69e67f4ea5388baedc3e9b0ee577e670)), closes [#381](https://github.com/AtomLinter/linter-stylelint/issues/381) [#440](https://github.com/AtomLinter/linter-stylelint/issues/440)
+
+## [4.4.13](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.12...v4.4.13) (2020-02-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency stylelint to v13 ([e575bd9](https://github.com/AtomLinter/linter-stylelint/commit/e575bd9967471ca6845cdb5a11cc410044104e7d))
+* **deps:** update dependency stylelint-config-standard to v19 ([d141c98](https://github.com/AtomLinter/linter-stylelint/commit/d141c980d50aa7289fe7f01cc37447b91be2da7a))
+
+## [4.4.12](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.11...v4.4.12) (2020-02-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency resolve to v1.15.0 ([66ee7a6](https://github.com/AtomLinter/linter-stylelint/commit/66ee7a65b666641e3d5218dcc572d71ab7234e60))
+
+## [4.4.11](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.10...v4.4.11) (2020-01-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency resolve to v1.14.2 ([4963043](https://github.com/AtomLinter/linter-stylelint/commit/4963043e01198aa19df8332c339fbe1722274992))
+
+## [4.4.10](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.9...v4.4.10) (2019-12-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency resolve to v1.14.1 ([050f470](https://github.com/AtomLinter/linter-stylelint/commit/050f4701eeec6f9a14226079fdd1751f9b89e7da))
+
 ## [4.4.9](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.8...v4.4.9) (2019-06-25)
 
 
