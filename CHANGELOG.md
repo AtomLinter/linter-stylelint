@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.19...v4.5.0) (2020-03-09)
+
+
+### Features
+
+* add message URL for scss, csstools, color-format, scale-unlimited ([1c5b8ad](https://github.com/AtomLinter/linter-stylelint/commit/1c5b8ad506e3094d2120d59359be38013c720af5))
+
 ## [4.4.19](https://github.com/AtomLinter/linter-stylelint/compare/v4.4.18...v4.4.19) (2020-03-09)
 
 
