@@ -7,7 +7,7 @@ defaults: &defaults
   environment:
     # Pre-install the required language file as package activation doesn't wait
     # for the installation to complete.
-    APM_TEST_PACKAGES: "language-postcss"
+    APM_TEST_PACKAGES: "language-postcss language-vue"
   steps:
     # Restore project state
     - attach_workspace:

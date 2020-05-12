@@ -328,4 +328,30 @@ describe('The stylelint provider for Linter', () => {
       rimraf.sync(tempDir);
     });
   });
+
+  describe('works with Vue Single File Components', () => {
+    const goodVueSCSS = path.join(fixtures, 'vue', 'goodSCSS.vue');
+    const badVueSCSS = path.join(fixtures, 'vue', 'badSCSS.vue');
+
+    beforeEach(async () => {
+      await atom.packages.activatePackage('language-vue');
+    });
+
+    it('shows lint messages when found', async () => {
+      const editor = await atom.workspace.open(badVueSCSS);
+      const messages = await lint(editor);
+
+      expect(messages[0].severity).toBe('error');
+      expect(messages[0].excerpt).toBe(blockNoEmpty);
+      expect(messages[0].url).toBe(blockNoEmptyUrl);
+      expect(messages[0].location.file).toBe(badVueSCSS);
+      expect(messages[0].location.position).toEqual([[7, 2], [7, 4]]);
+    });
+
+    it('finds nothing wrong with a valid file', async () => {
+      const editor = await atom.workspace.open(goodVueSCSS);
+      const messages = await lint(editor);
+      expect(messages.length).toBe(0);
+    });
+  });
 });
