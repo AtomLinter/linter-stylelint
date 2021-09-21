@@ -103,7 +103,7 @@
     }
   },
   "package-deps": [
-    "linter:2.0.0"
+    { "name": "linter", "minimumVersion": "3.4.0" }
   ],
   "providedServices": {
     "linter": {
