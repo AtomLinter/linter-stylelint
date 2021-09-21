@@ -59,7 +59,7 @@
   "dependencies": {
     "assign-deep": "0.4.8",
     "atom-linter": "10.0.0",
-    "atom-package-deps": "5.1.0",
+    "atom-package-deps": "8.0.0",
     "resolve": "1.20.0",
     "stylelint": "13.13.1",
     "stylelint-config-standard": "22.0.0"
